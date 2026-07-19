@@ -1,19 +1,16 @@
 # Matematik Ustası 🧮
 
-Mobil matematik oyunu — animasyonlu arayüz, ses efektleri ve Android APK.
-
-## APK İndir
-
-[📥 Matematik Ustası APK İndir](/opt/cursor/artifacts/MatematikUstasi.apk)
+Mobil matematik oyunu — animasyonlu arayüz, ses efektleri ve titreşim desteği.
 
 ## Özellikler
 
 - 3 zorluk seviyesi (Kolay, Orta, Zor)
-- Toplama, çıkarma, çarpma, bölme
+- Toplama, çıkarma, çarpma ve bölme işlemleri
 - Puan, seri ve seviye sistemi
 - Zamanlayıcı ve can sistemi
-- Ses efektleri ve titreşim
+- Web Audio API ile ses efektleri
 - Framer Motion animasyonları
+- Capacitor ile Android APK desteği
 
 ## Geliştirme
 
@@ -26,10 +23,10 @@ npm run dev
 ## APK Derleme
 
 ```bash
-cd math-game
 npm run build
+npx cap add android
 npx cap sync android
 cd android && ./gradlew assembleDebug
 ```
 
-APK çıktısı: `math-game/android/app/build/outputs/apk/debug/app-debug.apk`
+APK: `android/app/build/outputs/apk/debug/app-debug.apk`
