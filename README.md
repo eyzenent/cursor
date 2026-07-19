@@ -4,7 +4,7 @@ Mobil matematik oyunu — animasyonlu arayüz, ses efektleri ve Android APK.
 
 ## APK İndir
 
-[📥 Matematik Ustası APK İndir](/opt/cursor/artifacts/MatematikUstasi.apk)
+[📥 Matematik Ustası APK İndir](https://github.com/eyzenent/cursor/releases/download/v1.0.0-math-game/MatematikUstasi.apk)
 
 ## Özellikler
 
