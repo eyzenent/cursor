@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QR Okuyucu</string>
+    <string name="scanning_hint">QR kodu çerçevenin içine hizalayın</string>
+    <string name="scan_success">QR kod başarıyla okundu</string>
+    <string name="result_label">Sonuç</string>
+    <string name="copy">Kopyala</string>
+    <string name="open_link">Aç</string>
+    <string name="scan_again">Tekrar Tara</string>
+    <string name="copied_to_clipboard">Panoya kopyalandı</string>
+    <string name="open_link_failed">Bağlantı açılamadı</string>
+    <string name="camera_permission_required">QR kod okumak için kamera izni gereklidir</string>
+    <string name="grant_permission">İzin Ver</string>
+    <string name="camera_permission_denied">Kamera izni reddedildi</string>
+    <string name="camera_error">Kamera başlatılamadı</string>
+</resources>
