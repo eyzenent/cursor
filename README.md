@@ -17,6 +17,24 @@ flutter pub get
 flutter run
 ```
 
+## Web
+
+Web sürümünü derlemek için:
+
+```bash
+cd andante_app
+flutter build web --release
+```
+
+Çıktı: `andante_app/build/web/`
+
+Yerel önizleme:
+
+```bash
+cd andante_app/build/web
+python3 -m http.server 8080
+```
+
 ## APK
 
 Release APK dosyası:
