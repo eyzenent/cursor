@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="az"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASAD - Diaspora Haritası</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-tint": "#4d5f7d",
+                        "surface-dim": "#d8dadd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceef1",
+                        "secondary-container": "#7dedfd",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#241a00",
+                        "surface-container-highest": "#e0e3e6",
+                        "on-background": "#191c1e",
+                        "on-surface-variant": "#44474d",
+                        "on-primary-fixed": "#071c36",
+                        "surface-container-low": "#f2f4f7",
+                        "on-error": "#ffffff",
+                        "primary-container": "#0b1f3a",
+                        "outline": "#75777e",
+                        "surface-bright": "#f7f9fc",
+                        "error-container": "#ffdad6",
+                        "tertiary": "#735c00",
+                        "on-primary-container": "#7587a7",
+                        "on-tertiary-container": "#4f3e00",
+                        "on-primary-fixed-variant": "#364764",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed-dim": "#65d6e6",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#b5c7ea",
+                        "primary-fixed-dim": "#b5c7ea",
+                        "on-secondary-container": "#006b76",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "on-secondary-fixed": "#001f23",
+                        "background": "#f7f9fc",
+                        "on-secondary-fixed-variant": "#004f57",
+                        "primary": "#000615",
+                        "surface-container-high": "#e6e8eb",
+                        "secondary-fixed": "#93f1ff",
+                        "secondary": "#006973",
+                        "surface-variant": "#e0e3e6",
+                        "outline-variant": "#c4c6ce",
+                        "tertiary-fixed": "#ffe088",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#eff1f4",
+                        "surface": "#f7f9fc",
+                        "tertiary-container": "#cca830",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Poppins"],
+                        "headline-sm": ["Poppins"],
+                        "display-lg-mobile": ["Poppins"],
+                        "display-lg": ["Poppins"],
+                        "button": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "button": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .map-pulse {
+            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.33); opacity: 1; }
+            80%, 100% { opacity: 0; }
+        }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full max-w-container-max mx-auto">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-primary text-2xl">account_balance</span>
+<span class="font-headline-sm text-headline-sm font-semibold tracking-tight">ASAD</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Ana Səhifə</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Tədqiqatlar</a>
+<a class="font-label-caps text-label-caps text-secondary font-semibold border-b-2 border-secondary pb-1" href="#">Diaspora</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Xəbərlər</a>
+</div>
+<button class="px-4 py-2 bg-surface-container-high rounded-full font-label-caps text-label-caps text-primary hover:bg-surface-container-highest transition-colors active:scale-95 duration-200">
+                AZ/EN
+            </button>
+</nav>
+</header>
+<main class="pt-24 pb-32">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center mb-16">
+<span class="font-label-caps text-label-caps text-secondary mb-4 block">Qlobal Şəbəkə</span>
+<h1 class="font-display-lg text-display-lg md:text-display-lg mb-6 text-primary max-w-3xl mx-auto">Küresel Diaspora Ağımız</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Dünya genelindeki Azerbaycanlı akademisyenler, temsilcilikler ve stratejik iş birliklerimiz ile akademik mükemmeliyet için güç birliği yapıyoruz.
+            </p>
+</section>
+<!-- Interactive Map Component -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-12">
+<div class="relative bg-white border border-outline-variant/30 rounded-xl overflow-hidden aspect-[16/9] shadow-sm group">
+<!-- Abstract Vector Map Placeholder -->
+<div class="absolute inset-0 bg-[#f8fafc]" data-alt="A sophisticated vector world map illustration for a strategic think tank. The map is minimalist with light gray continents and deep navy oceans. Major nodes in Europe, North America, and the Turkic World are highlighted with glowing turquoise circles and interconnected by thin, elegant lines. The lighting is soft and professional, emphasizing a global connectivity theme with a light-mode aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBhRG57hvVGduHtCcs74B6uiG8RJI7Pzmk72c3iCsnfbxH0cfaI5sOdDmTuVJR9Jj5ao2j1nOZOQ_mHEPiREPP_VSNNOldXucgcHRdoUstEe4kfOdXimMArBjQNG8iWUL01DGXvH6MboW9uLsugRP4Pe9uOaApSRf-bA1PvntUac8oSwd2UP13XIy9nwSHdiZmHMBdn_-Det6zbkwrRTux5PwOxlSWiV_WdLIvl2ZuGQYJi3pW3t39PZg')">
+</div>
+<!-- Interactive Pins (Visual Simulation) -->
+<!-- North America -->
+<div class="absolute top-[30%] left-[20%] group/pin">
+<div class="relative">
+<div class="absolute -inset-4 bg-secondary/20 rounded-full map-pulse"></div>
+<div class="w-4 h-4 bg-secondary border-2 border-white rounded-full cursor-pointer shadow-lg hover:scale-125 transition-transform"></div>
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover/pin:opacity-100 transition-opacity bg-primary-container text-white px-3 py-1 rounded text-xs whitespace-nowrap pointer-events-none">Şimali Amerika Ofisi</div>
+</div>
+</div>
+<!-- Europe -->
+<div class="absolute top-[25%] left-[48%] group/pin">
+<div class="relative">
+<div class="absolute -inset-4 bg-secondary/20 rounded-full map-pulse"></div>
+<div class="w-4 h-4 bg-secondary border-2 border-white rounded-full cursor-pointer shadow-lg hover:scale-125 transition-transform"></div>
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover/pin:opacity-100 transition-opacity bg-primary-container text-white px-3 py-1 rounded text-xs whitespace-nowrap pointer-events-none">Avropa Mərkəzi</div>
+</div>
+</div>
+<!-- Turkic World / Azerbaijan -->
+<div class="absolute top-[35%] left-[60%] group/pin">
+<div class="relative">
+<div class="absolute -inset-6 bg-primary/20 rounded-full map-pulse"></div>
+<div class="w-6 h-6 bg-primary border-2 border-white rounded-full cursor-pointer shadow-lg hover:scale-125 transition-transform"></div>
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover/pin:opacity-100 transition-opacity bg-primary-container text-white px-3 py-1 rounded text-xs whitespace-nowrap pointer-events-none">Baş Qərargah (Bakı)</div>
+</div>
+</div>
+</div>
+<!-- Search Bar Below Map -->
+<div class="mt-8 max-w-2xl mx-auto">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-white border border-outline-variant/50 rounded-xl focus:ring-2 focus:ring-secondary focus:border-secondary outline-none transition-all shadow-sm font-body-md" placeholder="Region və ya ölkə üzrə axtarış..." type="text"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 bg-primary text-white px-6 py-2 rounded-lg font-button text-button hover:bg-primary-container transition-colors">Filtirlə</button>
+</div>
+</div>
+</section>
+<!-- Statistics Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-gutter mb-section-gap">
+<div class="bg-white p-8 border border-outline-variant/30 rounded-xl border-t-2 border-t-secondary shadow-sm hover:shadow-md transition-shadow">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">Qlobal Ofislər</p>
+<h3 class="font-headline-md text-headline-md text-primary">15+ Temsilcilik</h3>
+</div>
+<div class="bg-white p-8 border border-outline-variant/30 rounded-xl border-t-2 border-t-secondary shadow-sm hover:shadow-md transition-shadow">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">Akademik Şəbəkə</p>
+<h3 class="font-headline-md text-headline-md text-primary">500+ Akademisyen</h3>
+</div>
+<div class="bg-white p-8 border border-outline-variant/30 rounded-xl border-t-2 border-t-secondary shadow-sm hover:shadow-md transition-shadow">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">Strateji Tərəfdaşlıq</p>
+<h3 class="font-headline-md text-headline-md text-primary">40+ İş Birliği</h3>
+</div>
+</section>
+<!-- Aktif Temsilcilikler Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop mb-section-gap">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Aktif Temsilcilikler</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Strateji bölgələrdəki əsas mərkəzlərimiz</p>
+</div>
+<button class="hidden md:flex items-center gap-2 text-secondary font-semibold font-button text-button group">
+                    Hamısına bax
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Germany -->
+<div class="bg-white border border-outline-variant/30 rounded-xl p-6 group hover:border-secondary/30 hover:shadow-lg transition-all cursor-default">
+<div class="w-12 h-8 rounded mb-4 overflow-hidden shadow-sm" data-alt="Close up photographic shot of the German flag fluttering subtly. High-end lifestyle photography, soft lighting, prestigious institutional feel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCIwpRyTTYIWQToSAiEse0knX-H1qzZrAMhJl6qe4EgQMIDWwogdn5twzq4oVhZx-8NRv0oQWj9ZQ4cKhbIiBdUjm9419VixvPG1GMLkSBbAoQiSA39B2iYrgaycUCo7AbwG2BzhuY2VetRkvtZzdCw9O1pHkcVM-_WILIV8mjZaaqcAn-WdjSZrva2W1dcSV1FY_6U9iXA_f6emzVzxvkNAGoq94Uy2_CFk6cGOxjLWXiCmJ_cT6NCDg')"></div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Almaniya</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Berlin Strateji Araşdırmalar Mərkəzi</p>
+<button class="w-full py-3 border border-primary text-primary rounded-lg font-button text-button hover:bg-primary hover:text-white transition-colors">View Details</button>
+</div>
+<!-- USA -->
+<div class="bg-white border border-outline-variant/30 rounded-xl p-6 group hover:border-secondary/30 hover:shadow-lg transition-all cursor-default">
+<div class="w-12 h-8 rounded mb-4 overflow-hidden shadow-sm" data-alt="Close up photographic shot of the United States flag. Minimalist, high contrast, soft professional studio lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIeiilp3yKiu9MmBlOAxoiqkMUGLM_N9QLuBLRHAh3LhkFHUr3i08tt4RbMB_tbpDfnSAS3aoaDZOBAYQl_HpQ1GaxJHqvu0ioSklc_M57EJ4ZkhmHckM6geDWfdoByTmejrkcDfQvXut8v9dMsWOFo9lRrJj99BM87S7NlnScy9eVJvunyk75zXK77ZNi4EAyvih8aFbw7uZOAo7IFZBkuk_SVs8XCjmV-SRe6NG0lduPx6SXJ60SLA')"></div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">ABŞ</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Vaşinqton Diplomatiya Ofisi</p>
+<button class="w-full py-3 border border-primary text-primary rounded-lg font-button text-button hover:bg-primary hover:text-white transition-colors">View Details</button>
+</div>
+<!-- Turkey -->
+<div class="bg-white border border-outline-variant/30 rounded-xl p-6 group hover:border-secondary/30 hover:shadow-lg transition-all cursor-default">
+<div class="w-12 h-8 rounded mb-4 overflow-hidden shadow-sm" data-alt="Close up photographic shot of the Turkish flag. Professional institutional photography, high clarity, elegant look." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCJCx5EmeutLQqctSkiCb82X82iZ2RARaxZmS6Al0Y-2qBKyiCYL4UgxBqbHf2XI1Cg_4jQCQR6_alaFISiNrru2lhPZCMbq5htEuNm1yT7cr0H43LxufrWEpK1v5FCSgopWdauMEyiuNQso3v6PhWCwcUSnwmbhi_1lmR8KNbl8AISOJnWSqCSo-B_T7tvHV0_IHuN5JWXIAoZNZW8L1mLTXBM55k43Ixkmszx9LcRTUkwEinTmiJTAg')"></div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Türkiyə</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">İstanbul Akademiya Qovşağı</p>
+<button class="w-full py-3 border border-primary text-primary rounded-lg font-button text-button hover:bg-primary hover:text-white transition-colors">View Details</button>
+</div>
+<!-- UK -->
+<div class="bg-white border border-outline-variant/30 rounded-xl p-6 group hover:border-secondary/30 hover:shadow-lg transition-all cursor-default">
+<div class="w-12 h-8 rounded mb-4 overflow-hidden shadow-sm" data-alt="Close up photographic shot of the UK Union Jack flag. Minimalist aesthetic, soft lighting, professional corporate style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuApSEC4bgYhx3NU-pnjEiEitCo7TwKn_hz2I6ycjY1Ad96LsjtHlBIV9HuJTVOD-5PdwGNxBF3ll1IEB3gdPNixVxAfGCUPZ0kxW1ACqexRi5bZTrTBzy43e46VnuCRPxHQ9UEtHjxJgc2FT5WqSw8f2Qcq2vPZYqodFq1jk3KkCtJsSG_QRBgUY5GJ7eoWtmW8GVeHg1OZya_7X_whe7WWE-G8QNj-wRqzdUtzIU4HgDqCbP5jHWBaZQ')"></div>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Böyük Britaniya</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">London İqtisadi Analiz Mərkəzi</p>
+<button class="w-full py-3 border border-primary text-primary rounded-lg font-button text-button hover:bg-primary hover:text-white transition-colors">View Details</button>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="relative bg-primary-container rounded-3xl overflow-hidden p-12 text-center">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(#7dedfd 1px, transparent 1px); background-size: 20px 20px;"></div>
+<div class="relative z-10">
+<h2 class="font-display-lg text-display-lg text-white mb-6">Diaspora Ağına Katılın</h2>
+<p class="font-body-lg text-body-lg text-on-primary-container max-w-2xl mx-auto mb-10">
+                        Siz də öz akademik təcrübənizlə dövlətimizin strateji gələcəyinə töhfə vermək istəyirsinizsə, platformamıza üzv olun.
+                    </p>
+<button class="bg-secondary text-white px-10 py-4 rounded-xl font-button text-button text-lg hover:bg-secondary-fixed-dim hover:text-on-secondary-fixed transition-all active:scale-95">
+                        Qeydiyyatdan Keçin
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-container w-full mt-section-gap">
+<div class="flex flex-col items-center p-margin-desktop text-center gap-base max-w-container-max mx-auto">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary text-3xl">account_balance</span>
+<span class="font-headline-sm text-headline-sm text-on-primary-container font-bold">ASAD</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8 mb-8">
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Newsletter</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Archive</a>
+</div>
+<p class="font-label-caps text-label-caps text-on-primary-container/60">
+                © 2024 Azerbaycan Stratejik Araştırmalar Derneği. All Rights Reserved.
+            </p>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 h-20 bg-surface z-50 rounded-t-xl shadow-lg border-t border-outline-variant/10">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2" href="#">
+<span class="material-symbols-outlined">article</span>
+<span class="font-label-caps text-[10px] mt-1">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary border-t-2 border-secondary pt-2" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-caps text-[10px] mt-1">Leaders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2" href="#">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="font-label-caps text-[10px] mt-1">News</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-caps text-[10px] mt-1">Menu</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interactions
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => btn.classList.add('scale-95'));
+            btn.addEventListener('mouseup', () => btn.classList.remove('scale-95'));
+            btn.addEventListener('mouseleave', () => btn.classList.remove('scale-95'));
+        });
+
+        // Sticky header background shift on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>
