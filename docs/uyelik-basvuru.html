@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASAD | Üye Ol</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#cca830",
+                    "surface-bright": "#f7f9fc",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#006b76",
+                    "primary-fixed-dim": "#b5c7ea",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed": "#071c36",
+                    "secondary-container": "#7dedfd",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "surface-container-highest": "#e0e3e6",
+                    "surface-container-high": "#e6e8eb",
+                    "outline": "#75777e",
+                    "on-primary-container": "#7587a7",
+                    "on-error": "#ffffff",
+                    "tertiary": "#735c00",
+                    "surface-dim": "#d8dadd",
+                    "outline-variant": "#c4c6ce",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffe088",
+                    "secondary-fixed-dim": "#65d6e6",
+                    "on-secondary-fixed": "#001f23",
+                    "inverse-on-surface": "#eff1f4",
+                    "on-background": "#191c1e",
+                    "surface-tint": "#4d5f7d",
+                    "on-surface-variant": "#44474d",
+                    "on-surface": "#191c1e",
+                    "on-secondary-fixed-variant": "#004f57",
+                    "primary": "#000615",
+                    "inverse-primary": "#b5c7ea",
+                    "on-tertiary-container": "#4f3e00",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "surface-variant": "#e0e3e6",
+                    "on-tertiary-fixed": "#241a00",
+                    "on-error-container": "#93000a",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f2f4f7",
+                    "secondary-fixed": "#93f1ff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-primary-fixed-variant": "#364764",
+                    "secondary": "#006973",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "surface": "#f7f9fc",
+                    "surface-container": "#eceef1",
+                    "primary-container": "#0b1f3a",
+                    "background": "#f7f9fc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "section-gap": "120px",
+                    "base": "8px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Poppins"],
+                    "label-caps": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-sm": ["Poppins"],
+                    "body-md": ["Inter"],
+                    "display-lg-mobile": ["Poppins"],
+                    "display-lg": ["Poppins"],
+                    "button": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "button": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .form-input-focus:focus {
+            outline: none;
+            border-color: #006973;
+            box-shadow: 0 0 0 2px rgba(0, 105, 115, 0.2);
+        }
+        .step-transition {
+            transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+        }
+        .hidden-step {
+            display: none;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        .active-step {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">ASAD</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Ana Sayfa</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Araştırmalar</a>
+<a class="font-label-caps text-label-caps text-secondary font-semibold" href="#">Üye Ol</a>
+</nav>
+<button class="font-label-caps text-label-caps text-primary border border-outline px-4 py-1.5 rounded hover:bg-surface-container-high transition-colors active:opacity-80 transition-opacity">AZ/EN</button>
+</header>
+<!-- Hero / Intro -->
+<main class="pt-32 pb-24 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Info Panel -->
+<div class="lg:col-span-4 sticky top-32">
+<div class="space-y-6">
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest">Katılım</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary leading-tight">Üye Ol</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-md">
+                        Azerbaycan Stratejik Araştırmalar Derneği'ne katılarak bölgesel ve küresel stratejilerin şekillenmesine katkıda bulunun. Akademik mükemmellik ve stratejik derinlik odaklı topluluğumuzun bir parçası olun.
+                    </p>
+<div class="pt-8 space-y-4 border-t border-outline-variant/30">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="verified">verified</span>
+<div>
+<h4 class="font-bold text-primary">Akademik Ağ</h4>
+<p class="text-sm text-on-surface-variant">Uluslararası araştırmacılar ve politika yapıcılar ile doğrudan iletişim.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary" data-icon="description">description</span>
+<div>
+<h4 class="font-bold text-primary">Yayın Önceliği</h4>
+<p class="text-sm text-on-surface-variant">ASAD raporlarına ve stratejik analizlerine öncelikli erişim.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Form Container -->
+<div class="lg:col-span-8">
+<div class="bg-surface-container-lowest p-8 md:p-12 border border-outline-variant/30 rounded-xl shadow-[0_12px_24px_rgba(11,31,58,0.04)]">
+<!-- Progress Bar -->
+<div class="mb-12">
+<div class="flex justify-between mb-4">
+<span class="text-label-caps font-label-caps text-secondary uppercase">Aşama <span id="currentStepText">1</span> / 3</span>
+<span class="text-label-caps font-label-caps text-on-surface-variant" id="stepTitle">Kişisel Bilgiler</span>
+</div>
+<div class="w-full h-1 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-1/3 transition-all duration-500" id="progressBar"></div>
+</div>
+</div>
+<form class="space-y-8" id="membershipForm">
+<!-- Step 1: Personal Information -->
+<div class="active-step step-transition space-y-6" id="step1">
+<div class="grid md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-label-caps font-label-caps text-on-surface-variant">Ad Soyad</label>
+<input class="bg-surface border border-outline-variant p-4 rounded-lg form-input-focus transition-all" name="full_name" placeholder="Adınız ve Soyadınız" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-caps font-label-caps text-on-surface-variant">Doğum Tarihi</label>
+<input class="bg-surface border border-outline-variant p-4 rounded-lg form-input-focus transition-all" name="dob" required="" type="date"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-caps font-label-caps text-on-surface-variant">Ülke</label>
+<select class="bg-surface border border-outline-variant p-4 rounded-lg form-input-focus transition-all" name="country">
+<option value="AZ">Azerbaycan</option>
+<option value="TR">Türkiye</option>
+<option value="OTHER">Diğer</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-caps font-label-caps text-on-surface-variant">Şehir</label>
+<input class="bg-surface border border-outline-variant p-4 rounded-lg form-input-focus transition-all" name="city" placeholder="Yaşadığınız Şehir" required="" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-caps font-label-caps text-on-surface-variant">Telefon</label>
+<input class="bg-surface border border-outline-variant p-4 rounded-lg form-input-focus transition-all" name="phone" placeholder="+994 (__) ___ __ __" required="" type="tel"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-caps font-label-caps text-on-surface-variant">E-mail</label>
+<input class="bg-surface border border-outline-variant p-4 rounded-lg form-input-focus transition-all" name="email" placeholder="ornek@alanadi.com" required="" type="email"/>
+</div>
+</div>
+</div>
+<!-- Step 2: Professional Info -->
+<div class="hidden-step step-transition space-y-6" id="step2">
+<div class="grid md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-2">
+<label class="text-label-caps font-label-caps text-on-surface-variant">Eğitim Seviyesi</label>
+<select class="bg-surface border border-outline-variant p-4 rounded-lg form-input-focus transition-all" name="education">
+<option>Lisans</option>
+<option>Yüksek Lisans</option>
+<option>Doktora / Doktora Öğrencisi</option>
+<option>Prof. Dr. / Doç. Dr.</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-caps font-label-caps text-on-surface-variant">Meslek</label>
+<input class="bg-surface border border-outline-variant p-4 rounded-lg form-input-focus transition-all" name="occupation" placeholder="Mevcut Göreviniz" required="" type="text"/>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-label-caps font-label-caps text-on-surface-variant">Özgeçmiş Yükle (PDF/DOCX)</label>
+<div class="relative group">
+<input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" name="cv" type="file"/>
+<div class="border-2 border-dashed border-outline-variant group-hover:border-secondary p-8 rounded-lg text-center transition-all flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-secondary" data-icon="upload_file">upload_file</span>
+<span class="text-sm font-medium text-on-surface-variant">Dosyayı buraya sürükleyin veya tıklayın</span>
+<span class="text-xs text-outline italic">Maksimum dosya boyutu: 5MB</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Step 3: Motivation & Consent -->
+<div class="hidden-step step-transition space-y-6" id="step3">
+<div class="flex flex-col gap-2">
+<label class="text-label-caps font-label-caps text-on-surface-variant">Motivasyon Yazısı</label>
+<textarea class="bg-surface border border-outline-variant p-4 rounded-lg form-input-focus transition-all resize-none" name="motivation" placeholder="ASAD'a neden katılmak istiyorsunuz? Akademik hedefleriniz nelerdir?" required="" rows="6"></textarea>
+</div>
+<div class="space-y-4 pt-4">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="mt-1 rounded-sm border-outline-variant text-secondary focus:ring-secondary" required="" type="checkbox"/>
+<span class="text-sm text-on-surface-variant leading-relaxed">
+<span class="font-semibold text-primary">KVKK ve Gizlilik Politikası</span> metnini okudum ve kabul ediyorum. Verilerimin üyelik işlemleri kapsamında işlenmesine rıza gösteriyorum.
+                                    </span>
+</label>
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="mt-1 rounded-sm border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-sm text-on-surface-variant leading-relaxed">
+                                        Akademik duyurular ve araştırma bültenleri hakkında e-posta yoluyla bilgilendirilmek istiyorum.
+                                    </span>
+</label>
+</div>
+</div>
+<!-- Navigation Buttons -->
+<div class="flex justify-between items-center pt-8 border-t border-outline-variant/30">
+<button class="hidden font-button text-button text-on-surface-variant px-6 py-3 rounded-lg hover:bg-surface-container-high transition-all flex items-center gap-2" id="prevBtn" type="button">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_back">arrow_back</span> Geri
+                            </button>
+<div class="flex-1"></div>
+<button class="bg-primary text-white font-button text-button px-8 py-3 rounded rounded-lg hover:bg-primary-container transition-all active:scale-95 duration-200 flex items-center gap-2" id="nextBtn" type="button">
+                                Devam Et <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="hidden bg-secondary text-white font-button text-button px-10 py-3 rounded rounded-lg hover:bg-on-secondary-fixed-variant transition-all active:scale-95 duration-200 shadow-md" id="submitBtn" type="submit">
+                                Başvuruyu Tamamla
+                            </button>
+</div>
+</form>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-container text-on-primary-container mt-section-gap w-full flex flex-col items-center p-margin-desktop text-center gap-base">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="account_balance">account_balance</span>
+<span class="font-headline-sm text-headline-sm text-on-primary-container font-semibold">ASAD</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8 mb-8">
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Newsletter</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Archive</a>
+</div>
+<p class="font-label-caps text-label-caps text-on-primary-container/60">
+            © 2024 Azerbaycan Stratejik Araştırmalar Derneği. All Rights Reserved.
+        </p>
+</footer>
+<!-- Mobile Navigation -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-surface shadow-lg z-50 rounded-t-xl flex justify-around items-center px-4 pb-4 h-20 shadow-[0_-4px_12px_rgba(11,31,58,0.04)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-[10px] mt-1 uppercase">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+<span class="font-label-caps text-[10px] mt-1 uppercase">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="newspaper">newspaper</span>
+<span class="font-label-caps text-[10px] mt-1 uppercase">News</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary border-t-2 border-secondary pt-2" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-caps text-[10px] mt-1 uppercase">Üye Ol</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-label-caps text-[10px] mt-1 uppercase">Menu</span>
+</a>
+</div>
+<script>
+        const form = document.getElementById('membershipForm');
+        const steps = ['step1', 'step2', 'step3'];
+        const stepTitles = ['Kişisel Bilgiler', 'Akademik Bilgiler', 'Motivasyon & Onay'];
+        let currentStep = 0;
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const progressBar = document.getElementById('progressBar');
+        const currentStepText = document.getElementById('currentStepText');
+        const stepTitleDisplay = document.getElementById('stepTitle');
+
+        function updateStepUI() {
+            steps.forEach((id, index) => {
+                const el = document.getElementById(id);
+                if (index === currentStep) {
+                    el.classList.remove('hidden-step');
+                    el.classList.add('active-step');
+                } else {
+                    el.classList.remove('active-step');
+                    el.classList.add('hidden-step');
+                }
+            });
+
+            // Update Progress
+            const progress = ((currentStep + 1) / steps.length) * 100;
+            progressBar.style.width = `${progress}%`;
+            currentStepText.textContent = currentStep + 1;
+            stepTitleDisplay.textContent = stepTitles[currentStep];
+
+            // Nav Buttons
+            prevBtn.classList.toggle('hidden', currentStep === 0);
+            
+            if (currentStep === steps.length - 1) {
+                nextBtn.classList.add('hidden');
+                submitBtn.classList.remove('hidden');
+            } else {
+                nextBtn.classList.remove('hidden');
+                submitBtn.classList.add('hidden');
+            }
+        }
+
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                updateStepUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            if (currentStep > 0) {
+                currentStep--;
+                updateStepUI();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Success State
+            const container = form.parentElement;
+            container.innerHTML = `
+                <div class="py-20 text-center space-y-6 flex flex-col items-center">
+                    <div class="w-20 h-20 rounded-full bg-secondary-container flex items-center justify-center mb-4">
+                        <span class="material-symbols-outlined text-4xl text-on-secondary-container" data-icon="check_circle">check_circle</span>
+                    </div>
+                    <h2 class="font-headline-md text-headline-md text-primary">Başvurunuz Alındı</h2>
+                    <p class="text-body-lg text-on-surface-variant max-w-md mx-auto">
+                        Başvurunuz için teşekkür ederiz. Akademik kurulumuz başvurunuzu inceledikten sonra belirttiğiniz e-posta adresi üzerinden sizinle iletişime geçecektir.
+                    </p>
+                    <button onclick="location.reload()" class="bg-primary text-white px-8 py-3 rounded-lg font-button">Ana Sayfaya Dön</button>
+                </div>
+            `;
+        });
+    </script>
+</body></html>

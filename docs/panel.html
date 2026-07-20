@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASAD | Kullanıcı Paneli</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#191c1e",
+                        "outline": "#75777e",
+                        "primary": "#000615",
+                        "inverse-primary": "#b5c7ea",
+                        "on-tertiary-fixed": "#241a00",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#44474d",
+                        "inverse-on-surface": "#eff1f4",
+                        "on-tertiary-container": "#4f3e00",
+                        "tertiary": "#735c00",
+                        "secondary-container": "#7dedfd",
+                        "secondary": "#006973",
+                        "surface": "#f7f9fc",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "surface-container-highest": "#e0e3e6",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e6e8eb",
+                        "background": "#f7f9fc",
+                        "surface-dim": "#d8dadd",
+                        "on-secondary-container": "#006b76",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#4d5f7d",
+                        "on-surface": "#191c1e",
+                        "tertiary-container": "#cca830",
+                        "primary-fixed": "#d6e3ff",
+                        "secondary-fixed-dim": "#65d6e6",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#2d3133",
+                        "surface-variant": "#e0e3e6",
+                        "secondary-fixed": "#93f1ff",
+                        "on-primary-container": "#7587a7",
+                        "surface-bright": "#f7f9fc",
+                        "outline-variant": "#c4c6ce",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "surface-container-low": "#f2f4f7",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#b5c7ea",
+                        "on-secondary-fixed-variant": "#004f57",
+                        "on-secondary-fixed": "#001f23",
+                        "on-primary-fixed-variant": "#364764",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#0b1f3a",
+                        "tertiary-fixed": "#ffe088",
+                        "surface-container": "#eceef1",
+                        "on-primary-fixed": "#071c36",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-gap": "120px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "container-max": "1280px",
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Poppins"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Poppins"],
+                        "headline-md": ["Poppins"],
+                        "button": ["Inter"],
+                        "headline-sm": ["Poppins"],
+                        "label-caps": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "button": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .academic-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+        .academic-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 12px 24px rgba(11, 31, 58, 0.06);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-4 md:px-16 h-16 bg-surface/80 glass-nav border-b border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl" data-icon="account_balance">account_balance</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">ASAD</span>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8">
+<a class="text-secondary font-semibold font-label-caps text-label-caps" href="#">PANEL</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-caps text-label-caps" href="#">ARAŞTIRMALAR</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-label-caps text-label-caps" href="#">STRATEJİ</a>
+</nav>
+<button class="text-primary font-semibold font-label-caps text-label-caps hover:bg-surface-container-high px-3 py-2 rounded-lg transition-colors">AZ/EN</button>
+</div>
+</header>
+<main class="pt-24 pb-12 px-4 md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Header: Welcome Section -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+<div class="flex items-center gap-6">
+<div class="relative">
+<div class="w-20 h-20 rounded-full border-2 border-secondary overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a distinguished academic man with graying hair, wearing a navy blue suit and a crisp white shirt. The lighting is soft and directional, typical of institutional photography, against a clean light-gray background. The overall aesthetic is authoritative, prestigious, and highly professional, mirroring the ASAD brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpACbhOtL1OE-pL3iSTtCZdi73DaUBjGa_57UcnHmp4b0dN1T4Yid7YoiJFNcUpnVp5oN07tMdKiqeML87yAhdpvT9RMieqPi0FOq_VNIsFyH8EcOtEuFM-aw_say___Zuk0TTNF_oC2DPpPDBmQN4FfPANpy5WaihPAcHiPu2KU7m8DbO-bR4FYDRmaLcUjQAhNOYV0zRJvuFkW5dGVou_Dn-CcCWbpFx6JOI-VIW9e4Qd2goL6wbYg"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-secondary text-white p-1 rounded-full border-2 border-surface">
+<span class="material-symbols-outlined text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary leading-tight">Tekrar hoş geldiniz,</h1>
+<p class="font-headline-sm text-headline-sm text-secondary">Prof. Dr. Ahmet Yılmaz</p>
+<p class="text-on-surface-variant font-label-caps text-label-caps mt-1">Stratejik Analiz Bölüm Başkanı</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-button text-button flex items-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+                    YENİ ARAŞTIRMA YÜKLE
+                </button>
+<button class="border border-outline text-primary px-6 py-3 rounded-lg font-button text-button flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+                    AYARLAR
+                </button>
+</div>
+</section>
+<!-- Quick Stats Bento Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-section-gap">
+<div class="academic-card bg-surface-container-lowest border border-outline-variant/30 p-6 rounded-xl flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="folder_open">folder_open</span>
+<span class="text-secondary font-semibold text-xs">+2 bu ay</span>
+</div>
+<div>
+<p class="text-4xl font-bold text-primary">12</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2 uppercase">Aktif Projeler</p>
+</div>
+</div>
+<div class="academic-card bg-surface-container-lowest border border-outline-variant/30 p-6 rounded-xl flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="article">article</span>
+<span class="text-secondary font-semibold text-xs">85. percentil</span>
+</div>
+<div>
+<p class="text-4xl font-bold text-primary">34</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2 uppercase">Yayınlanmış Rapor</p>
+</div>
+</div>
+<div class="academic-card bg-surface-container-lowest border border-outline-variant/30 p-6 rounded-xl flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="diversity_3">diversity_3</span>
+<div class="w-2 h-2 bg-error rounded-full animate-pulse"></div>
+</div>
+<div>
+<p class="text-4xl font-bold text-primary">8</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2 uppercase">Ağ Talepleri</p>
+</div>
+</div>
+<div class="academic-card bg-surface-container-lowest border border-outline-variant/30 p-6 rounded-xl flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<span class="material-symbols-outlined text-secondary" data-icon="trending_up">trending_up</span>
+<span class="text-secondary font-semibold text-xs">High</span>
+</div>
+<div>
+<p class="text-4xl font-bold text-primary">4.8k</p>
+<p class="font-label-caps text-label-caps text-on-surface-variant mt-2 uppercase">Akademik Etki</p>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-margin-desktop">
+<!-- Left: Active Research & Projects -->
+<div class="lg:col-span-2 space-y-8">
+<div class="flex justify-between items-end border-b border-outline-variant/20 pb-4">
+<h2 class="font-headline-sm text-headline-sm text-primary">Aktif Araştırma Grupları</h2>
+<a class="text-secondary font-label-caps text-label-caps hover:underline" href="#">TÜMÜNÜ GÖR</a>
+</div>
+<div class="space-y-4">
+<!-- Project Item -->
+<div class="academic-card bg-surface-container-lowest border border-outline-variant/30 p-6 rounded-xl flex flex-col md:flex-row md:items-center gap-6">
+<div class="w-16 h-16 rounded bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary-fixed text-3xl" data-icon="language">language</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-body-lg text-body-lg font-semibold text-primary">Hazar Havzası Enerji Güvenliği 2025</h3>
+<span class="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-[10px] font-bold">KRİTİK</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-4">Jeopolitik risk analizi ve boru hattı güvenliği üzerine derinlemesine çalışma.</p>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 65%;"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] text-outline font-label-caps">%65 Tamamlandı</span>
+<span class="text-[10px] text-outline font-label-caps">Teslim: 12 Mart</span>
+</div>
+</div>
+</div>
+<!-- Project Item -->
+<div class="academic-card bg-surface-container-lowest border border-outline-variant/30 p-6 rounded-xl flex flex-col md:flex-row md:items-center gap-6">
+<div class="w-16 h-16 rounded bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="psychology">psychology</span>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-body-lg text-body-lg font-semibold text-primary">Yapay Zeka ve Kamu Politikası</h3>
+<span class="bg-surface-container-highest text-on-surface-variant px-2 py-1 rounded text-[10px] font-bold">NORMAL</span>
+</div>
+<p class="text-on-surface-variant text-body-md mb-4">Dijital yönetişim çerçevesinde etik kurallar ve uygulama stratejileri.</p>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 25%;"></div>
+</div>
+<div class="flex justify-between mt-2">
+<span class="text-[10px] text-outline font-label-caps">%25 Tamamlandı</span>
+<span class="text-[10px] text-outline font-label-caps">Teslim: 28 Nisan</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Actions -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8">
+<button class="flex items-center gap-4 p-4 rounded-xl border border-secondary/20 bg-secondary/5 hover:bg-secondary/10 transition-colors text-left group">
+<div class="p-3 bg-secondary rounded-lg text-white group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="library_books">library_books</span>
+</div>
+<div>
+<p class="font-semibold text-primary">Kütüphane Erişimi</p>
+<p class="text-xs text-on-surface-variant">Özel arşiv ve dokümanlara ulaşın.</p>
+</div>
+</button>
+<button class="flex items-center gap-4 p-4 rounded-xl border border-outline-variant bg-surface-container-low hover:bg-surface-container-high transition-colors text-left group">
+<div class="p-3 bg-primary rounded-lg text-white group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+</div>
+<div>
+<p class="font-semibold text-primary">Profil Güncelle</p>
+<p class="text-xs text-on-surface-variant">CV ve uzmanlık alanlarınızı düzenleyin.</p>
+</div>
+</button>
+</div>
+</div>
+<!-- Right: Notifications & Updates -->
+<div class="space-y-8">
+<div class="flex justify-between items-end border-b border-outline-variant/20 pb-4">
+<h2 class="font-headline-sm text-headline-sm text-primary">Bildirimler</h2>
+<span class="bg-error text-white text-[10px] px-2 py-0.5 rounded-full">3 YENİ</span>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden">
+<div class="p-5 border-b border-outline-variant/10 flex gap-4 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="shrink-0 mt-1">
+<span class="material-symbols-outlined text-secondary" data-icon="notification_important" style="font-variation-settings: 'FILL' 1;">notification_important</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-primary">Stratejik Uyarı</p>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">Güney Kafkasya bölgesel güvenlik raporu yayına hazır. Onayınız bekleniyor.</p>
+<p class="text-[10px] text-outline mt-2">1 saat önce</p>
+</div>
+</div>
+<div class="p-5 border-b border-outline-variant/10 flex gap-4 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="shrink-0 mt-1">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="mail">mail</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-primary">İşbirliği Daveti</p>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">NATO Araştırma Grubu sizinle yeni bir panel için iletişime geçti.</p>
+<p class="text-[10px] text-outline mt-2">4 saat önce</p>
+</div>
+</div>
+<div class="p-5 flex gap-4 hover:bg-surface-container-low transition-colors cursor-pointer">
+<div class="shrink-0 mt-1">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="text-sm font-semibold text-primary">Doküman Onaylandı</p>
+<p class="text-xs text-on-surface-variant mt-1 leading-relaxed">'Yatırım Stratejileri 2024' makaleniz hakem heyetinden geçti.</p>
+<p class="text-[10px] text-outline mt-2">Dün</p>
+</div>
+</div>
+</div>
+<!-- Strategic Vision Teaser -->
+<div class="relative rounded-xl overflow-hidden h-48 group">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A macro photograph of an expensive fountain pen resting on a map of the Caspian Sea and surrounding territories. The focus is sharp on the nib, with the blue ink of the map slightly blurred in the background. High-contrast lighting creates deep shadows and brilliant highlights on the metallic parts of the pen, suggesting a high-level strategic signing or policy drafting session. Cold blue and warm gold tones dominate the image." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVRaMmSX0caHss_LHwZrAl769kINaozYZuVEbbV0376j4OAHWr_E6F0zSzKCTXUItQ-jRrwyVqcqNECL3sT6H4iZzGBk9AObWo0fYb9eZAWw7OHBQ_q-SKd6E-vYWsVEkP56IhQBZEuNRp0Q-ICTfVpuks48fnpa-tT8jMiY5Ofp34YTGCLOvnEi-D7mtxJN5fwgl4hAFAAc2jFp-fR11kqdMFCvdpJynMPtH2bnDVa3fXNdU6-Jl5pA"/>
+<div class="absolute bottom-4 left-4 z-20">
+<p class="text-secondary-fixed font-label-caps text-label-caps mb-1">STRATEJİK VİZYON 2030</p>
+<h4 class="text-white font-semibold">Yeni Raporu İncele</h4>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-primary-container text-on-primary-container p-margin-desktop text-center flex flex-col items-center gap-base">
+<span class="font-headline-sm text-headline-sm text-on-primary-container">ASAD</span>
+<div class="flex gap-6 mt-4">
+<a class="text-on-primary-container/80 font-label-caps text-label-caps hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-primary-container/80 font-label-caps text-label-caps hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="text-on-primary-container/80 font-label-caps text-label-caps hover:text-secondary-fixed transition-colors" href="#">Newsletter</a>
+<a class="text-on-primary-container/80 font-label-caps text-label-caps hover:text-secondary-fixed transition-colors" href="#">Archive</a>
+</div>
+<p class="mt-8 text-on-primary-container/60 font-label-caps text-label-caps">© 2024 Azerbaycan Stratejik Araştırmalar Derneği. All Rights Reserved.</p>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 h-20 bg-surface shadow-[0_-4px_12px_rgba(11,31,58,0.04)] z-50 rounded-t-xl border-t border-outline-variant/20">
+<div class="flex flex-col items-center justify-center text-secondary border-t-2 border-secondary pt-2">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-caps text-[10px] mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+<span class="font-label-caps text-[10px] mt-1">Reports</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-caps text-[10px] mt-1">Leaders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="newspaper">newspaper</span>
+<span class="font-label-caps text-[10px] mt-1">News</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-label-caps text-[10px] mt-1">Menu</span>
+</div>
+</nav>
+<script>
+        // Simple interaction for the dashboard
+        document.querySelectorAll('.academic-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for adding micro-interaction sounds or light effects
+            });
+        });
+    </script>
+</body></html>

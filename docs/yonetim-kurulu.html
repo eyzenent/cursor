@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASAD - Yönetim Kurulu</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Poppins and Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Poppins:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c4c6ce",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary-fixed": "#001f23",
+                    "primary-container": "#0b1f3a",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed": "#071c36",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#241a00",
+                    "surface-dim": "#d8dadd",
+                    "background": "#f7f9fc",
+                    "on-primary": "#ffffff",
+                    "on-background": "#191c1e",
+                    "tertiary-container": "#cca830",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#006b76",
+                    "primary-fixed-dim": "#b5c7ea",
+                    "secondary": "#006973",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#ffe088",
+                    "surface-container-low": "#f2f4f7",
+                    "inverse-primary": "#b5c7ea",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#7587a7",
+                    "on-secondary-fixed-variant": "#004f57",
+                    "secondary-fixed-dim": "#65d6e6",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-bright": "#f7f9fc",
+                    "error-container": "#ffdad6",
+                    "outline": "#75777e",
+                    "surface-container": "#eceef1",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "tertiary": "#735c00",
+                    "surface-variant": "#e0e3e6",
+                    "inverse-on-surface": "#eff1f4",
+                    "on-tertiary-container": "#4f3e00",
+                    "surface-container-high": "#e6e8eb",
+                    "surface-container-highest": "#e0e3e6",
+                    "secondary-fixed": "#93f1ff",
+                    "secondary-container": "#7dedfd",
+                    "surface-tint": "#4d5f7d",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#44474d",
+                    "primary": "#000615",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#364764",
+                    "surface": "#f7f9fc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "section-gap": "120px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Poppins"],
+                    "label-caps": ["Inter"],
+                    "headline-sm": ["Poppins"],
+                    "display-lg-mobile": ["Poppins"],
+                    "display-lg": ["Poppins"],
+                    "body-lg": ["Inter"],
+                    "button": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "button": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .leadership-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+        .leadership-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0px 12px 24px rgba(11, 31, 58, 0.04);
+        }
+        .glass-nav {
+            backdrop-filter: blur(20px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary/30">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-md fixed top-0 w-full z-50 border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-headline-sm" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">ASAD</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center h-full">
+<a class="text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-2 rounded-lg font-button" href="#">Home</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-2 rounded-lg font-button" href="#">Reports</a>
+<a class="text-secondary font-semibold border-b-2 border-secondary h-full flex items-center px-4 font-button" href="#">Leaders</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-2 rounded-lg font-button" href="#">News</a>
+</nav>
+<button class="text-primary font-button px-4 py-2 rounded-lg hover:bg-surface-container-high transition-colors border border-outline-variant">AZ/EN</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<!-- Section Header -->
+<div class="mb-16 border-l-4 border-secondary pl-6">
+<span class="font-label-caps text-label-caps text-secondary block mb-2">INSTITUTIONAL HIERARCHY</span>
+<h1 class="font-headline-md text-headline-md text-primary mb-4">Yönetim Kurulu</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
+                Azerbaycan Stratejik Araştırmalar Derneği'nin stratejik vizyonunu şekillendiren, akademik derinliğe ve idari tecrübeye sahip liderlik ekibimiz.
+            </p>
+</div>
+<!-- President Featured Card -->
+<section class="mb-section-gap">
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden leadership-card flex flex-col md:flex-row shadow-sm">
+<div class="md:w-2/5 h-[400px]">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of an authoritative male academic leader in a navy blue suit, standing against a minimalist light grey background. The lighting is sophisticated and directional, emphasizing professional stature. The style is clean, modern institutional, matching a high-level strategic think tank aesthetic with a focus on trust and wisdom." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5A97ZwVWNSoU6aLiGitXYa1FIfun_RorZfrynRE4lSNWBlV0AmaFKSpQMejWJNFGbyioRcyonpLUA9oQ_ZXezmg5nowGDpqgfoWp99MlGdn5nRwfmQm2zCEOEkNquJhaVWD39VNCDl_-2-q7ojlFgC14iVf_kA5PI68NzAYwLTU3l_maMNbUk3xQftSdZ8E_mPIuDSubZGFaBjC03I0YzW0yBFtWMqtniHll_7tptj6vyop7GEmdWCg"/>
+</div>
+<div class="md:w-3/5 p-12 flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-tertiary mb-4">DERNEK BAŞKANI</span>
+<h2 class="font-headline-md text-headline-md text-primary mb-2">Dr. Elnur Memmedov</h2>
+<p class="font-body-lg text-body-lg text-secondary font-medium mb-6">Stratejik Planlama ve Uluslararası İlişkiler Uzmanı</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                        Dr. Memmedov, 20 yılı aşkın süredir bölgesel jeopolitik ve ekonomik entegrasyon üzerine çalışmalar yürütmektedir. ASAD'ın kurucu başkanı olarak derneğin uluslararası arenadaki stratejik konumunu belirlemektedir. Birçok akademik yayını ve devlet nezdinde danışmanlık görevleri bulunmaktadır.
+                    </p>
+<div class="flex gap-4">
+<a class="p-2 bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">link</span>
+</a>
+<a class="p-2 bg-surface-container text-primary hover:bg-primary hover:text-on-primary transition-all rounded-lg" href="#">
+<span class="material-symbols-outlined">mail</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Vice Presidents Grid -->
+<section class="mb-section-gap">
+<div class="flex items-center gap-4 mb-8">
+<h3 class="font-headline-sm text-headline-sm text-primary">Başkan Yardımcıları</h3>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden leadership-card flex shadow-sm">
+<div class="w-1/3 min-h-full bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A medium shot portrait of a professional female researcher with a focused expression, wearing a sharp turquoise blazer. Set against a clean, bright office background with soft bokeh. The lighting is bright and modern, conveying intelligence and strategic expertise in a professional institutional context." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDe2zSPftBF4wVUq6ktrC4ZNHJ14cBGWxzEvKx19IhlsEUzFxNpEN_AFTMs2qnW6Y2mzl-6oyEo-wa_kNI6mtRJXF_Dul_V8GdDnqPbNsQFAXILA2AECh_jye60xsgTJf-KjFeBCeJvzfmBWw_HlENzVB3kmhsYLgsfacbqEmqvpkA4T6A_22E1_IRnJLHRJt4n7dvFKgPsrfExPE1_iC4nhj2DKetyzuuXVQCSy61q6BvD6CNwzLUrWQ"/>
+</div>
+<div class="w-2/3 p-8">
+<span class="font-label-caps text-label-caps text-secondary mb-2 block">BAŞKAN YARDIMCISI</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Doç. Dr. Leyla Aliyeva</h4>
+<p class="font-button text-button text-on-surface-variant mb-4">Akademik Araştırmalar Koordinatörü</p>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-6">
+                            Sosyal politikalar ve kamu yönetimi alanında uzmanlaşmış olan Aliyeva, derneğin akademik çıktılarını ve raporlama süreçlerini yönetmektedir.
+                        </p>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-secondary transition-colors">alternate_email</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-secondary transition-colors">share</span>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl overflow-hidden leadership-card flex shadow-sm">
+<div class="w-1/3 min-h-full bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Portrait of a senior male diplomat in his 50s, wearing glasses and a navy suit, exuding calm authority. The background is a blurred high-end conference hall with cool architectural lighting. Professional, minimalist, and prestigious aesthetic, emphasizing diplomatic experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl-p2jb9AziU3VvFgXtfNIuwHBG1B4fcCEGEunpbyrhybXrAYgMtvA7Of3OBAX2FueztBF37FqN1fg7-olaoJaxKo2RJXXkqZYWQb8SI0JBrKa86SjJFOj0fepnYU-Hq4C8cq10u_orTqybZIVktL3x5SUNYkoQ-4wMnq9d---AKw5VZncvM9QC6gjNjwUyjXgkXyTn0SrH7eqc07v0wP8k-AwpznxlrpYo3tHRhC5N2lElROd_GJ36A"/>
+</div>
+<div class="w-2/3 p-8">
+<span class="font-label-caps text-label-caps text-secondary mb-2 block">BAŞKAN YARDIMCISI</span>
+<h4 class="font-headline-sm text-headline-sm text-primary mb-1">Ferhat Hüseynov</h4>
+<p class="font-button text-button text-on-surface-variant mb-4">Dış İlişkiler ve Ortaklıklar</p>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-3 mb-6">
+                            Uluslararası diplomasi ve ağ kurma konusunda tecrübeli olan Hüseynov, ASAD'ın küresel think-tank ağları ile olan entegrasyonunu yürütmektedir.
+                        </p>
+<div class="flex gap-3">
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-secondary transition-colors">alternate_email</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-secondary transition-colors">share</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Advisory Board Bento Grid -->
+<section>
+<div class="flex items-center gap-4 mb-8">
+<h3 class="font-headline-sm text-headline-sm text-primary">Danışma Kurulu</h3>
+<div class="h-px flex-grow bg-outline-variant/30"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Member 1 -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/20 leadership-card">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-6 ring-2 ring-secondary/20">
+<img class="w-full h-full object-cover" data-alt="Portrait headshot of an elderly scholar with white hair and wise expression, wearing a simple linen shirt. High-key lighting, minimalist white studio background. Professional, clean, academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2N47FAIgP9CNyrh36Ox_AyaPdacEHZs4Vh9EtqNm_vbMGGwkueoWIWm1n6F_8-iUol3CgGOy1t2b2tDZ0A434z_box2VvftppzIz2Sn3si5K__KXfpaI5kX0UPmuKNolRBP682VFSQSRYw5yQTOEuvOYvuHpSFdgDV0U77dJ7PTF5iFSGuE0Yd3B42KK8xmfYdl8ET56vgJOKxbtks6YRqjkhtr2xceofRZssZ_2gp4zTCMe1-mMRkQ"/>
+</div>
+<h5 class="font-headline-sm text-headline-sm text-primary text-[20px] mb-1">Prof. Dr. Arif Guliyev</h5>
+<p class="font-label-caps text-label-caps text-tertiary mb-4">EKONOMİ DANIŞMANI</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-6">Makroekonomik dengeler ve enerji güvenliği alanında 40 yıllık akademik birikim.</p>
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-on-surface-variant/50">school</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-secondary">description</span>
+</div>
+</div>
+<!-- Member 2 -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/20 leadership-card">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-6 ring-2 ring-secondary/20">
+<img class="w-full h-full object-cover" data-alt="Headshot of a modern digital strategist, female, minimalist glasses, neutral background, professional lighting. Clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_WjSW3MqcHIsFRjTWWEWFPSrBTY_BeitjM9AHfc73-pPkdGb8ah0lO--yVa5gGxAwnQNOTW191R1ckGNO8HyNP6JNv39SVJ-dpXupqf23nYi_vDx-xBqvLccgnx6Npablcy1OCK-oWuvtD39yyU7K8wYJUtXLoctmqY6ZAAw2fNW7M7Sv-1gKy7a3dhDFuEwEIMl8RXoM-rz37GiwXJuxGNEbxPz22CCqIbitaqn4aFmfmkqZMuTxxg"/>
+</div>
+<h5 class="font-headline-sm text-headline-sm text-primary text-[20px] mb-1">Ayten Kerimova</h5>
+<p class="font-label-caps text-label-caps text-tertiary mb-4">DİJİTAL DÖNÜŞÜM</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-6">Kamu sektöründe dijitalleşme ve e-devlet süreçleri üzerine stratejik rehberlik.</p>
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-on-surface-variant/50">bolt</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-secondary">description</span>
+</div>
+</div>
+<!-- Member 3 -->
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/20 leadership-card">
+<div class="w-16 h-16 rounded-full overflow-hidden mb-6 ring-2 ring-secondary/20">
+<img class="w-full h-full object-cover" data-alt="Headshot of a male legal expert in a professional dark grey blazer, confident look, minimalist corporate background. High resolution, professional studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt_902yfSZ7x5kJxDCPk28880-sFTEVOrtgRpGF91kC9DEV1bcCialausksV4X6hDzulprU3j2SpDDSRZYPfE39yh8zxxmljM8CQQoTljXCB0qutB9WhNiNor4FNzJpETBbiNM2-Uy9bfuV5f3S2cg4xB2nuMP_l02nlSBgSD6bwAIyiYlLjOBNDZkvcBF6YaS7G-pA1rKtzTmqBcWwek71NmoF4pPwkj_DPoAU0J3Rzj0Nw033RvoUQ"/>
+</div>
+<h5 class="font-headline-sm text-headline-sm text-primary text-[20px] mb-1">Av. Murad Sadigov</h5>
+<p class="font-label-caps text-label-caps text-tertiary mb-4">HUKUK DANIŞMANI</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mb-6">Uluslararası hukuk ve sivil toplum mevzuatı konularında derin uzmanlık.</p>
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-on-surface-variant/50">gavel</span>
+<span class="material-symbols-outlined text-outline cursor-pointer hover:text-secondary">description</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-container w-full mt-section-gap flex flex-col items-center p-margin-desktop text-center gap-base">
+<div class="mb-8">
+<span class="font-headline-sm text-headline-sm text-on-primary-container">ASAD</span>
+</div>
+<div class="flex flex-wrap justify-center gap-8 mb-8">
+<a class="text-on-primary-container/80 hover:text-secondary-fixed transition-colors font-label-caps text-label-caps" href="#">Privacy Policy</a>
+<a class="text-on-primary-container/80 hover:text-secondary-fixed transition-colors font-label-caps text-label-caps" href="#">Terms of Service</a>
+<a class="text-on-primary-container/80 hover:text-secondary-fixed transition-colors font-label-caps text-label-caps" href="#">Newsletter</a>
+<a class="text-on-primary-container/80 hover:text-secondary-fixed transition-colors font-label-caps text-label-caps" href="#">Archive</a>
+</div>
+<p class="text-on-primary-container/60 font-label-caps text-label-caps tracking-wider">
+            © 2024 Azerbaycan Stratejik Araştırmalar Derneği. All Rights Reserved.
+        </p>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 h-20 bg-surface shadow-lg z-50 rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined">article</span>
+<span class="font-label-caps text-label-caps mt-1">Reports</span>
+</div>
+<div class="flex flex-col items-center justify-center text-secondary border-t-2 border-secondary pt-2 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-label-caps text-label-caps mt-1">Leaders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="font-label-caps text-label-caps mt-1">News</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant pt-2 transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-caps text-label-caps mt-1">Menu</span>
+</div>
+</nav>
+<script>
+        // Subtle interaction for leadership cards
+        document.querySelectorAll('.leadership-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if(icon) icon.style.transform = 'scale(1.1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                if(icon) icon.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>
