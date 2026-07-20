@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASAD | Hakkımızda</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffe088",
+                    "outline-variant": "#c4c6ce",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-container": "#006b76",
+                    "on-primary": "#ffffff",
+                    "background": "#f7f9fc",
+                    "surface-variant": "#e0e3e6",
+                    "tertiary-container": "#cca830",
+                    "surface": "#f7f9fc",
+                    "on-secondary-fixed-variant": "#004f57",
+                    "on-secondary-fixed": "#001f23",
+                    "surface-bright": "#f7f9fc",
+                    "surface-container-highest": "#e0e3e6",
+                    "surface-tint": "#4d5f7d",
+                    "on-primary-fixed-variant": "#364764",
+                    "tertiary": "#735c00",
+                    "primary-container": "#0b1f3a",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#e6e8eb",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "surface-container-low": "#f2f4f7",
+                    "on-primary-container": "#7587a7",
+                    "surface-container": "#eceef1",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "on-surface-variant": "#44474d",
+                    "on-surface": "#191c1e",
+                    "inverse-on-surface": "#eff1f4",
+                    "secondary": "#006973",
+                    "inverse-primary": "#b5c7ea",
+                    "surface-dim": "#d8dadd",
+                    "outline": "#75777e",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "on-tertiary-container": "#4f3e00",
+                    "on-primary-fixed": "#071c36",
+                    "primary": "#000615",
+                    "inverse-surface": "#2d3133",
+                    "secondary-fixed": "#93f1ff",
+                    "secondary-fixed-dim": "#65d6e6",
+                    "secondary-container": "#7dedfd",
+                    "on-background": "#191c1e",
+                    "error-container": "#ffdad6",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#b5c7ea",
+                    "on-tertiary-fixed": "#241a00"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "margin-desktop": "64px",
+                    "section-gap": "120px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Poppins"],
+                    "display-lg": ["Poppins"],
+                    "body-lg": ["Inter"],
+                    "button": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-sm": ["Poppins"],
+                    "headline-md": ["Poppins"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "button": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-nav {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 12px 24px rgba(11, 31, 58, 0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 glass-nav border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">ASAD</span>
+</div>
+<nav class="hidden md:flex gap-margin-mobile">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Home</a>
+<a class="font-label-caps text-label-caps text-secondary font-semibold" href="#">About Us</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Research Areas</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Publications</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-4 py-2 rounded-lg font-button text-button hover:bg-surface-container-high transition-colors">AZ/EN</button>
+</header>
+<main class="pt-16 pb-24 md:pb-0">
+<!-- Hero Section -->
+<section class="relative h-[530px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center" data-alt="A professional, high-fidelity photograph of a modern academic conference room with a large wooden table and panoramic windows overlooking a prestigious urban skyline at sunset. Soft, atmospheric lighting illuminates architectural blueprints and strategic maps of the Caucasus region. The scene captures the essence of strategic collaboration, elite diplomacy, and academic excellence with a navy and turquoise color grade." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD0rpz-npr1MUxhckTZl4pVBEHpDblB-zKJahY8KCH-GvAZHXtb8AuePFTzPIAL8EXtrhy5CmV8syti7K6ldlynsp2SuZ41eaWMrXGyEP1WTpF2ZoCJA3da2b_ZPOp-5kCF7fUMnUMA2VpQsgnp7z5hXdce3uK-EcJi5_yPDp7BLCgvWArqFIwj42xPG0wy-rt-mMHJWNK9uRZH1EM8KLJKRGKdfifN3AH0cuFY-RxaxIPTU46-isZPKA')"></div>
+<div class="absolute inset-0 bg-primary-container/60 mix-blend-multiply"></div>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-margin-mobile text-center text-white">
+<h1 class="font-display-lg text-display-lg mb-4">Hakkımızda</h1>
+<p class="font-body-lg text-body-lg max-w-2xl mx-auto opacity-90">Stratejik vizyonumuz, misyonumuz ve Azerbaycan-Türkiye kardeşliğinin akademik gücü.</p>
+</div>
+</section>
+<!-- Mission & Vision Section (Bento Style) -->
+<section class="py-section-gap max-w-container-max mx-auto px-margin-mobile">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bento-card p-margin-desktop bg-white border border-outline-variant rounded-xl flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase mb-4 block">Misyonumuz</span>
+<h2 class="font-headline-md text-headline-md text-primary-container mb-6">Akademik Köprüler Kuruyoruz</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">Türkiye ve Azerbaycan arasındaki stratejik bağları akademik araştırmalarla güçlendirmek, diaspora çalışmalarına yön vermek ve bölge barışına katkı sunmak için çalışıyoruz.</p>
+</div>
+<div class="mt-8 flex items-center gap-4 text-secondary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">handshake</span>
+<div class="h-[1px] flex-1 bg-outline-variant/30"></div>
+</div>
+</div>
+<div class="bento-card p-margin-desktop bg-primary-container text-white rounded-xl flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-secondary-fixed uppercase mb-4 block">Vizyonumuz</span>
+<h2 class="font-headline-md text-headline-md mb-6">Küresel Bir Referans Noktası</h2>
+<p class="font-body-lg text-body-lg opacity-80 leading-relaxed">Bölgesel ve küresel düzeyde referans kabul edilen, en prestijli stratejik araştırma merkezi olmak temel hedefimizdir.</p>
+</div>
+<div class="mt-8 flex items-center gap-4 text-secondary-fixed">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<div class="h-[1px] flex-1 bg-on-primary-container/30"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- History (Tarihçe) Section -->
+<section class="py-section-gap bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-margin-mobile">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-5">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-8">Tarihçe</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6">ASAD, bağımsız bir düşünce kuruluşu (think-tank) olarak stratejik vizyonunu gerçekleştirmek amacıyla kurulmuştur.</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Yıllar içerisinde gençlik politikaları, hukuk ve uluslararası ilişkiler gibi hayati alanlarda derinleşen derneğimiz, bugün yüzlerce akademik yayına ve stratejik rapora imza atmış bir otoritedir.</p>
+</div>
+<div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-base">
+<div class="p-8 bg-white border border-outline-variant rounded-lg">
+<span class="font-headline-md text-headline-md text-secondary block mb-2">2012</span>
+<p class="font-body-md text-body-md font-semibold text-primary mb-2">Kuruluş</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Bağımsız bir akademik platform olarak temeller atıldı.</p>
+</div>
+<div class="p-8 bg-white border border-outline-variant rounded-lg">
+<span class="font-headline-md text-headline-md text-secondary block mb-2">2016</span>
+<p class="font-body-md text-body-md font-semibold text-primary mb-2">Genişleme</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Hukuk ve Gençlik birimleri faaliyete başladı.</p>
+</div>
+<div class="p-8 bg-white border border-outline-variant rounded-lg">
+<span class="font-headline-md text-headline-md text-secondary block mb-2">2020</span>
+<p class="font-body-md text-body-md font-semibold text-primary mb-2">Dijital Dönüşüm</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Uluslararası veritabanı ve araştırma ağı entegrasyonu sağlandı.</p>
+</div>
+<div class="p-8 bg-white border border-outline-variant rounded-lg">
+<span class="font-headline-md text-headline-md text-secondary block mb-2">Bugün</span>
+<p class="font-body-md text-body-md font-semibold text-primary mb-2">Liderlik</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Bölgenin en prestijli stratejik araştırma merkezlerinden biri.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Core Values Section -->
+<section class="py-section-gap max-w-container-max mx-auto px-margin-mobile">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Temel İlkelerimiz</h2>
+<div class="w-24 h-1 bg-secondary mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Value Card 1 -->
+<div class="bento-card bg-white p-8 border border-outline-variant rounded-lg text-center flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-[32px]">school</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Akademik Dürüstlük</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Bilimsel tarafsızlık ve etik değerlere bağlı kalarak doğru bilgiyi üretiyoruz.</p>
+</div>
+<!-- Value Card 2 -->
+<div class="bento-card bg-white p-8 border border-outline-variant rounded-lg text-center flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-[32px]">psychology</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Stratejik Derinlik</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Yüzeysel analizler yerine olayların kök nedenlerine inen perspektifler sunuyoruz.</p>
+</div>
+<!-- Value Card 3 -->
+<div class="bento-card bg-white p-8 border border-outline-variant rounded-lg text-center flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-[32px]">diversity_3</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Kardeşlik ve Birlik</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Tek millet, iki devlet şiarıyla kardeşliğimizi akademik sahada savunuyoruz.</p>
+</div>
+<!-- Value Card 4 -->
+<div class="bento-card bg-white p-8 border border-outline-variant rounded-lg text-center flex flex-col items-center">
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-[32px]">lightbulb</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-4">Yenilikçilik</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Geleneksel diplomasiyi modern metodolojiler ve teknolojiyle harmanlıyoruz.</p>
+</div>
+</div>
+</section>
+<!-- Strategy Section -->
+<section class="mb-section-gap px-margin-mobile">
+<div class="max-w-container-max mx-auto bg-primary-container rounded-2xl overflow-hidden relative">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="w-full h-full bg-cover" data-alt="A sophisticated, minimalist abstract pattern representing network connectivity and global nodes. Geometric shapes and fine lines in shades of silver and turquoise create a sense of futuristic planning and organized complexity against a dark navy background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBsWJS-Dlb1VLxR6t8F2yfBU-yZO7pxU4sno0l1yLIKvImYqx2J9HOCvcsq7lnUwCEqQUPKKlyQXySNM-nxkyaCSIAuAmgpEpsi9J0BFfLqTaUwhLik6VYqJhh3Mf_wlhwCIFbM0th01hcTmM1DczMGrOjwJIgmOkp3m1MVXu6pzR5uefyG5m6sqtQODercRTpmVBKAJpr8seX14vhHG1khNQs5gZNVkCI3w4_gBXiPGYVXoGd9lTRG9w')"></div>
+</div>
+<div class="relative z-10 p-margin-desktop md:p-24 text-center md:text-left flex flex-col md:flex-row items-center justify-between gap-gutter">
+<div class="md:max-w-xl">
+<span class="font-label-caps text-label-caps text-secondary-fixed mb-4 block">GELECEK PROJEKSİYONU</span>
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-white mb-6">Stratejik Plan 2024-2030</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed mb-8">Önümüzdeki 6 yılın yol haritasını, bölgesel istikrar ve akademik kalkınma hedeflerimiz doğrultusunda belirledik.</p>
+<button class="bg-secondary text-white px-8 py-4 rounded-lg font-button text-button hover:bg-secondary-container hover:text-on-secondary-container transition-all flex items-center gap-2 group">
+                            Stratejik Planı İncele
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="hidden md:block w-48 h-48 border-4 border-secondary/30 rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-secondary-fixed text-6xl">insights</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-container dark:bg-primary w-full mt-section-gap flex flex-col items-center p-margin-desktop text-center gap-base">
+<div class="font-headline-sm text-headline-sm text-on-primary-container font-semibold mb-4">ASAD</div>
+<div class="flex flex-wrap justify-center gap-margin-mobile mb-8">
+<a class="text-on-primary-container/80 font-label-caps text-label-caps hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-primary-container/80 font-label-caps text-label-caps hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="text-on-primary-container/80 font-label-caps text-label-caps hover:text-secondary-fixed transition-colors" href="#">Newsletter</a>
+<a class="text-on-primary-container/80 font-label-caps text-label-caps hover:text-secondary-fixed transition-colors" href="#">Archive</a>
+</div>
+<p class="text-on-primary-container/60 font-label-caps text-label-caps">© 2024 Azerbaycan Stratejik Araştırmalar Derneği. All Rights Reserved.</p>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface dark:bg-inverse-surface shadow-lg rounded-t-xl flex justify-around items-center px-4 pb-4 h-20 z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined">article</span>
+<span class="font-label-caps text-[10px]">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary border-t-2 border-secondary pt-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">groups</span>
+<span class="font-label-caps text-[10px]">Leaders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined">newspaper</span>
+<span class="font-label-caps text-[10px]">News</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-caps text-[10px]">Menu</span>
+</a>
+</nav>
+</body></html>

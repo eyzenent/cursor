@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stratejik Raporlar - ASAD</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#006973",
+                    "surface-tint": "#4d5f7d",
+                    "primary-container": "#0b1f3a",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "on-primary-fixed": "#071c36",
+                    "primary": "#000615",
+                    "surface": "#f7f9fc",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#44474d",
+                    "surface-dim": "#d8dadd",
+                    "surface-container": "#eceef1",
+                    "surface-bright": "#f7f9fc",
+                    "surface-container-low": "#f2f4f7",
+                    "inverse-on-surface": "#eff1f4",
+                    "on-background": "#191c1e",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#65d6e6",
+                    "primary-fixed": "#d6e3ff",
+                    "on-primary-fixed-variant": "#364764",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "surface-variant": "#e0e3e6",
+                    "on-tertiary-container": "#4f3e00",
+                    "tertiary": "#735c00",
+                    "primary-fixed-dim": "#b5c7ea",
+                    "inverse-primary": "#b5c7ea",
+                    "on-primary-container": "#7587a7",
+                    "surface-container-high": "#e6e8eb",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#93f1ff",
+                    "on-tertiary-fixed": "#241a00",
+                    "inverse-surface": "#2d3133",
+                    "outline-variant": "#c4c6ce",
+                    "error": "#ba1a1a",
+                    "background": "#f7f9fc",
+                    "outline": "#75777e",
+                    "on-tertiary": "#ffffff",
+                    "secondary-container": "#7dedfd",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed": "#001f23",
+                    "on-secondary-container": "#006b76",
+                    "tertiary-container": "#cca830",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed": "#ffe088",
+                    "surface-container-highest": "#e0e3e6",
+                    "on-secondary-fixed-variant": "#004f57"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "section-gap": "120px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "button": ["Inter"],
+                    "headline-md": ["Poppins"],
+                    "body-md": ["Inter"],
+                    "headline-sm": ["Poppins"],
+                    "label-caps": ["Inter"],
+                    "display-lg-mobile": ["Poppins"],
+                    "display-lg": ["Poppins"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "button": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .report-card-hover:hover {
+            box-shadow: 0px 12px 24px rgba(11, 31, 58, 0.04);
+            transform: translateY(-2px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="bg-surface/80 backdrop-blur-md dark:bg-inverse-surface/80 fixed top-0 w-full z-50 border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="account_balance">account_balance</span>
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">ASAD</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Ana Sayfa</a>
+<a class="font-label-caps text-label-caps text-secondary font-semibold border-b-2 border-secondary" href="#">Raporlar</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Yazarlar</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-secondary transition-colors" href="#">Hakkımızda</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="font-label-caps text-label-caps text-primary hover:bg-surface-container-high px-4 py-2 transition-colors">AZ/EN</button>
+</div>
+</header>
+<main class="pt-24 pb-section-gap max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Header Section -->
+<section class="mb-16">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6">Stratejik Raporlar</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl leading-relaxed">
+                ASAD Stratejik Araştırmalar Merkezi tarafından hazırlanan kapsamlı analizler, karar vericiler ve politika yapıcılar için jeopolitik, ekonomik ve güvenlik odaklı derinlemesine perspektifler sunar. Her bir rapor, akademik titizlik ve stratejik öngörü prensipleriyle hazırlanmıştır.
+            </p>
+</section>
+<!-- Featured Report (Hero Card) -->
+<section class="mb-section-gap">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col lg:flex-row shadow-sm hover:shadow-md transition-shadow">
+<div class="lg:w-1/2 h-80 lg:h-auto overflow-hidden">
+<div class="w-full h-full bg-cover bg-center" data-alt="A professional aerial view of a futuristic smart city and shipping port at sunset, symbolizing global trade and energy security. The image is filtered with high-contrast navy and deep blue tones, reflecting an authoritative and academic institutional style with sharp clarity and prestigious atmospheric lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDcNhukR9GCgdk7idsloJsPMLzGKhsy6wlUvyB55FlIBPINb3gbjxmA1k17uiJ6mtt3aZS-QUqSCxw6Uk3VilBgsNKLWyQoiGjyFulxdl17hAzGhNq9JhSYI061zBmCXI4lyTHrMYdAwT8lafoxJIJlqkYxs1g_LSHu8Lah5bbGAotY-BOQMe0A6G8UpSaxcDmuSRKbn0ZgqN8rzOM7xnS7Inx37ZTz-v7s9N5uRVEl8PLy5ktFklbEyA')"></div>
+</div>
+<div class="lg:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-4">
+<span class="bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-3 py-1 rounded-full uppercase">Öne Çıkan Analiz</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps">Ocak 2024</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-4">2024 Küresel Jeopolitik Görünüm: Bölgesel Güç Dengeleri ve Enerji Arzı</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 line-clamp-3">
+                        Bu kapsamlı rapor, önümüzdeki yıl için küresel enerji hatlarındaki olası değişimleri ve Hazar Havzası'ndaki yeni ittifakların stratejik önemini incelemektedir. Karar vericiler için risk matrisleri ve senaryo analizleri içermektedir.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-6 py-3 rounded font-button text-button hover:opacity-90 transition-opacity flex items-center gap-2">
+                            Hemen Oku <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="border border-primary text-primary px-6 py-3 rounded font-button text-button hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="download">download</span> PDF İndir (4.2 MB)
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Search & Filter -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row gap-6 items-end">
+<div class="w-full md:flex-1 relative">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-2 uppercase">Raporlarda Ara</label>
+<div class="relative group">
+<input class="w-full h-14 pl-12 pr-4 bg-surface-container-low border border-outline-variant focus:ring-2 focus:ring-secondary focus:outline-none transition-all rounded" placeholder="Konu, anahtar kelime veya yazar..." type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-secondary" data-icon="search">search</span>
+</div>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 w-full md:w-auto">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-caps text-label-caps whitespace-nowrap">Tümü</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-caps text-label-caps hover:bg-outline-variant transition-colors whitespace-nowrap">Yıllık Raporlar</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-caps text-label-caps hover:bg-outline-variant transition-colors whitespace-nowrap">Jeopolitik Analiz</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-caps text-label-caps hover:bg-outline-variant transition-colors whitespace-nowrap">Enerji Güvenliği</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full font-label-caps text-label-caps hover:bg-outline-variant transition-colors whitespace-nowrap">Ekonomik Görünüm</button>
+</div>
+</div>
+</section>
+<!-- Report Archive Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Report Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant group report-card-hover transition-all flex flex-col">
+<div class="h-48 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A sophisticated close-up of financial graphs and data analytics displayed on a glass screen, with subtle reflections of a modern corporate boardroom. The aesthetic is clean, academic, and professional, using a refined color palette of navy, gold, and turquoise to highlight institutional polish and strategic foresight." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD2JmShCpfGv3VqCvOjrplRHfyzlquPo2DWeSmyBAvnDtmu6U-owE9CUXbk_yCFXV7nTTYt8CwUKBVpNvsNTRgIAL3bDgK5Dq-kJ8AaVOVOoXKhnG8XjMqXIXB48dtMGSxOspD5PTiNPMrQybyRUYx3xXkq9hdD84AoQtPNs9sGhDYBSfGuxvI5XoxW4seROnoXec0XIDTA0PxtEcOopINONLz57nmWVzaN3tO39zLoSX0tzJEJtZC4XA')"></div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<span class="text-secondary font-label-caps text-label-caps">Ekonomik Görünüm</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps opacity-60">12 Ara 2023</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 leading-tight group-hover:text-secondary transition-colors">Orta Doğu Finansal Piyasalarında Risk Analizi</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        Bölgesel likidite krizleri ve yeni dijital para birimlerinin sınır ötesi ticaretteki etkilerini derinlemesine ele alan akademik çalışma.
+                    </p>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<a class="text-primary font-button text-button flex items-center gap-1 hover:underline" href="#">
+                            İncele <span class="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
+</a>
+<span class="font-label-caps text-label-caps text-on-surface-variant">PDF • 1.8 MB</span>
+</div>
+</div>
+</div>
+<!-- Report Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant group report-card-hover transition-all flex flex-col">
+<div class="h-48 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="An artistic representation of interconnected globe networks and fiber optic lines glowing in turquoise against a dark navy background. The image conveys global connectivity, energy security, and strategic intelligence, styled with a minimalist and institutional flair suitable for a high-level research organization." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA2nPUGE__gXhUGcBHPGsEXtoqPszM6p0b0r9Euw7paKaF2kYCEUIXfsj17b22rI3xktpuUWgGy0DVALN8NyyMJCn5bLpe0yz6HTfyLQsR_rCxzaT1S6mDJJ-Ji6G7jzjI0TtT8fzxPYge2pk9BAvRkxx6oP4C0kGwyh8dveLi7lbukTb1CnoYsG8OGTp09jeT49orpt78y5j9sd_KaPPFYvNB2e1bqd79QFYKkWpzakA-4On1nRepX3w')"></div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<span class="text-secondary font-label-caps text-label-caps">Enerji Güvenliği</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps opacity-60">28 Kas 2023</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 leading-tight group-hover:text-secondary transition-colors">Trans-Anadolu Doğalgaz Hattı ve Avrupa'nın Enerji Çeşitliliği</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        TANAP projesinin mevcut kapasite artırım planları ve Avrupa enerji güvenliği üzerindeki çarpan etkisi üzerine bir durum analizi.
+                    </p>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<a class="text-primary font-button text-button flex items-center gap-1 hover:underline" href="#">
+                            İncele <span class="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
+</a>
+<span class="font-label-caps text-label-caps text-on-surface-variant">PDF • 3.1 MB</span>
+</div>
+</div>
+</div>
+<!-- Report Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant group report-card-hover transition-all flex flex-col">
+<div class="h-48 overflow-hidden">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="A clean, minimalist workspace with a tactical map and a compass on a white oak table, bathed in soft afternoon light. The mood is thoughtful and strategic, emphasizing academic rigor and precision. The visual style follows a high-end light mode aesthetic with navy blue accents and expansive whitespace." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDi1tRLAtdd9_gRc7JTjCUVfCu49jfjeVx5PsdNpe7xg6aV8rOAmIWWJMJ83RlPY8bweX5BBiPFMol4XMPPe31YV33yBEpOlDQC3RYb02eiKzOppz3QNIcucSchYxOpOvOjrCYiEXXtpYqu0L-MVSEpQqaSaPYVKbkqbin8PkS6YMFueRqrt5b9h07FVnHL-kUNDodDlMGDtuiVlNq9UWiMbh5B1JQ4BYEXi4Hy_6KXgSIbEhQPDFQTYg')"></div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-3">
+<span class="text-secondary font-label-caps text-label-caps">Jeopolitik Analiz</span>
+<span class="text-on-surface-variant font-label-caps text-label-caps opacity-60">15 Kas 2023</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-3 leading-tight group-hover:text-secondary transition-colors">Arktik Bölgesi'nde Yeni Rekabet Alanları</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 line-clamp-3">
+                        Eriyen buzulların açtığı yeni ticaret rotaları ve bölgedeki askeri hareketliliğin uluslararası hukuk çerçevesindeki değerlendirmesi.
+                    </p>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<a class="text-primary font-button text-button flex items-center gap-1 hover:underline" href="#">
+                            İncele <span class="material-symbols-outlined text-[18px]" data-icon="open_in_new">open_in_new</span>
+</a>
+<span class="font-label-caps text-label-caps text-on-surface-variant">PDF • 5.5 MB</span>
+</div>
+</div>
+</div>
+<!-- Additional rows would follow here -->
+</section>
+<!-- Newsletter Section -->
+<section class="mt-section-gap relative overflow-hidden bg-primary-container text-on-primary-container p-12 md:p-24 rounded-xl flex flex-col items-center text-center">
+<div class="absolute inset-0 opacity-10">
+<div class="w-full h-full" style="background-image: radial-gradient(#7587a7 1px, transparent 1px); background-size: 24px 24px;"></div>
+</div>
+<div class="relative z-10 max-w-2xl">
+<span class="font-label-caps text-label-caps text-secondary-fixed mb-4 inline-block uppercase">Bilgi Akışı</span>
+<h2 class="font-headline-md text-headline-md mb-6">Yeni Analizlerden İlk Siz Haberdar Olun</h2>
+<p class="font-body-md text-body-md mb-8 opacity-80">
+                    Haftalık bültenimize abone olarak, ASAD uzmanları tarafından hazırlanan raporları ve stratejik özetleri doğrudan e-posta kutunuza alabilirsiniz.
+                </p>
+<form class="flex flex-col sm:flex-row gap-4 w-full">
+<input class="flex-1 h-14 px-6 bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:ring-2 focus:ring-secondary-fixed focus:outline-none rounded" placeholder="E-posta adresiniz" type="email"/>
+<button class="bg-secondary text-on-secondary h-14 px-8 font-button text-button hover:bg-secondary/90 transition-all active:scale-95 rounded">
+                        Kayıt Ol
+                    </button>
+</form>
+<p class="mt-6 font-label-caps text-label-caps opacity-50">
+                    *İstediğiniz zaman abonelikten çıkabilirsiniz. Gizliliğiniz bizim için önemlidir.
+                </p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-container text-on-primary-container w-full mt-section-gap flex flex-col items-center p-margin-desktop text-center gap-base">
+<div class="max-w-container-max w-full grid grid-cols-1 md:grid-cols-4 gap-12 text-left mb-16">
+<div class="col-span-1 md:col-span-2">
+<span class="font-headline-sm text-headline-sm text-on-primary-container font-semibold mb-4 block">ASAD</span>
+<p class="font-body-md text-body-md opacity-80 max-w-sm">
+                    Azerbaycan Stratejik Araştırmalar Derneği, bölgesel ve küresel meselelerde bağımsız analiz ve stratejik öngörü üreten bir düşünce kuruluşudur.
+                </p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-secondary-fixed mb-2 uppercase">Hızlı Erişim</span>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Yıllık Raporlar</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Arşiv</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Konferanslar</a>
+</div>
+<div class="flex flex-col gap-4">
+<span class="font-label-caps text-label-caps text-secondary-fixed mb-2 uppercase">Yasal</span>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Gizlilik Politikası</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Kullanım Koşulları</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">İletişim</a>
+</div>
+</div>
+<div class="border-t border-on-primary-container/10 pt-8 w-full flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-caps text-label-caps opacity-60">© 2024 Azerbaycan Stratejik Araştırmalar Derneği. Tüm Hakları Saklıdır.</p>
+<div class="flex gap-6">
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-fixed transition-colors" data-icon="public">public</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-fixed transition-colors" data-icon="share">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary-fixed transition-colors" data-icon="mail">mail</span>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(11,31,58,0.04)] flex justify-around items-center px-4 pb-4 h-20 z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps mt-1">Ana Sayfa</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary border-t-2 border-secondary pt-2 transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+<span class="font-label-caps text-label-caps mt-1 font-semibold">Raporlar</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-caps text-label-caps mt-1">Liderler</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="newspaper">newspaper</span>
+<span class="font-label-caps text-label-caps mt-1">Haberler</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-secondary transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+<span class="font-label-caps text-label-caps mt-1">Menü</span>
+</a>
+</nav>
+<script>
+        // Smooth scroll interaction
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple input focus micro-interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        if(searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('scale-[1.01]');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('scale-[1.01]');
+            });
+        }
+    </script>
+</body></html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Akademik Başvuru Formu | ASAD Strategic Research Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "on-primary-fixed-variant": "#364764",
+                    "on-surface": "#191c1e",
+                    "primary": "#000615",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#4d5f7d",
+                    "on-primary-container": "#7587a7",
+                    "primary-fixed": "#d6e3ff",
+                    "secondary-fixed": "#93f1ff",
+                    "inverse-surface": "#2d3133",
+                    "secondary": "#006973",
+                    "secondary-fixed-dim": "#65d6e6",
+                    "primary-container": "#0b1f3a",
+                    "background": "#f7f9fc",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "surface-container": "#eceef1",
+                    "tertiary": "#735c00",
+                    "inverse-on-surface": "#eff1f4",
+                    "surface-container-low": "#f2f4f7",
+                    "secondary-container": "#7dedfd",
+                    "outline-variant": "#c4c6ce",
+                    "outline": "#75777e",
+                    "tertiary-container": "#cca830",
+                    "surface": "#f7f9fc",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#4f3e00",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#001f23",
+                    "on-primary-fixed": "#071c36",
+                    "surface-variant": "#e0e3e6",
+                    "surface-container-high": "#e6e8eb",
+                    "tertiary-fixed": "#ffe088",
+                    "on-secondary": "#ffffff",
+                    "on-background": "#191c1e",
+                    "surface-variant": "#e0e3e6",
+                    "surface-container-highest": "#e0e3e6",
+                    "on-error": "#ffffff",
+                    "surface-bright": "#f7f9fc",
+                    "on-surface-variant": "#44474d",
+                    "surface-dim": "#d8dadd",
+                    "on-secondary-container": "#006b76",
+                    "on-secondary-fixed-variant": "#004f57",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed-dim": "#b5c7ea",
+                    "on-tertiary-fixed": "#241a00",
+                    "inverse-primary": "#b5c7ea",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "section-gap": "120px",
+                    "margin-desktop": "64px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "base": "8px"
+            },
+            "fontFamily": {
+                    "button": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-sm": ["Poppins"],
+                    "display-lg-mobile": ["Poppins"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Poppins"],
+                    "headline-md": ["Poppins"]
+            },
+            "fontSize": {
+                    "button": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-input-focus {
+            transition: all 0.2s ease-in-out;
+        }
+        .form-input-focus:focus {
+            box-shadow: 0 0 0 2px rgba(0, 105, 115, 0.2);
+            border-color: #006973;
+            outline: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #c4c6ce;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md text-primary dark:text-primary-fixed fixed top-0 w-full z-50 border-b border-outline-variant/30">
+<div class="flex justify-between items-center h-16 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex items-center gap-4 cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">account_balance</span>
+<span class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed">ASAD Strategic Research Portal</span>
+</div>
+<nav class="hidden md:flex items-center gap-gutter">
+<a class="text-on-surface-variant dark:text-surface-variant font-button text-button hover:text-secondary transition-colors duration-200" href="#">Giriş</a>
+<a class="text-secondary dark:text-secondary-fixed border-b-2 border-secondary font-button text-button" href="#">Akademik Başvuru</a>
+<a class="text-on-surface-variant dark:text-surface-variant font-button text-button hover:text-secondary transition-colors duration-200" href="#">Araştırmalar</a>
+</nav>
+<div class="flex items-center gap-4 cursor-pointer active:opacity-70">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed">language</span>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto">
+<!-- Intro Section -->
+<section class="mb-16 text-center">
+<span class="font-label-caps text-label-caps text-secondary uppercase mb-4 block">Katılım Çağrısı</span>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 text-primary">Akademik Başvuru Formu</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                ASAD, stratejik öngörü ve politika analizi süreçlerinde yer alacak kıdemli araştırmacıları ve konu uzmanlarını ağımıza katılmaya davet ediyor. Küresel ölçekte etki yaratacak akademik çalışmalara birlikte imza atalım.
+            </p>
+</section>
+<!-- Application Form -->
+<form class="space-y-12">
+<!-- Personal Information -->
+<div class="bg-surface-container-lowest p-8 md:p-12 border border-outline-variant/30 rounded-lg">
+<div class="flex items-center gap-3 mb-8 border-l-4 border-secondary pl-4">
+<h2 class="font-headline-md text-headline-sm text-primary">Kişisel Bilgiler</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="md:col-span-2 flex flex-col items-center md:items-start mb-4">
+<div class="relative group">
+<div class="w-32 h-32 rounded-full border-2 border-dashed border-outline-variant flex flex-col items-center justify-center bg-surface-container-low cursor-pointer hover:bg-surface-variant transition-colors overflow-hidden relative">
+<span class="material-symbols-outlined text-4xl text-outline mb-1">add_a_photo</span>
+<span class="text-[10px] font-label-caps uppercase text-outline">Fotoğraf Yükle</span>
+<!-- Hidden input for actual file -->
+<input class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+</div>
+<p class="mt-2 text-xs text-on-surface-variant font-medium text-center md:text-left">Profesyonel vesikalık fotoğraf (Max 2MB)</p>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-primary">Ad Soyad</label>
+<input class="form-input-focus bg-surface-container-low border-outline-variant/50 p-4 rounded text-body-md" placeholder="Dr. Ad Soyad" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-primary">E-Posta</label>
+<input class="form-input-focus bg-surface-container-low border-outline-variant/50 p-4 rounded text-body-md" placeholder="isim@kurum.edu.tr" type="email"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-primary">Telefon</label>
+<input class="form-input-focus bg-surface-container-low border-outline-variant/50 p-4 rounded text-body-md" placeholder="+90 (___) ___ __ __" type="tel"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-primary">Uyruk</label>
+<select class="form-input-focus bg-surface-container-low border-outline-variant/50 p-4 rounded text-body-md">
+<option>Türkiye</option>
+<option>Diğer</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Academic Background -->
+<div class="bg-surface-container-lowest p-8 md:p-12 border border-outline-variant/30 rounded-lg">
+<div class="flex items-center gap-3 mb-8 border-l-4 border-secondary pl-4">
+<h2 class="font-headline-md text-headline-sm text-primary">Akademik Geçmiş</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-caps text-label-caps text-primary">Mevcut Kurum / Üniversite</label>
+<input class="form-input-focus bg-surface-container-low border-outline-variant/50 p-4 rounded text-body-md" placeholder="Örn: Orta Doğu Teknik Üniversitesi" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-primary">Unvan</label>
+<select class="form-input-focus bg-surface-container-low border-outline-variant/50 p-4 rounded text-body-md">
+<option>Prof. Dr.</option>
+<option>Doç. Dr.</option>
+<option>Dr. Öğr. Üyesi</option>
+<option>Doktora Sonrası Araştırmacı</option>
+<option>Doktora Adayı</option>
+<option>Uzman / Danışman</option>
+</select>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-primary">En Yüksek Derece</label>
+<input class="form-input-focus bg-surface-container-low border-outline-variant/50 p-4 rounded text-body-md" placeholder="Örn: PhD in International Relations" type="text"/>
+</div>
+</div>
+</div>
+<!-- Expertise Areas -->
+<div class="bg-surface-container-lowest p-8 md:p-12 border border-outline-variant/30 rounded-lg">
+<div class="flex items-center gap-3 mb-8 border-l-4 border-secondary pl-4">
+<h2 class="font-headline-md text-headline-sm text-primary">Uzmanlık Alanları</h2>
+</div>
+<p class="text-on-surface-variant mb-6 text-sm">Size en uygun çalışma gruplarını belirlemek için uzmanlık alanlarınızı seçiniz veya ekleyiniz.</p>
+<div class="flex flex-wrap gap-3 mb-6">
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full text-xs font-medium transition-all hover:opacity-90 flex items-center gap-2" type="button">
+                        Jeopolitik <span class="material-symbols-outlined text-sm">close</span>
+</button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full text-xs font-medium transition-all hover:opacity-90 flex items-center gap-2" type="button">
+                        Enerji Güvenliği <span class="material-symbols-outlined text-sm">close</span>
+</button>
+<button class="px-4 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-medium transition-all hover:bg-outline-variant/50" type="button">
+                        Ekonomi Politiği
+                    </button>
+<button class="px-4 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-medium transition-all hover:bg-outline-variant/50" type="button">
+                        Dijital Dönüşüm
+                    </button>
+<button class="px-4 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-medium transition-all hover:bg-outline-variant/50" type="button">
+                        Savunma Sanayii
+                    </button>
+</div>
+<div class="relative">
+<input class="form-input-focus w-full bg-surface-container-low border-outline-variant/50 p-4 pr-12 rounded text-body-md" placeholder="Yeni alan ekle (örn: Siber Güvenlik)..." type="text"/>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-outline cursor-pointer hover:text-secondary">add_circle</span>
+</div>
+</div>
+<!-- Publications & Research -->
+<div class="bg-surface-container-lowest p-8 md:p-12 border border-outline-variant/30 rounded-lg">
+<div class="flex items-center gap-3 mb-8 border-l-4 border-secondary pl-4">
+<h2 class="font-headline-md text-headline-sm text-primary">Yayınlar ve Araştırma Profili</h2>
+</div>
+<div class="grid grid-cols-1 gap-8">
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-primary">Önemli Yayınlar Özeti</label>
+<textarea class="form-input-focus bg-surface-container-low border-outline-variant/50 p-4 rounded text-body-md resize-none custom-scrollbar" placeholder="En az 3 temel yayınınızı ve araştırma odağınızı kısaca özetleyiniz..." rows="5"></textarea>
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-primary">Akademik Profil Linki (ORCID / Google Scholar / Academia)</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">link</span>
+<input class="form-input-focus w-full bg-surface-container-low border-outline-variant/50 p-4 pl-12 rounded text-body-md" placeholder="https://orcid.org/0000-0000-0000-0000" type="url"/>
+</div>
+</div>
+</div>
+</div>
+<!-- File Upload -->
+<div class="bg-surface-container-lowest p-8 md:p-12 border border-outline-variant/30 rounded-lg">
+<div class="flex items-center gap-3 mb-8 border-l-4 border-secondary pl-4">
+<h2 class="font-headline-md text-headline-sm text-primary">Özgeçmiş Yükleme</h2>
+</div>
+<div class="border-2 border-dashed border-outline-variant/50 rounded-xl p-12 text-center bg-surface-container-low hover:bg-surface-container hover:border-secondary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-6xl text-outline group-hover:text-secondary transition-colors mb-4">upload_file</span>
+<h3 class="font-headline-sm text-headline-sm text-primary mb-2">CV / Resume Yükle</h3>
+<p class="text-on-surface-variant text-sm mb-6">Dosyaları buraya sürükleyin veya göz atmak için tıklayın</p>
+<div class="inline-flex items-center gap-2 px-6 py-3 border border-primary text-primary font-button text-button rounded uppercase tracking-wider group-hover:bg-primary group-hover:text-on-primary transition-all">
+                        Dosya Seç
+                    </div>
+<p class="text-[10px] text-outline mt-4">Desteklenen formatlar: PDF, DOCX (Maks 10MB)</p>
+</div>
+</div>
+<!-- Submission -->
+<div class="space-y-8">
+<label class="flex items-start gap-3 cursor-pointer group">
+<input class="mt-1 w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox"/>
+<span class="text-sm text-on-surface-variant leading-relaxed select-none">
+                        ASAD Kişisel Verilerin Korunması ve İşlenmesi <a class="text-secondary underline underline-offset-4 hover:text-primary" href="#">Aydınlatma Metni</a>'ni okudum. Akademik değerlendirme süreçleri kapsamında verilerimin işlenmesini kabul ediyorum.
+                    </span>
+</label>
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-outline-variant/30">
+<div class="text-on-surface-variant text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                        Form güvenli bir şekilde şifrelenerek iletilecektir.
+                    </div>
+<button class="w-full md:w-auto px-12 py-5 bg-primary text-on-primary font-button text-button uppercase tracking-widest rounded shadow-lg hover:shadow-xl hover:translate-y-[-2px] active:translate-y-[0px] transition-all flex items-center justify-center gap-3" type="submit">
+                        Başvuruyu Gönder
+                        <span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</form>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container w-full">
+<div class="flex flex-col md:flex-row justify-between items-center py-base gap-gutter px-margin-mobile md:px-margin-desktop mt-section-gap max-w-container-max mx-auto min-h-[120px]">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-label-caps text-label-caps uppercase tracking-widest text-secondary-container">ASAD THINK TANK</span>
+<p class="font-body-md text-body-md text-on-primary/70 dark:text-on-primary-container/70 text-center md:text-left">
+                    © 2024 ASAD Strategic Think Tank. All rights reserved. Precision in Policy.
+                </p>
+</div>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+<a class="font-body-md text-body-md text-on-primary/70 dark:text-on-primary-container/70 hover:text-secondary-container transition-colors cursor-pointer underline-offset-4 hover:underline" href="#">Ethics Statement</a>
+<a class="font-body-md text-body-md text-on-primary/70 dark:text-on-primary-container/70 hover:text-secondary-container transition-colors cursor-pointer underline-offset-4 hover:underline" href="#">Privacy Policy</a>
+<a class="font-body-md text-body-md text-on-primary/70 dark:text-on-primary-container/70 hover:text-secondary-container transition-colors cursor-pointer underline-offset-4 hover:underline" href="#">Contact Secretariat</a>
+<a class="font-body-md text-body-md text-on-primary/70 dark:text-on-primary-container/70 hover:text-secondary-container transition-colors cursor-pointer underline-offset-4 hover:underline" href="#">Institutional Repository</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interactions
+        document.querySelectorAll('input, select, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.querySelector('label')?.classList.add('text-secondary');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.querySelector('label')?.classList.remove('text-secondary');
+            });
+        });
+
+        // Form submission prevent default for demo
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Başvurunuz başarıyla alındı. Akademik kurulumuz tarafından incelendikten sonra tarafınıza dönüş yapılacaktır.');
+        });
+    </script>
+</body></html>

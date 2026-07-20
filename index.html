@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="light" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASAD - Azerbaycan Stratejik Araştırmalar Derneği</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#c4c6ce",
+                    "inverse-surface": "#2d3133",
+                    "on-secondary-fixed": "#001f23",
+                    "primary-container": "#0b1f3a",
+                    "on-surface": "#191c1e",
+                    "on-primary-fixed": "#071c36",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#241a00",
+                    "surface-dim": "#d8dadd",
+                    "background": "#f7f9fc",
+                    "on-primary": "#ffffff",
+                    "on-background": "#191c1e",
+                    "tertiary-container": "#cca830",
+                    "error": "#ba1a1a",
+                    "on-secondary-container": "#006b76",
+                    "primary-fixed-dim": "#b5c7ea",
+                    "secondary": "#006973",
+                    "tertiary-fixed-dim": "#e9c349",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#ffe088",
+                    "surface-container-low": "#f2f4f7",
+                    "inverse-primary": "#b5c7ea",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#7587a7",
+                    "on-secondary-fixed-variant": "#004f57",
+                    "secondary-fixed-dim": "#65d6e6",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-bright": "#f7f9fc",
+                    "error-container": "#ffdad6",
+                    "outline": "#75777e",
+                    "surface-container": "#eceef1",
+                    "on-tertiary-fixed-variant": "#574500",
+                    "tertiary": "#735c00",
+                    "surface-variant": "#e0e3e6",
+                    "inverse-on-surface": "#eff1f4",
+                    "on-tertiary-container": "#4f3e00",
+                    "surface-container-high": "#e6e8eb",
+                    "surface-container-highest": "#e0e3e6",
+                    "secondary-fixed": "#93f1ff",
+                    "secondary-container": "#7dedfd",
+                    "surface-tint": "#4d5f7d",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#44474d",
+                    "primary": "#000615",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#364764",
+                    "surface": "#f7f9fc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "section-gap": "120px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "base": "8px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Poppins"],
+                    "label-caps": ["Inter"],
+                    "headline-sm": ["Poppins"],
+                    "display-lg-mobile": ["Poppins"],
+                    "display-lg": ["Poppins"],
+                    "body-lg": ["Inter"],
+                    "button": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.7", "fontWeight": "400"}],
+                    "button": ["14px", {"lineHeight": "1.0", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            border-top: 2px solid #006973;
+            color: #006973 !important;
+        }
+        .glass-nav {
+            background-color: rgba(247, 249, 252, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #006973; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<a href="index.html" class="flex items-center gap-2 no-underline"><header class="fixed top-0 w-full z-50 border-b border-outline-variant/30 glass-nav h-16 flex justify-between items-center px-margin-mobile">
+<div class="flex items-center gap-2">
+<img alt="ASAD Logo" class="h-10 w-auto" src="assets/logo.png"/></a>
+<span class="font-headline-sm text-headline-sm font-semibold text-primary">ASAD</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-primary hover:bg-surface-container-high transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined">search</span>
+</button>
+<span class="font-label-caps text-label-caps text-primary cursor-pointer active:opacity-80 transition-opacity">AZ/EN</span>
+</div>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="px-margin-mobile py-10 flex flex-col items-center text-center bg-surface-container-low overflow-hidden relative">
+<div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(#006973 1px, transparent 1px); background-size: 24px 24px;"></div>
+<div class="z-10 max-w-md">
+<h1 class="font-display-lg-mobile text-display-lg-mobile text-primary mb-4 leading-tight">
+                    Bilim, Strateji ve <span class="text-secondary">Diaspora Gücü</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 px-2">
+                    Türkiye ile Azerbaycan arasında akademik, stratejik ve kültürel iş birliğini güçlendiren bağımsız araştırma kuruluşu.
+                </p>
+<div class="flex flex-col gap-3 w-full">
+<button class="bg-primary text-on-primary py-4 px-8 rounded-lg font-button shadow-sm active:scale-95 transition-transform">
+                        Faaliyetlerimiz
+                    </button>
+<button class="border-2 border-secondary text-secondary py-4 px-8 rounded-lg font-button hover:bg-secondary-container transition-colors">
+                        Üye Ol
+                    </button>
+</div>
+</div>
+</section>
+<!-- Stats Chips / Metrics -->
+<section class="flex gap-4 px-margin-mobile overflow-x-auto py-6 no-scrollbar">
+<div class="flex-shrink-0 bg-surface-container-lowest border border-outline-variant/30 px-6 py-4 rounded-xl flex items-center gap-3 shadow-[0_4px_12px_rgba(11,31,58,0.02)]">
+<span class="material-symbols-outlined text-secondary">trending_up</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">45+</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Yayın</span>
+</div>
+</div>
+<div class="flex-shrink-0 bg-surface-container-lowest border border-outline-variant/30 px-6 py-4 rounded-xl flex items-center gap-3 shadow-[0_4px_12px_rgba(11,31,58,0.02)]">
+<span class="material-symbols-outlined text-secondary">groups</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">1.2K</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Üye</span>
+</div>
+</div>
+<div class="flex-shrink-0 bg-surface-container-lowest border border-outline-variant/30 px-6 py-4 rounded-xl flex items-center gap-3 shadow-[0_4px_12px_rgba(11,31,58,0.02)]">
+<span class="material-symbols-outlined text-secondary">language</span>
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-primary">8</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant">Bölge</span>
+</div>
+</div>
+</section>
+<!-- Featured News -->
+<section class="px-margin-mobile py-8">
+<div class="flex justify-between items-end mb-6">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest block mb-1">Gündem</span>
+<h2 class="font-headline-md text-headline-md text-primary">Öne Çıkan Haberler</h2>
+</div>
+<button class="text-secondary font-button flex items-center gap-1">Tümü <span class="material-symbols-outlined">chevron_right</span></button>
+</div>
+<div class="flex flex-col gap-6">
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden shadow-sm hover:shadow-md transition-shadow group">
+<div class="h-48 w-full bg-cover bg-center" data-alt="A professional photograph showing the Baku skyline at night with high-rise buildings and modern lighting, reflecting in the Caspian Sea. The atmosphere is prestigious and authoritative, showcasing the strategic growth of Azerbaijan in a modern, light-mode institutional UI style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAMkijk8pp6FhG0uBmur10byh41XHAq8e9rHbOotFJzXJ95bhFPBs1uV_jTADJSaItauLW6l729nKFbIQgqEwBaME0b5AFfjn3w1gDYzp7M18q6RkFVTpezZH8KJH4cJlmb7TQFK9_zAjOgN5DPk2zUeqS1smzjpl9CgrVnPPkVLsKVrGtie05eqHQDbDSgSL-f4vQi-i1FM9Qc0mBDia3hKW3fMAlPn0LcVHgERDmageFBqYDdWP2K0Q')"></div>
+<div class="p-6">
+<span class="font-label-caps text-label-caps text-secondary mb-2 block">STRATEJİK ANALİZ</span>
+<h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-secondary transition-colors mb-2">Hazar Geçişli Orta Koridor’un Geleceği ve Azerbaycan</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Bölgesel iş birliği projeleri kapsamında Hazar Denizi'nin stratejik önemi ve lojistik ağların geliştirilmesi üzerine son raporumuz...</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/20 overflow-hidden shadow-sm flex items-center h-28 group">
+<div class="w-28 h-full bg-cover bg-center" data-alt="A macro close-up of a digital world map featuring glowing data points and interconnecting turquoise lines on a clean white surface. Representing global strategic connections and research for a high-level institution, presented with a modern and prestigious aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAay7pJWiwhi8WKyDGm9bRxSCDPd7gqiVXgbAaIl6R7p10ZRfEP4X6PtkicVRCuKTFi2a-tK7QZsnftjstf8Vlt8vgFYn1349Rb56sl3HfQTpFb4EWBZHXJjfk6Yw6c3F_rth4X6_oTzveZQXPH316fT9ooXmzQ7boGAZiEWPRBQtSWFP7p_uKeol51vQEsV9HPUeg5ZMu8YccsXEnmW7itT1Thchkw_vi_AWx0GMAp0sdbTSsJWjgRaQ')"></div>
+<div class="px-4 py-2 flex flex-col justify-center flex-1">
+<span class="text-[10px] font-semibold text-secondary uppercase tracking-tighter">DIASPORA</span>
+<h4 class="font-body-md font-semibold text-primary leading-tight line-clamp-2 group-hover:text-secondary">Avrupa'daki Azerbaycanlı Akademisyenler Ağı Kuruluyor</h4>
+<span class="text-[11px] text-on-surface-variant mt-1 italic">12 Kasım 2024</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Upcoming Events (with QR Focus) -->
+<section class="px-margin-mobile py-8 bg-primary-container text-on-primary-container rounded-t-3xl mt-6">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md text-primary-fixed">Yaklaşan Etkinlikler</h2>
+<span class="material-symbols-outlined text-secondary-fixed text-4xl">qr_code_2</span>
+</div>
+<div class="space-y-4">
+<div class="bg-primary/40 border border-on-primary-container/10 p-5 rounded-2xl flex gap-4 backdrop-blur-sm">
+<div class="flex flex-col items-center justify-center bg-secondary rounded-lg w-16 h-16 flex-shrink-0 text-white">
+<span class="font-headline-sm text-headline-sm leading-none">24</span>
+<span class="font-label-caps text-label-caps">KAS</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-body-lg font-semibold text-white leading-tight">İstanbul Strateji Forumu</h4>
+<p class="text-sm text-on-primary-container/70 flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Conrad Istanbul Bosphorus
+                        </p>
+<button class="mt-3 text-secondary-fixed font-label-caps flex items-center gap-1">BİLET &amp; KAYIT <span class="material-symbols-outlined text-sm">open_in_new</span></button>
+</div>
+</div>
+<div class="bg-primary/40 border border-on-primary-container/10 p-5 rounded-2xl flex gap-4 backdrop-blur-sm">
+<div class="flex flex-col items-center justify-center bg-outline/20 rounded-lg w-16 h-16 flex-shrink-0 text-white border border-on-primary-container/20">
+<span class="font-headline-sm text-headline-sm leading-none">05</span>
+<span class="font-label-caps text-label-caps">ARA</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-body-lg font-semibold text-white leading-tight">Dijital Diaspora Çalıştayı</h4>
+<p class="text-sm text-on-primary-container/70 flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">videocam</span> Online (Zoom)
+                        </p>
+<button class="mt-3 text-on-primary-container/50 font-label-caps">YAKLAŞIYOR...</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Publications -->
+<section class="px-margin-mobile py-10">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Son Yayınlar</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-3 group">
+<div class="aspect-[3/4] bg-surface-container rounded-lg border border-outline-variant/30 overflow-hidden relative shadow-sm transition-transform group-hover:-translate-y-1">
+<img class="w-full h-full object-cover" data-alt="A minimalist book cover design for a strategic report. The cover features an elegant navy and turquoise color scheme with professional typography and a subtle geometric pattern. The title suggests strategic research and policy analysis for a high-level institution like ASAD." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6laXAvThrZvzNlIj2e0xvXxLFUdGLKL4zz7jvPBK5XTReTXrB8-CgCY5eZJXA8LF7UXy8hOT9xFpw_eXKThnBvMtReY3ZiZrYJknGqDnHgkw-krWM0WTL8nwhYeAnd_ciqWSBVk7FWnLh80NcBT3IyTx4MZvdGhWliHBoEiS-5cSJ1x2cirBxOvX9QM5ho78rEz7_f708XH06loNyu7oG0sW2g1Us6VvA-W9EEAq9DC4WPqMqXLx40w"/>
+<div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
+<span class="text-white text-[10px] font-bold">PDF - 4.2 MB</span>
+</div>
+</div>
+<h5 class="font-label-caps text-label-caps text-primary leading-snug">Karabağ'ın Yeniden İnşası ve Ekonomik Potansiyel</h5>
+</div>
+<div class="flex flex-col gap-3 group">
+<div class="aspect-[3/4] bg-surface-container rounded-lg border border-outline-variant/30 overflow-hidden relative shadow-sm transition-transform group-hover:-translate-y-1">
+<img class="w-full h-full object-cover" data-alt="A clean, academic journal cover design showcasing a scholarly publication theme. High-contrast white and dark navy colors with turquoise accent lines. The visual language is refined, modern, and trustworthy, suitable for a prestigious strategic research association." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsub6tl1btUNmN5cS9P2GKANsL0RSKam6bk46ZWc0HJ88tQoGV07PYJWf6GEfnC4ylqi7h7BHSBfrLmHnVj6VF44G96aeZA3YyIfb4i5I5IGTUSPqkUv6B6BE1eh1S1oYOF1OLD3nZ72D0W58cxgHMLDZMcqi9R2ZZTdo-Rbhy37I_kqFdKGLgKbQGQ-FwShF79ZA8p30QHMq81or3hmkbQNAtZxML8IqKDwPLwr8RqXq49Sw02lPa3A"/>
+<div class="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
+<span class="text-white text-[10px] font-bold">PDF - 2.8 MB</span>
+</div>
+</div>
+<h5 class="font-label-caps text-label-caps text-primary leading-snug">Türkiye-Azerbaycan Enerji Koridoru Analizi 2024</h5>
+</div>
+</div>
+</section>
+<!-- Footer (from JSON) -->
+<footer class="w-full mt-section-gap bg-primary-container text-on-primary-container flex flex-col items-center p-margin-mobile text-center gap-base">
+<div class="flex items-center gap-2 mb-4">
+<img alt="Logo" class="h-8 brightness-200 contrast-125" src="assets/logo.png"/>
+<span class="font-headline-sm text-headline-sm text-on-primary-container">ASAD</span>
+</div>
+<div class="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6">
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Terms of Service</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Newsletter</a>
+<a class="font-label-caps text-label-caps text-on-primary-container/80 hover:text-secondary-fixed transition-colors" href="#">Archive</a>
+</div>
+<p class="font-label-caps text-label-caps opacity-60 max-w-xs">
+                © 2024 Azerbaycan Stratejik Araştırmalar Derneği. All Rights Reserved.
+            </p>
+</footer>
+</main>
+<!-- BottomNavBar (from JSON) -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-4 h-20 bg-surface dark:bg-inverse-surface shadow-[0_-4px_12px_rgba(11,31,58,0.04)] rounded-t-xl z-50">
+<a href="index.html" class="active-tab text-secondary flex flex-col items-center justify-center pt-2 hover:text-secondary transition-all active:scale-95 duration-200 no-underline"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span><span class="font-label-caps text-[10px] mt-1">Home</span></a>
+<a href="stratejik-raporlar.html" class="text-on-surface-variant flex flex-col items-center justify-center pt-2 hover:text-secondary transition-all active:scale-95 duration-200 no-underline"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">article</span><span class="font-label-caps text-[10px] mt-1">Reports</span></a>
+<a href="yonetim-kurulu.html" class="text-on-surface-variant flex flex-col items-center justify-center pt-2 hover:text-secondary transition-all active:scale-95 duration-200 no-underline"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">groups</span><span class="font-label-caps text-[10px] mt-1">Leaders</span></a>
+<a href="haberler.html" class="text-on-surface-variant flex flex-col items-center justify-center pt-2 hover:text-secondary transition-all active:scale-95 duration-200 no-underline"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">newspaper</span><span class="font-label-caps text-[10px] mt-1">News</span></a>
+<a href="sayfalar.html" class="text-on-surface-variant flex flex-col items-center justify-center pt-2 hover:text-secondary transition-all active:scale-95 duration-200 no-underline"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span><span class="font-label-caps text-[10px] mt-1">Menu</span></a>
+</nav>
+<script>
+        // Micro-interactions for smooth scrolling and active states
+        document.querySelectorAll('nav div').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('nav div').forEach(t => {
+                    t.classList.remove('active-tab');
+                    t.classList.add('text-on-surface-variant');
+                    const icon = t.querySelector('.material-symbols-outlined');
+                    if(icon) icon.style.fontVariationSettings = "'FILL' 0";
+                });
+                this.classList.add('active-tab');
+                this.classList.remove('text-on-surface-variant');
+                const activeIcon = this.querySelector('.material-symbols-outlined');
+                if(activeIcon) activeIcon.style.fontVariationSettings = "'FILL' 1";
+            });
+        });
+
+        // Add scroll shadow effect to TopAppBar
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>
