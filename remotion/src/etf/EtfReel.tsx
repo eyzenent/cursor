@@ -1,6 +1,7 @@
 import { AbsoluteFill } from "remotion";
-import { TransitionSeries, linearTiming } from "@remotion/transitions";
-import { fade } from "@remotion/transitions/fade";
+import { TransitionSeries, springTiming, linearTiming } from "@remotion/transitions";
+import { slide } from "@remotion/transitions/slide";
+import { wipe } from "@remotion/transitions/wipe";
 import {
   BasketScene,
   CostScene,
@@ -10,69 +11,65 @@ import {
   TypesScene,
   WhatScene,
 } from "./scenes";
+import { ProgressRail } from "./motion";
 import { DURATION_FRAMES } from "./theme";
 
-/**
- * Timing plan (30 fps, ~60s including fades):
- * Hook 5.0s | What 8.0s | Basket 10.0s | Diversify 10.0s
- * Cost 10.5s | Types 8.0s | Outro 11.0s
- * 6 fades × 0.5s overlap deducted from total wall time
- */
-const FADE = 15;
+const WIPE = 18;
+const SLIDE = 16;
 
 export const EtfReel: React.FC = () => {
   return (
-    <AbsoluteFill style={{ backgroundColor: "#F3F5F7" }}>
+    <AbsoluteFill style={{ backgroundColor: "#0B0D10" }}>
       <TransitionSeries>
-        <TransitionSeries.Sequence durationInFrames={150}>
+        <TransitionSeries.Sequence durationInFrames={155}>
           <HookScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={fade()}
-          timing={linearTiming({ durationInFrames: FADE })}
+          presentation={wipe({ direction: "from-left" })}
+          timing={linearTiming({ durationInFrames: WIPE })}
         />
-        <TransitionSeries.Sequence durationInFrames={240}>
+        <TransitionSeries.Sequence durationInFrames={245}>
           <WhatScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={fade()}
-          timing={linearTiming({ durationInFrames: FADE })}
+          presentation={slide({ direction: "from-right" })}
+          timing={springTiming({ config: { damping: 200 }, durationInFrames: SLIDE })}
         />
-        <TransitionSeries.Sequence durationInFrames={300}>
+        <TransitionSeries.Sequence durationInFrames={310}>
           <BasketScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={fade()}
-          timing={linearTiming({ durationInFrames: FADE })}
+          presentation={wipe({ direction: "from-top" })}
+          timing={linearTiming({ durationInFrames: WIPE })}
         />
         <TransitionSeries.Sequence durationInFrames={300}>
           <DiversifyScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={fade()}
-          timing={linearTiming({ durationInFrames: FADE })}
+          presentation={slide({ direction: "from-bottom" })}
+          timing={springTiming({ config: { damping: 200 }, durationInFrames: SLIDE })}
         />
-        <TransitionSeries.Sequence durationInFrames={315}>
+        <TransitionSeries.Sequence durationInFrames={320}>
           <CostScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={fade()}
-          timing={linearTiming({ durationInFrames: FADE })}
+          presentation={wipe({ direction: "from-right" })}
+          timing={linearTiming({ durationInFrames: WIPE })}
         />
-        <TransitionSeries.Sequence durationInFrames={240}>
+        <TransitionSeries.Sequence durationInFrames={245}>
           <TypesScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={fade()}
-          timing={linearTiming({ durationInFrames: FADE })}
+          presentation={slide({ direction: "from-left" })}
+          timing={springTiming({ config: { damping: 200 }, durationInFrames: SLIDE })}
         />
-        <TransitionSeries.Sequence durationInFrames={345}>
+        <TransitionSeries.Sequence durationInFrames={327}>
           <OutroScene />
         </TransitionSeries.Sequence>
       </TransitionSeries>
+      <ProgressRail />
     </AbsoluteFill>
   );
 };
 
-// Keep export for metadata consumers
 export const ETF_REEL_DURATION = DURATION_FRAMES;
