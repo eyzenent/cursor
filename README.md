@@ -22,3 +22,14 @@ Tüm sayfalar: https://eyzenent.github.io/cursor/sayfalar.html
 ## Sayfalar
 
 Site `docs/` klasöründe (23 HTML sayfa): ana sayfa, hakkımızda, tüzük, yönetim kurulu, araştırma birimleri, raporlar, yayınlar, haberler, etkinlikler, medya, diaspora, akademik sayfalar, iletişim, kullanıcı paneli ve daha fazlası.
+
+## Remotion
+
+Programatik video projesi `remotion/` klasöründe. Agent skill'leri dahil.
+
+```bash
+cd remotion
+npm install
+npm run dev      # Studio önizleme
+npm run render   # MyComp → out/video.mp4
+```
