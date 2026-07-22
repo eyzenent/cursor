@@ -1,10 +1,19 @@
 import "./index.css";
-import { MyComposition } from "./Composition";
+import { Composition } from "remotion";
+import { EtfReel } from "./etf/EtfReel";
+import { DURATION_FRAMES, FPS, HEIGHT, WIDTH } from "./etf/theme";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
-      <MyComposition />
+      <Composition
+        id="EtfReels"
+        component={EtfReel}
+        durationInFrames={DURATION_FRAMES}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
+      />
     </>
   );
 };

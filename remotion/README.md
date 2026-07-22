@@ -15,12 +15,13 @@ npm install
 npm run dev
 ```
 
+Composition: **EtfReels** — Instagram Reels (1080×1920), 60 sn, Vox-tarzı ETF anlatımı.
+
 ## Video render
 
 ```bash
 npm run render
-# veya
-npx remotion render MyComp out/video.mp4
+# → out/etf-reels.mp4
 ```
 
 ## Agent skills
