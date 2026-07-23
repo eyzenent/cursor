@@ -1,12 +1,13 @@
 # Remotion — Vox-Style ETF Explainer
 
-Instagram Reels (9:16) için Vox tarzı ETF açıklama videosu.
+Instagram Reels (9:16) için Vox tarzı ETF açıklama videosu + Türkçe ElevenLabs konuşmacı.
 
 ## Composition
 
 - **id:** `ETFExplainer`
-- **1080×1920 · 30fps · 50sn (1500 frame)**
+- **1080×1920 · 30fps · ~51sn**
 - Sert kesimler, kinetik tipografi, spring pop-in, progress bar
+- Sahne bazlı voiceover (`public/voiceover/ETFExplainer/`)
 
 ## Çalıştır
 
@@ -17,16 +18,14 @@ npm run dev      # Studio
 npm run render   # out/etf-reels.mp4
 ```
 
-## Yapı
+## Voiceover üret
 
+```bash
+ELEVENLABS_API_KEY=... node scripts/generate-voiceover.mjs
 ```
-src/
-  ETFExplainer.tsx
-  theme.ts              # SCENE_DURATIONS + renkler
-  components/           # KineticText, StatCounter, IconPop, ProgressBar, HighlightBox
-  scenes/               # Hook, Definition, Compare, Advantages, Risk, CTA
-```
+
+Ses sürelerine göre `src/theme.ts` içindeki `SCENE_DURATIONS` güncellenir.
 
 ## Müzik
 
-`public/vox-underscore.mp3` — Kevin MacLeod *Inspired* (CC BY).
+`public/vox-underscore.mp3` — Kevin MacLeod *Inspired* (CC BY), VO altında duck edilir.

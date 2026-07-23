@@ -9,19 +9,26 @@ import { RiskScene } from "./scenes/Risk";
 import { CTAScene } from "./scenes/CTA";
 import {
   SCENE_DURATIONS,
+  SCENE_ORDER,
   SCENE_STARTS,
   TOTAL_FRAMES,
   VOICEOVER_FILES,
   colors,
+  type SceneId,
 } from "./theme";
 
-const SceneVoice: React.FC<{ file: string }> = ({ file }) => (
-  <Audio src={staticFile(file)} volume={1} />
-);
+const scenes: Record<SceneId, React.FC> = {
+  hook: HookScene,
+  definition: DefinitionScene,
+  compare: CompareScene,
+  advantages: AdvantagesScene,
+  risk: RiskScene,
+  cta: CTAScene,
+};
 
 /**
- * Vox-style ETF explainer for Instagram Reels.
- * Hard cuts + Turkish ElevenLabs narrator (Alice / multilingual).
+ * Vox-style ETF explainer — continuous motion, varied layouts,
+ * overlapping scene Sequences, Turkish ElevenLabs VO.
  */
 export const ETFExplainer: React.FC = () => {
   return (
@@ -29,8 +36,7 @@ export const ETFExplainer: React.FC = () => {
       <Audio
         src={staticFile("vox-underscore.mp3")}
         volume={(f) => {
-          // Duck under voiceover
-          const base = 0.14;
+          const base = 0.12;
           if (f < 15) return (f / 15) * base;
           if (f > TOTAL_FRAMES - 30) {
             return ((TOTAL_FRAMES - f) / 30) * base;
@@ -39,64 +45,23 @@ export const ETFExplainer: React.FC = () => {
         }}
       />
 
-      <Sequence
-        name="Hook"
-        from={SCENE_STARTS.hook}
-        durationInFrames={SCENE_DURATIONS.hook}
-      >
-        <SceneVoice file={VOICEOVER_FILES.hook} />
-        <HookScene />
-      </Sequence>
-      <Sequence
-        name="Definition"
-        from={SCENE_STARTS.definition}
-        durationInFrames={SCENE_DURATIONS.definition}
-      >
-        <SceneVoice file={VOICEOVER_FILES.definition} />
-        <DefinitionScene />
-      </Sequence>
-      <Sequence
-        name="Compare"
-        from={SCENE_STARTS.compare}
-        durationInFrames={SCENE_DURATIONS.compare}
-      >
-        <SceneVoice file={VOICEOVER_FILES.compare} />
-        <CompareScene />
-      </Sequence>
-      <Sequence
-        name="Advantages"
-        from={SCENE_STARTS.advantages}
-        durationInFrames={SCENE_DURATIONS.advantages}
-      >
-        <SceneVoice file={VOICEOVER_FILES.advantages} />
-        <AdvantagesScene />
-      </Sequence>
-      <Sequence
-        name="Risk"
-        from={SCENE_STARTS.risk}
-        durationInFrames={SCENE_DURATIONS.risk}
-      >
-        <SceneVoice file={VOICEOVER_FILES.risk} />
-        <RiskScene />
-      </Sequence>
-      <Sequence
-        name="CTA"
-        from={SCENE_STARTS.cta}
-        durationInFrames={SCENE_DURATIONS.cta}
-      >
-        <SceneVoice file={VOICEOVER_FILES.cta} />
-        <CTAScene />
-      </Sequence>
+      {SCENE_ORDER.map((id) => {
+        const Comp = scenes[id];
+        return (
+          <Sequence
+            key={id}
+            name={id}
+            from={SCENE_STARTS[id]}
+            durationInFrames={SCENE_DURATIONS[id]}
+          >
+            <Audio src={staticFile(VOICEOVER_FILES[id])} volume={1} />
+            <Comp />
+          </Sequence>
+        );
+      })}
 
       <ProgressBar
-        sections={[
-          SCENE_DURATIONS.hook,
-          SCENE_DURATIONS.definition,
-          SCENE_DURATIONS.compare,
-          SCENE_DURATIONS.advantages,
-          SCENE_DURATIONS.risk,
-          SCENE_DURATIONS.cta,
-        ]}
+        sections={SCENE_ORDER.map((id) => SCENE_DURATIONS[id])}
       />
     </AbsoluteFill>
   );

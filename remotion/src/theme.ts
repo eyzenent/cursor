@@ -2,53 +2,59 @@ export const FPS = 30;
 export const WIDTH = 1080;
 export const HEIGHT = 1920;
 
+/** Overlap between consecutive scenes (entrance starts before previous exits) */
+export const SCENE_OVERLAP = 15;
+
 /**
- * Scene durations synced to ElevenLabs voiceover (+ ~0.8s visual padding).
- * Regenerate with: ELEVENLABS_API_KEY=... node scripts/generate-voiceover.mjs
+ * Scene durations synced to ElevenLabs voiceover (+ visual padding).
+ * Regenerate VO: ELEVENLABS_API_KEY=... node scripts/generate-voiceover.mjs
  */
 export const SCENE_DURATIONS = {
-  hook: 195, // VO 5.69s
-  definition: 286, // VO 8.72s
-  compare: 243, // VO 7.29s
-  advantages: 427, // VO 13.40s
-  risk: 208, // VO 6.11s
-  cta: 163, // VO 4.21s
+  hook: 195,
+  definition: 286,
+  compare: 243,
+  advantages: 427,
+  risk: 208,
+  cta: 163,
 } as const;
 
-export const VOICEOVER_FILES = {
+export type SceneId = keyof typeof SCENE_DURATIONS;
+
+export const SCENE_ORDER: SceneId[] = [
+  "hook",
+  "definition",
+  "compare",
+  "advantages",
+  "risk",
+  "cta",
+];
+
+export const VOICEOVER_FILES: Record<SceneId, string> = {
   hook: "voiceover/ETFExplainer/hook.mp3",
   definition: "voiceover/ETFExplainer/definition.mp3",
   compare: "voiceover/ETFExplainer/compare.mp3",
   advantages: "voiceover/ETFExplainer/advantages.mp3",
   risk: "voiceover/ETFExplainer/risk.mp3",
   cta: "voiceover/ETFExplainer/cta.mp3",
-} as const;
+};
 
-export const TOTAL_FRAMES = Object.values(SCENE_DURATIONS).reduce(
-  (a, b) => a + b,
-  0,
+/** Overlapping starts — next scene begins before previous ends */
+export const SCENE_STARTS = SCENE_ORDER.reduce(
+  (acc, id, i) => {
+    if (i === 0) {
+      acc[id] = 0;
+    } else {
+      const prev = SCENE_ORDER[i - 1]!;
+      acc[id] = acc[prev]! + SCENE_DURATIONS[prev] - SCENE_OVERLAP;
+    }
+    return acc;
+  },
+  {} as Record<SceneId, number>,
 );
 
-export const SCENE_STARTS = {
-  hook: 0,
-  definition: SCENE_DURATIONS.hook,
-  compare: SCENE_DURATIONS.hook + SCENE_DURATIONS.definition,
-  advantages:
-    SCENE_DURATIONS.hook +
-    SCENE_DURATIONS.definition +
-    SCENE_DURATIONS.compare,
-  risk:
-    SCENE_DURATIONS.hook +
-    SCENE_DURATIONS.definition +
-    SCENE_DURATIONS.compare +
-    SCENE_DURATIONS.advantages,
-  cta:
-    SCENE_DURATIONS.hook +
-    SCENE_DURATIONS.definition +
-    SCENE_DURATIONS.compare +
-    SCENE_DURATIONS.advantages +
-    SCENE_DURATIONS.risk,
-} as const;
+export const TOTAL_FRAMES =
+  Object.values(SCENE_DURATIONS).reduce((a, b) => a + b, 0) -
+  SCENE_OVERLAP * (SCENE_ORDER.length - 1);
 
 export const colors = {
   bg: "#0A0E17",
