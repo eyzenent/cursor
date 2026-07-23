@@ -1,15 +1,15 @@
 import "./index.css";
 import { Composition } from "remotion";
-import { EtfReel } from "./etf/EtfReel";
-import { DURATION_FRAMES, FPS, HEIGHT, WIDTH } from "./etf/theme";
+import { ETFExplainer } from "./ETFExplainer";
+import { FPS, HEIGHT, TOTAL_FRAMES, WIDTH } from "./theme";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Composition
-        id="EtfReels"
-        component={EtfReel}
-        durationInFrames={DURATION_FRAMES}
+        id="ETFExplainer"
+        component={ETFExplainer}
+        durationInFrames={TOTAL_FRAMES}
         fps={FPS}
         width={WIDTH}
         height={HEIGHT}

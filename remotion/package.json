@@ -27,7 +27,7 @@
   "scripts": {
     "dev": "remotion studio",
     "build": "remotion bundle",
-    "render": "remotion render EtfReels out/etf-reels.mp4",
+    "render": "remotion render ETFExplainer out/etf-reels.mp4",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"
   },
