@@ -27,8 +27,8 @@ const scenes: Record<SceneId, React.FC> = {
 };
 
 /**
- * Vox-style ETF explainer — continuous motion, varied layouts,
- * overlapping scene Sequences, Turkish ElevenLabs VO.
+ * Vox-style ETF explainer — hard-cut scenes, safe-area typography,
+ * Turkish ElevenLabs VO + underscore bed.
  */
 export const ETFExplainer: React.FC = () => {
   return (
@@ -60,9 +60,7 @@ export const ETFExplainer: React.FC = () => {
         );
       })}
 
-      <ProgressBar
-        sections={SCENE_ORDER.map((id) => SCENE_DURATIONS[id])}
-      />
+      <ProgressBar />
     </AbsoluteFill>
   );
 };

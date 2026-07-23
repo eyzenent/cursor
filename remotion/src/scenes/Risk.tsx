@@ -8,117 +8,102 @@ import {
 import { KineticText } from "../components/KineticText";
 import { HighlightBox } from "../components/HighlightBox";
 import { IconWarn } from "../components/IconPop";
-import { CameraZoom, FloatingBlocks, idleR, idleY } from "../components/motion";
+import {
+  CameraZoom,
+  FloatingBlocks,
+  SafeStage,
+} from "../components/motion";
 import { fonts } from "../fonts";
 import { SCENE_DURATIONS, colors, springPop } from "../theme";
 
-/** Layout: full-screen color takeover + band text (not same as definition) */
+/** Full-screen color takeover — content centered in safe zone */
 export const RiskScene: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const dur = SCENE_DURATIONS.risk;
-
-  const blast = spring({ frame: frame - 6, fps, config: { damping: 12, stiffness: 90 } });
-  const shake =
-    Math.sin(frame * 1.4) *
-    interpolate(frame, [20, 50, 90], [0, 5, 1.5], {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    });
+  const blast = spring({
+    frame: frame - 4,
+    fps,
+    config: { damping: 14, stiffness: 90 },
+  });
 
   return (
     <AbsoluteFill style={{ backgroundColor: colors.bg, overflow: "hidden" }}>
-      <CameraZoom durationInFrames={dur} from={1.05} to={1.14}>
-        <FloatingBlocks count={7} seed={9} />
-        {/* Expanding red takeover */}
+      <CameraZoom durationInFrames={dur} from={1} to={1.06}>
+        <FloatingBlocks count={5} seed={9} />
         <div
           style={{
             position: "absolute",
             left: "50%",
             top: "50%",
-            width: 200,
-            height: 200,
-            marginLeft: -100,
-            marginTop: -100,
+            width: 180,
+            height: 180,
+            marginLeft: -90,
+            marginTop: -90,
             borderRadius: "50%",
             backgroundColor: colors.red,
-            scale: interpolate(blast, [0, 1], [0.2, 14]),
-            opacity: 0.92,
+            transform: `scale(${interpolate(blast, [0, 1], [0.15, 16])})`,
+            opacity: 0.95,
           }}
         />
       </CameraZoom>
 
-      <AbsoluteFill
-        style={{
-          translate: `${shake}px 0px`,
-          padding: "200px 56px",
-          justifyContent: "center",
-          alignItems: "center",
-          fontFamily: fonts.body,
-        }}
-      >
+      <SafeStage justify="center" style={{ alignItems: "center" }}>
         <div
           style={{
-            translate: `0px ${idleY(frame, 4, 10)}px`,
-            rotate: `${idleR(frame, 2, 14)}deg`,
-            marginBottom: 28,
+            width: 88,
+            height: 88,
+            borderRadius: 20,
+            backgroundColor: colors.bg,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 24,
+            transform: `scale(${spring({ frame: frame - 14, fps, config: springPop })})`,
           }}
         >
-          <div
-            style={{
-              width: 120,
-              height: 120,
-              borderRadius: 28,
-              backgroundColor: colors.bg,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              scale: spring({ frame: frame - 18, fps, config: springPop }),
-            }}
-          >
-            <IconWarn color={colors.red} />
-          </div>
+          <IconWarn color={colors.red} />
         </div>
 
         <KineticText
           text="AMA..."
-          fontSize={120}
-          delay={22}
+          fontSize={88}
+          delay={18}
           align="center"
           color={colors.bg}
-          exitAfter={70}
         />
+        <div style={{ height: 10 }} />
         <KineticText
           text="ETF SİHİR DEĞİL."
-          fontSize={52}
-          delay={40}
+          fontSize={40}
+          delay={32}
           align="center"
           color={colors.bg}
-          exitAfter={95}
         />
 
         <div
           style={{
-            marginTop: 40,
-            maxWidth: 860,
+            marginTop: 32,
+            width: "100%",
             backgroundColor: colors.bg,
-            borderRadius: 18,
-            padding: "28px 26px",
-            opacity: spring({ frame: frame - 70, fps, config: springPop }),
-            translate: `0px ${interpolate(
-              spring({ frame: frame - 70, fps, config: springPop }),
+            borderRadius: 16,
+            padding: "22px 20px",
+            opacity: spring({ frame: frame - 60, fps, config: springPop }),
+            transform: `translateY(${interpolate(
+              spring({ frame: frame - 60, fps, config: springPop }),
               [0, 1],
-              [40, 0],
-            )}px`,
+              [20, 0],
+            )}px)`,
           }}
         >
           <div
             style={{
-              fontSize: 30,
-              fontWeight: 800,
+              fontFamily: fonts.body,
+              fontSize: 24,
+              fontWeight: 700,
               color: colors.white,
-              lineHeight: 1.35,
-              marginBottom: 18,
+              lineHeight: 1.4,
+              marginBottom: 14,
             }}
           >
             Piyasa düşerse ETF de düşebilir. Çeşitlendirme riski yok etmez —
@@ -126,13 +111,13 @@ export const RiskScene: React.FC = () => {
           </div>
           <HighlightBox
             text="Yatırım tavsiyesi değildir"
-            delay={95}
+            delay={80}
             bg={colors.yellow}
             color={colors.bg}
-            fontSize={28}
+            fontSize={24}
           />
         </div>
-      </AbsoluteFill>
+      </SafeStage>
     </AbsoluteFill>
   );
 };

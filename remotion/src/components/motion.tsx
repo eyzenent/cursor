@@ -1,68 +1,73 @@
 import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import { colors } from "../theme";
 
-/** Continuous idle wobble — apply to every resting object */
-export const idleY = (frame: number, amp = 2, speed = 10) =>
+/** Instagram Reels safe padding — keep clear of username / CTA chrome */
+export const SAFE = {
+  top: 300,
+  bottom: 240,
+  side: 56,
+} as const;
+
+export const idleY = (frame: number, amp = 2, speed = 12) =>
   Math.sin(frame / speed) * amp;
 
-export const idleX = (frame: number, amp = 2, speed = 12) =>
+export const idleX = (frame: number, amp = 2, speed = 14) =>
   Math.cos(frame / speed) * amp;
 
-export const idleR = (frame: number, amp = 1.5, speed = 14) =>
+export const idleR = (frame: number, amp = 1.2, speed = 16) =>
   Math.sin(frame / speed) * amp;
 
-/** Slow Ken Burns zoom on a background layer (1 → 1.08 across scene) */
+/** Zoom ONLY decorative backgrounds — never wrap text */
 export const CameraZoom: React.FC<{
   children: React.ReactNode;
   durationInFrames: number;
   from?: number;
   to?: number;
-}> = ({ children, durationInFrames, from = 1, to = 1.08 }) => {
+}> = ({ children, durationInFrames, from = 1, to = 1.06 }) => {
   const frame = useCurrentFrame();
   const scale = interpolate(frame, [0, durationInFrames], [from, to], {
     extrapolateLeft: "clamp",
     extrapolateRight: "clamp",
   });
-  const driftX = interpolate(frame, [0, durationInFrames], [0, -18], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
 
   return (
-    <AbsoluteFill style={{ scale, translate: `${driftX}px 0px` }}>
+    <AbsoluteFill style={{ scale, transformOrigin: "center center" }}>
       {children}
     </AbsoluteFill>
   );
 };
 
-/** Mid/foreground layer that moves opposite to camera (parallax) */
-export const ParallaxFg: React.FC<{
+export const SafeStage: React.FC<{
   children: React.ReactNode;
-  durationInFrames: number;
+  justify?: "center" | "flex-start" | "flex-end" | "space-between";
   style?: React.CSSProperties;
-}> = ({ children, durationInFrames, style }) => {
-  const frame = useCurrentFrame();
-  const y = interpolate(frame, [0, durationInFrames], [12, -8], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-
-  return (
-    <div style={{ translate: `0px ${y}px`, width: "100%", ...style }}>
-      {children}
-    </div>
-  );
-};
+}> = ({ children, justify = "center", style }) => (
+  <AbsoluteFill
+    style={{
+      paddingTop: SAFE.top,
+      paddingBottom: SAFE.bottom,
+      paddingLeft: SAFE.side,
+      paddingRight: SAFE.side,
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: justify,
+      zIndex: 2,
+      ...style,
+    }}
+  >
+    {children}
+  </AbsoluteFill>
+);
 
 export const FloatingBlocks: React.FC<{
   count?: number;
   seed?: number;
-}> = ({ count = 8, seed = 0 }) => {
+}> = ({ count = 7, seed = 0 }) => {
   const frame = useCurrentFrame();
   const blocks = Array.from({ length: count }, (_, i) => {
-    const x = ((i * 137 + seed * 40) % 90) + 5;
-    const y = ((i * 89 + seed * 25) % 85) + 5;
-    const size = 40 + ((i * 23) % 80);
+    const x = ((i * 137 + seed * 40) % 86) + 7;
+    const y = ((i * 89 + seed * 25) % 78) + 12;
+    const size = 36 + ((i * 23) % 64);
     const color =
       i % 3 === 0 ? colors.yellow : i % 3 === 1 ? colors.teal : colors.red;
     return { x, y, size, color, i };
@@ -80,10 +85,10 @@ export const FloatingBlocks: React.FC<{
             width: b.size,
             height: b.size,
             backgroundColor: b.color,
-            opacity: 0.12,
+            opacity: 0.1,
             borderRadius: 10,
-            translate: `${idleX(frame + b.i * 7, 18, 18)}px ${idleY(frame + b.i * 5, 22, 14)}px`,
-            rotate: `${idleR(frame + b.i * 3, 8, 20)}deg`,
+            translate: `${idleX(frame + b.i * 7, 14, 20)}px ${idleY(frame + b.i * 5, 16, 16)}px`,
+            rotate: `${idleR(frame + b.i * 3, 6, 22)}deg`,
           }}
         />
       ))}
@@ -93,17 +98,17 @@ export const FloatingBlocks: React.FC<{
 
 export const MovingGrid: React.FC = () => {
   const frame = useCurrentFrame();
-  const y = -((frame * 1.4) % 72);
-  const x = (frame * 0.6) % 72;
+  const y = -((frame * 1.1) % 72);
+  const x = (frame * 0.45) % 72;
 
   return (
     <AbsoluteFill
       style={{
-        opacity: 0.14,
+        opacity: 0.1,
         backgroundImage: `linear-gradient(${colors.white} 1px, transparent 1px), linear-gradient(90deg, ${colors.white} 1px, transparent 1px)`,
         backgroundSize: "72px 72px",
         translate: `${x}px ${y}px`,
-        scale: 1.3,
+        scale: 1.25,
         pointerEvents: "none",
       }}
     />
@@ -114,8 +119,8 @@ export const SweepLines: React.FC = () => {
   const frame = useCurrentFrame();
   return (
     <AbsoluteFill style={{ pointerEvents: "none", overflow: "hidden" }}>
-      {Array.from({ length: 6 }).map((_, i) => {
-        const y = ((frame * 3 + i * 160) % 2100) - 100;
+      {Array.from({ length: 5 }).map((_, i) => {
+        const y = ((frame * 2.4 + i * 180) % 2100) - 80;
         return (
           <div
             key={i}
@@ -126,7 +131,7 @@ export const SweepLines: React.FC = () => {
               top: y,
               height: 2,
               backgroundColor: i % 2 === 0 ? colors.yellow : colors.teal,
-              opacity: 0.18,
+              opacity: 0.12,
             }}
           />
         );

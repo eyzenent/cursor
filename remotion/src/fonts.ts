@@ -1,17 +1,17 @@
-import { loadFont } from "@remotion/google-fonts/ArchivoBlack";
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 
-const display = loadFont("normal", {
-  weights: ["400"],
-  subsets: ["latin"],
-});
-
-const body = loadInter("normal", {
-  weights: ["500", "600", "700", "800"],
-  subsets: ["latin"],
+/**
+ * Inter + latin-ext — solid Turkish glyph coverage.
+ * Avoid display fonts (Archivo Black etc.) that miss İ/Ş/Ğ.
+ */
+const inter = loadInter("normal", {
+  weights: ["700", "800", "900"],
+  subsets: ["latin-ext", "latin"],
 });
 
 export const fonts = {
-  display: display.fontFamily,
-  body: body.fontFamily,
+  display: inter.fontFamily,
+  body: inter.fontFamily,
 };
+
+export const waitForFonts = () => inter.waitUntilDone();

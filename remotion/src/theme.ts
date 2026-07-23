@@ -3,7 +3,7 @@ export const WIDTH = 1080;
 export const HEIGHT = 1920;
 
 /** Overlap between consecutive scenes (entrance starts before previous exits) */
-export const SCENE_OVERLAP = 15;
+export const SCENE_OVERLAP = 0;
 
 /**
  * Scene durations synced to ElevenLabs voiceover (+ visual padding).

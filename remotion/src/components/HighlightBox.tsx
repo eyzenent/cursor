@@ -13,6 +13,7 @@ type HighlightBoxProps = {
   bg?: string;
   color?: string;
   fontSize?: number;
+  uppercase?: boolean;
 };
 
 export const HighlightBox: React.FC<HighlightBoxProps> = ({
@@ -20,7 +21,8 @@ export const HighlightBox: React.FC<HighlightBoxProps> = ({
   delay = 0,
   bg = colors.yellow,
   color = colors.bg,
-  fontSize = 42,
+  fontSize = 34,
+  uppercase = true,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -29,6 +31,7 @@ export const HighlightBox: React.FC<HighlightBoxProps> = ({
     fps,
     config: springPop,
   });
+  const label = uppercase ? text.toLocaleUpperCase("tr-TR") : text;
 
   return (
     <div
@@ -37,17 +40,19 @@ export const HighlightBox: React.FC<HighlightBoxProps> = ({
         backgroundColor: bg,
         color,
         fontFamily: fonts.display,
+        fontWeight: 900,
         fontSize,
-        lineHeight: 1.1,
-        textTransform: "uppercase",
-        padding: "14px 22px",
-        borderRadius: 10,
-        opacity: t,
-        scale: interpolate(t, [0, 1], [0.7, 1]),
-        rotate: `${interpolate(t, [0, 1], [-6, 0])}deg`,
+        lineHeight: 1.2,
+        padding: "12px 18px",
+        borderRadius: 12,
+        opacity: interpolate(t, [0, 1], [0, 1], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        }),
+        transform: `translateY(${interpolate(t, [0, 1], [12, 0])}px)`,
       }}
     >
-      {text}
+      {label}
     </div>
   );
 };

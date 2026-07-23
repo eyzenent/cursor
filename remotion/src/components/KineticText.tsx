@@ -18,41 +18,47 @@ type KineticTextProps = {
   align?: "left" | "center" | "right";
   mode?: "word" | "char";
   from?: Dir;
-  /** Start exiting after this many frames from delay (overlap-friendly) */
-  exitAfter?: number;
   stagger?: number;
+  maxWidth?: number | string;
 };
 
-const fromOffset = (from: Dir, t: number) => {
-  const d = interpolate(t, [0, 1], [1, 0]);
+/** Turkish-aware casing — CSS text-transform breaks i/İ */
+const trUpper = (s: string) => s.toLocaleUpperCase("tr-TR");
+
+const enterXY = (from: Dir, t: number): [number, number] => {
+  const d = 1 - t;
   switch (from) {
     case "left":
-      return `${-90 * d}px ${20 * d}px`;
+      return [-36 * d, 0];
     case "right":
-      return `${90 * d}px ${20 * d}px`;
+      return [36 * d, 0];
     case "top":
-      return `0px ${-70 * d}px`;
+      return [0, -28 * d];
     default:
-      return `0px ${70 * d}px`;
+      return [0, 28 * d];
   }
 };
 
 export const KineticText: React.FC<KineticTextProps> = ({
   text,
   delay = 0,
-  fontSize = 72,
+  fontSize = 64,
   color = colors.white,
   uppercase = true,
   align = "left",
   mode = "word",
   from = "bottom",
-  exitAfter,
   stagger,
+  maxWidth = "100%",
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
-  const parts = mode === "word" ? text.split(" ") : text.split("");
-  const gap = stagger ?? (mode === "word" ? 3 : 1);
+  const source = uppercase ? trUpper(text) : text;
+  const parts =
+    mode === "word"
+      ? source.split(/\s+/).filter(Boolean)
+      : source.split("");
+  const gap = stagger ?? (mode === "word" ? 2 : 1);
 
   return (
     <div
@@ -65,45 +71,38 @@ export const KineticText: React.FC<KineticTextProps> = ({
             : align === "right"
               ? "flex-end"
               : "flex-start",
-        gap: mode === "word" ? "0 16px" : 0,
+        columnGap: mode === "word" ? 12 : 0,
+        rowGap: mode === "word" ? 4 : 0,
         width: "100%",
+        maxWidth,
         fontFamily: fonts.display,
+        fontWeight: 900,
         fontSize,
-        lineHeight: 1.05,
-        letterSpacing: uppercase ? "0.02em" : 0,
-        textTransform: uppercase ? "uppercase" : "none",
+        lineHeight: 1.12,
+        letterSpacing: uppercase ? "-0.02em" : 0,
         color,
+        // No CSS text-transform — casing handled in JS (tr-TR)
       }}
     >
       {parts.map((part, i) => {
-        const local = frame - delay - i * gap;
-        const enter = spring({
-          frame: local,
+        const t = spring({
+          frame: frame - delay - i * gap,
           fps,
           config: springPop,
         });
-        let exit = 0;
-        if (exitAfter !== undefined) {
-          exit = spring({
-            frame: frame - (delay + exitAfter + i * 2),
-            fps,
-            config: { ...springPop, damping: 16 },
-          });
-        }
-        const visible = Math.max(0, enter - exit);
+        const [x, y] = enterXY(from, t);
         const content = mode === "word" ? part : part === " " ? "\u00A0" : part;
-        const dirs: Dir[] = ["left", "bottom", "right", "top"];
-        const wordFrom = dirs[i % dirs.length] ?? from;
-
         return (
           <span
             key={`${part}-${i}`}
             style={{
               display: "inline-block",
-              opacity: visible,
-              scale: interpolate(visible, [0, 1], [0.5, 1]),
-              translate: fromOffset(wordFrom, visible),
-              rotate: `${interpolate(visible, [0, 1], [wordFrom === "left" ? -12 : 8, 0])}deg`,
+              opacity: interpolate(t, [0, 1], [0, 1], {
+                extrapolateLeft: "clamp",
+                extrapolateRight: "clamp",
+              }),
+              // Opacity + translate only — scale causes glyph blur / ghosts
+              transform: `translate(${x}px, ${y}px)`,
             }}
           >
             {content}

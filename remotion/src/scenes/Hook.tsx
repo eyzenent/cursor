@@ -1,4 +1,4 @@
-import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
+import { AbsoluteFill, useCurrentFrame } from "remotion";
 import { KineticText } from "../components/KineticText";
 import { HighlightBox } from "../components/HighlightBox";
 import { StatCounter } from "../components/StatCounter";
@@ -6,14 +6,13 @@ import {
   CameraZoom,
   FloatingBlocks,
   MovingGrid,
-  ParallaxFg,
-  idleR,
+  SafeStage,
   idleY,
 } from "../components/motion";
 import { fonts } from "../fonts";
 import { SCENE_DURATIONS, colors } from "../theme";
 
-/** Layout: center magnifier — huge kinetic words + orbiting blocks */
+/** Center layout — text only inside SafeStage */
 export const HookScene: React.FC = () => {
   const frame = useCurrentFrame();
   const dur = SCENE_DURATIONS.hook;
@@ -21,80 +20,66 @@ export const HookScene: React.FC = () => {
   return (
     <AbsoluteFill style={{ backgroundColor: colors.bg, overflow: "hidden" }}>
       <CameraZoom durationInFrames={dur}>
-        <FloatingBlocks count={10} seed={1} />
+        <FloatingBlocks count={8} seed={1} />
         <MovingGrid />
+        <div
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "50%",
+            width: 360,
+            height: 360,
+            marginLeft: -180,
+            marginTop: -180,
+            border: `5px solid ${colors.yellow}`,
+            borderRadius: 40,
+            opacity: 0.22,
+            transform: `rotate(${frame * 0.4}deg)`,
+          }}
+        />
       </CameraZoom>
 
-      {/* Orbiting accent square */}
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "42%",
-          width: 420,
-          height: 420,
-          marginLeft: -210,
-          marginTop: -210,
-          border: `6px solid ${colors.yellow}`,
-          borderRadius: 48,
-          opacity: 0.35,
-          rotate: `${frame * 0.6}deg`,
-          scale: interpolate(frame, [0, dur], [0.85, 1.15], {
-            extrapolateRight: "clamp",
-          }),
-        }}
-      />
-
-      <ParallaxFg durationInFrames={dur}>
-        <AbsoluteFill
+      <SafeStage justify="center" style={{ alignItems: "center" }}>
+        <KineticText
+          text="ETF NEDİR?"
+          fontSize={80}
+          delay={2}
+          align="center"
+        />
+        <div style={{ height: 16 }} />
+        <KineticText
+          text="NEDEN HERKES BAHSEDİYOR?"
+          fontSize={34}
+          color={colors.muted}
+          delay={16}
+          align="center"
+        />
+        <div
           style={{
-            padding: "180px 56px",
-            justifyContent: "center",
-            fontFamily: fonts.body,
+            marginTop: 40,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            transform: `translateY(${idleY(frame, 2, 14)}px)`,
           }}
         >
-          <KineticText
-            text="ETF NEDİR?"
-            fontSize={110}
-            delay={2}
-            align="center"
-            exitAfter={70}
-          />
-          <div style={{ height: 18 }} />
-          <KineticText
-            text="NEDEN HERKES BAHSEDİYOR?"
-            fontSize={44}
-            color={colors.muted}
-            delay={28}
-            align="center"
-            exitAfter={100}
-          />
+          <HighlightBox text="Küresel ETF varlıkları" delay={42} fontSize={26} />
+          <div style={{ height: 16 }} />
+          <StatCounter to={13} delay={52} suffix=" TRİLYON $" fontSize={72} />
           <div
             style={{
-              marginTop: 48,
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              translate: `0px ${idleY(frame, 3, 11)}px`,
+              marginTop: 12,
+              fontFamily: fonts.body,
+              fontSize: 22,
+              fontWeight: 700,
+              color: colors.muted,
+              textAlign: "center",
             }}
           >
-            <HighlightBox text="Küresel ETF varlıkları" delay={55} fontSize={30} />
-            <div style={{ height: 16 }} />
-            <StatCounter to={13} delay={65} suffix=" TRİLYON $" fontSize={92} />
-            <div
-              style={{
-                marginTop: 14,
-                fontSize: 26,
-                fontWeight: 700,
-                color: colors.muted,
-                rotate: `${idleR(frame, 1, 16)}deg`,
-              }}
-            >
-              2026 · trilyon dolarlık piyasa
-            </div>
+            2026 · trilyon dolarlık piyasa
           </div>
-        </AbsoluteFill>
-      </ParallaxFg>
+        </div>
+      </SafeStage>
     </AbsoluteFill>
   );
 };

@@ -25,7 +25,7 @@ export const StatCounter: React.FC<StatCounterProps> = ({
   prefix = "",
   suffix = "",
   decimals = 0,
-  fontSize = 96,
+  fontSize = 84,
   color = colors.yellow,
 }) => {
   const frame = useCurrentFrame();
@@ -45,15 +45,21 @@ export const StatCounter: React.FC<StatCounterProps> = ({
     <div
       style={{
         fontFamily: fonts.display,
+        fontWeight: 900,
         fontSize,
-        lineHeight: 1,
+        lineHeight: 1.05,
         color,
-        opacity: enter,
-        scale: interpolate(enter, [0, 1], [0.7, 1]),
+        opacity: interpolate(enter, [0, 1], [0, 1], {
+          extrapolateLeft: "clamp",
+          extrapolateRight: "clamp",
+        }),
+        transform: `translateY(${interpolate(enter, [0, 1], [10, 0])}px)`,
       }}
     >
       {prefix}
-      {decimals > 0 ? value.toFixed(decimals) : Math.round(value).toLocaleString("tr-TR")}
+      {decimals > 0
+        ? value.toFixed(decimals)
+        : Math.round(value).toLocaleString("tr-TR")}
       {suffix}
     </div>
   );
