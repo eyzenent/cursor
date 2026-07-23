@@ -1,73 +1,82 @@
-import { AbsoluteFill } from "remotion";
-import { TransitionSeries, springTiming, linearTiming } from "@remotion/transitions";
-import { slide } from "@remotion/transitions/slide";
-import { wipe } from "@remotion/transitions/wipe";
+import { AbsoluteFill, staticFile } from "remotion";
+import { Audio } from "@remotion/media";
+import { TransitionSeries, linearTiming } from "@remotion/transitions";
+import { fade } from "@remotion/transitions/fade";
 import {
-  BasketScene,
+  CloseScene,
   CostScene,
+  DefinitionScene,
   DiversifyScene,
-  HookScene,
-  OutroScene,
-  TypesScene,
-  WhatScene,
+  LandscapeScene,
+  MechanismScene,
+  OpenScene,
 } from "./scenes";
-import { ProgressRail } from "./motion";
 import { DURATION_FRAMES } from "./theme";
 
-const WIPE = 18;
-const SLIDE = 16;
+const FADE = 20;
 
 export const EtfReel: React.FC = () => {
   return (
-    <AbsoluteFill style={{ backgroundColor: "#0B0D10" }}>
+    <AbsoluteFill style={{ backgroundColor: "#0A0F14" }}>
+      <Audio
+        src={staticFile("documentary-underscore.mp3")}
+        volume={(f) => {
+          // Soft fade in / fade out over the minute
+          if (f < 30) return (f / 30) * 0.38;
+          if (f > DURATION_FRAMES - 45) {
+            return ((DURATION_FRAMES - f) / 45) * 0.38;
+          }
+          return 0.38;
+        }}
+      />
+
       <TransitionSeries>
-        <TransitionSeries.Sequence durationInFrames={155}>
-          <HookScene />
+        <TransitionSeries.Sequence durationInFrames={200}>
+          <OpenScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={wipe({ direction: "from-left" })}
-          timing={linearTiming({ durationInFrames: WIPE })}
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: FADE })}
         />
-        <TransitionSeries.Sequence durationInFrames={245}>
-          <WhatScene />
+        <TransitionSeries.Sequence durationInFrames={260}>
+          <DefinitionScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={slide({ direction: "from-right" })}
-          timing={springTiming({ config: { damping: 200 }, durationInFrames: SLIDE })}
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: FADE })}
         />
-        <TransitionSeries.Sequence durationInFrames={310}>
-          <BasketScene />
+        <TransitionSeries.Sequence durationInFrames={280}>
+          <MechanismScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={wipe({ direction: "from-top" })}
-          timing={linearTiming({ durationInFrames: WIPE })}
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: FADE })}
         />
-        <TransitionSeries.Sequence durationInFrames={300}>
+        <TransitionSeries.Sequence durationInFrames={270}>
           <DiversifyScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={slide({ direction: "from-bottom" })}
-          timing={springTiming({ config: { damping: 200 }, durationInFrames: SLIDE })}
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: FADE })}
         />
-        <TransitionSeries.Sequence durationInFrames={320}>
+        <TransitionSeries.Sequence durationInFrames={280}>
           <CostScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={wipe({ direction: "from-right" })}
-          timing={linearTiming({ durationInFrames: WIPE })}
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: FADE })}
         />
-        <TransitionSeries.Sequence durationInFrames={245}>
-          <TypesScene />
+        <TransitionSeries.Sequence durationInFrames={290}>
+          <LandscapeScene />
         </TransitionSeries.Sequence>
         <TransitionSeries.Transition
-          presentation={slide({ direction: "from-left" })}
-          timing={springTiming({ config: { damping: 200 }, durationInFrames: SLIDE })}
+          presentation={fade()}
+          timing={linearTiming({ durationInFrames: FADE })}
         />
-        <TransitionSeries.Sequence durationInFrames={327}>
-          <OutroScene />
+        <TransitionSeries.Sequence durationInFrames={340}>
+          <CloseScene />
         </TransitionSeries.Sequence>
       </TransitionSeries>
-      <ProgressRail />
     </AbsoluteFill>
   );
 };

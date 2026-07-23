@@ -6,145 +6,187 @@ import {
 } from "remotion";
 import { colors, fonts } from "./theme";
 
-export const out = Easing.bezier(0.16, 1, 0.3, 1);
-export const pop = Easing.bezier(0.34, 1.56, 0.64, 1);
+export const out = Easing.bezier(0.22, 1, 0.36, 1);
 export const soft = Easing.bezier(0.45, 0, 0.55, 1);
-
 export const clamp = {
   extrapolateLeft: "clamp" as const,
   extrapolateRight: "clamp" as const,
 };
 
-export const SceneShell: React.FC<{
-  children: React.ReactNode;
-  bg?: string;
-}> = ({ children, bg = colors.paper }) => {
+export const FilmGrain: React.FC<{ opacity?: number }> = ({ opacity = 0.08 }) => {
   const frame = useCurrentFrame();
-  const cam = interpolate(frame, [0, 120], [1.08, 1], {
+  const shift = (frame * 17) % 100;
+
+  return (
+    <AbsoluteFill
+      style={{
+        opacity,
+        pointerEvents: "none",
+        mixBlendMode: "overlay",
+        backgroundImage: `repeating-radial-gradient(circle at ${shift}% ${50 - shift * 0.3}%, #fff 0 0.5px, transparent 1px 3px)`,
+        backgroundSize: "120px 120px",
+      }}
+    />
+  );
+};
+
+export const Vignette: React.FC = () => (
+  <AbsoluteFill
+    style={{
+      pointerEvents: "none",
+      background:
+        "radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.55) 100%)",
+    }}
+  />
+);
+
+export const DocShell: React.FC<{
+  children: React.ReactNode;
+  light?: boolean;
+}> = ({ children, light }) => {
+  const frame = useCurrentFrame();
+  const zoom = interpolate(frame, [0, 180], [1.06, 1], {
     ...clamp,
     easing: soft,
   });
 
   return (
-    <AbsoluteFill style={{ backgroundColor: bg, overflow: "hidden" }}>
-      <MovingGrid dark={bg === colors.dark} />
+    <AbsoluteFill
+      style={{
+        backgroundColor: light ? colors.cream : colors.bg,
+        color: light ? colors.ink : colors.white,
+        overflow: "hidden",
+      }}
+    >
+      {!light && (
+        <AbsoluteFill
+          style={{
+            background:
+              "radial-gradient(ellipse at 30% 20%, #1a2836 0%, transparent 55%), radial-gradient(ellipse at 80% 80%, #162028 0%, transparent 50%)",
+          }}
+        />
+      )}
       <AbsoluteFill
         style={{
-          scale: cam,
-          color: bg === colors.dark ? colors.white : colors.ink,
+          scale: zoom,
           fontFamily: fonts.body,
+          padding: "140px 72px 160px",
+          display: "flex",
+          flexDirection: "column",
           justifyContent: "center",
-          alignItems: "center",
-          padding: "160px 64px",
         }}
       >
         {children}
       </AbsoluteFill>
+      <FilmGrain opacity={light ? 0.05 : 0.1} />
+      <Vignette />
     </AbsoluteFill>
   );
 };
 
-const MovingGrid: React.FC<{ dark?: boolean }> = ({ dark }) => {
-  const frame = useCurrentFrame();
-  const y = interpolate(frame, [0, 180], [0, -80]);
-  const x = interpolate(frame, [0, 180], [0, 40]);
-
-  return (
-    <AbsoluteFill
-      style={{
-        opacity: dark ? 0.18 : 0.12,
-        backgroundImage: `linear-gradient(${dark ? "#fff" : "#111"} 1px, transparent 1px), linear-gradient(90deg, ${dark ? "#fff" : "#111"} 1px, transparent 1px)`,
-        backgroundSize: "72px 72px",
-        translate: `${x}px ${y}px`,
-        scale: 1.25,
-      }}
-    />
-  );
-};
-
-export const WordLine: React.FC<{
-  words: string[];
+export const ChapterLabel: React.FC<{
+  chapter: string;
   delay?: number;
-  size?: number;
-  color?: string;
-  stagger?: number;
-  align?: "left" | "center";
-}> = ({
-  words,
-  delay = 0,
-  size = 96,
-  color,
-  stagger = 4,
-  align = "left",
-}) => {
+}> = ({ chapter, delay = 0 }) => {
   const frame = useCurrentFrame();
+  const p = interpolate(frame, [delay, delay + 20], [0, 1], {
+    ...clamp,
+    easing: out,
+  });
 
   return (
     <div
       style={{
         display: "flex",
-        flexWrap: "wrap",
-        justifyContent: align === "center" ? "center" : "flex-start",
-        gap: "0 18px",
-        width: "100%",
-        fontFamily: fonts.display,
-        fontSize: size,
-        lineHeight: 0.95,
-        letterSpacing: "0.02em",
-        color,
+        alignItems: "center",
+        gap: 16,
+        marginBottom: 28,
+        opacity: p,
+        translate: `0px ${interpolate(p, [0, 1], [16, 0])}px`,
       }}
     >
-      {words.map((word, i) => {
-        const start = delay + i * stagger;
-        const p = interpolate(frame, [start, start + 14], [0, 1], {
+      <div
+        style={{
+          width: interpolate(p, [0, 1], [0, 36]),
+          height: 2,
+          backgroundColor: colors.amber,
+        }}
+      />
+      <div
+        style={{
+          fontSize: 22,
+          fontWeight: 600,
+          letterSpacing: "0.22em",
+          textTransform: "uppercase",
+          color: colors.amber,
+        }}
+      >
+        {chapter}
+      </div>
+    </div>
+  );
+};
+
+export const DocTitle: React.FC<{
+  lines: string[];
+  delay?: number;
+  size?: number;
+  light?: boolean;
+}> = ({ lines, delay = 0, size = 72, light }) => {
+  const frame = useCurrentFrame();
+
+  return (
+    <div style={{ width: "100%" }}>
+      {lines.map((line, i) => {
+        const start = delay + i * 10;
+        const p = interpolate(frame, [start, start + 22], [0, 1], {
           ...clamp,
-          easing: pop,
+          easing: out,
         });
         return (
-          <span
-            key={`${word}-${i}`}
+          <div
+            key={`${line}-${i}`}
             style={{
-              display: "inline-block",
+              fontFamily: fonts.display,
+              fontSize: size,
+              fontWeight: 600,
+              lineHeight: 1.12,
+              letterSpacing: "-0.01em",
+              color: light ? colors.ink : colors.white,
               opacity: p,
-              translate: `0px ${interpolate(p, [0, 1], [70, 0])}px`,
-              rotate: `${interpolate(p, [0, 1], [8, 0])}deg`,
-              scale: interpolate(p, [0, 1], [0.7, 1]),
+              translate: `0px ${interpolate(p, [0, 1], [28, 0])}px`,
             }}
           >
-            {word}
-          </span>
+            {line}
+          </div>
         );
       })}
     </div>
   );
 };
 
-export const SlamBlock: React.FC<{
+export const DocBody: React.FC<{
   children: React.ReactNode;
   delay?: number;
-  from?: "left" | "right" | "bottom" | "top";
-  style?: React.CSSProperties;
-}> = ({ children, delay = 0, from = "bottom", style }) => {
+  light?: boolean;
+}> = ({ children, delay = 0, light }) => {
   const frame = useCurrentFrame();
-  const p = interpolate(frame, [delay, delay + 16], [0, 1], {
+  const p = interpolate(frame, [delay, delay + 24], [0, 1], {
     ...clamp,
-    easing: pop,
+    easing: out,
   });
-
-  const map = {
-    left: [`${interpolate(p, [0, 1], [-120, 0])}px 0px`, 1],
-    right: [`${interpolate(p, [0, 1], [120, 0])}px 0px`, 1],
-    bottom: [`0px ${interpolate(p, [0, 1], [90, 0])}px`, 1],
-    top: [`0px ${interpolate(p, [0, 1], [-90, 0])}px`, 1],
-  } as const;
 
   return (
     <div
       style={{
+        marginTop: 32,
+        fontSize: 34,
+        lineHeight: 1.45,
+        fontWeight: 500,
+        color: light ? "#3A4450" : colors.muted,
+        maxWidth: 920,
         opacity: p,
-        translate: map[from][0],
-        scale: interpolate(p, [0, 1], [0.85, 1]),
-        ...style,
+        translate: `0px ${interpolate(p, [0, 1], [20, 0])}px`,
       }}
     >
       {children}
@@ -152,14 +194,13 @@ export const SlamBlock: React.FC<{
   );
 };
 
-export const DrawBar: React.FC<{
+export const LowerThird: React.FC<{
+  title: string;
+  subtitle?: string;
   delay?: number;
-  width?: number | string;
-  color?: string;
-  height?: number;
-}> = ({ delay = 0, width = "100%", color = colors.yellow, height = 18 }) => {
+}> = ({ title, subtitle, delay = 0 }) => {
   const frame = useCurrentFrame();
-  const p = interpolate(frame, [delay, delay + 18], [0, 1], {
+  const p = interpolate(frame, [delay, delay + 20], [0, 1], {
     ...clamp,
     easing: out,
   });
@@ -167,118 +208,43 @@ export const DrawBar: React.FC<{
   return (
     <div
       style={{
-        height,
-        width,
-        backgroundColor: color,
-        transformOrigin: "left center",
-        scale: `${p} 1`,
-        marginTop: 18,
-        borderRadius: 4,
-      }}
-    />
-  );
-};
-
-export const CountUp: React.FC<{
-  to: number;
-  delay?: number;
-  duration?: number;
-  prefix?: string;
-  suffix?: string;
-  decimals?: number;
-  size?: number;
-  color?: string;
-}> = ({
-  to,
-  delay = 0,
-  duration = 28,
-  prefix = "",
-  suffix = "",
-  decimals = 0,
-  size = 110,
-  color,
-}) => {
-  const frame = useCurrentFrame();
-  const p = interpolate(frame, [delay, delay + duration], [0, 1], {
-    ...clamp,
-    easing: out,
-  });
-  const value = to * p;
-
-  return (
-    <div
-      style={{
-        fontFamily: fonts.display,
-        fontSize: size,
-        lineHeight: 1,
-        color,
+        position: "absolute",
+        left: 72,
+        bottom: 140,
+        opacity: p,
+        translate: `0px ${interpolate(p, [0, 1], [24, 0])}px`,
       }}
     >
-      {prefix}
-      {decimals > 0 ? value.toFixed(decimals) : Math.round(value)}
-      {suffix}
+      <div
+        style={{
+          width: interpolate(p, [0, 1], [0, 220]),
+          height: 3,
+          backgroundColor: colors.amber,
+          marginBottom: 14,
+        }}
+      />
+      <div
+        style={{
+          fontFamily: fonts.display,
+          fontSize: 36,
+          fontWeight: 600,
+          color: colors.white,
+        }}
+      >
+        {title}
+      </div>
+      {subtitle ? (
+        <div
+          style={{
+            marginTop: 6,
+            fontSize: 22,
+            color: colors.muted,
+            fontWeight: 500,
+          }}
+        >
+          {subtitle}
+        </div>
+      ) : null}
     </div>
-  );
-};
-
-export const Label: React.FC<{ children: React.ReactNode; dark?: boolean }> = ({
-  children,
-  dark,
-}) => {
-  const frame = useCurrentFrame();
-  const p = interpolate(frame, [0, 12], [0, 1], { ...clamp, easing: out });
-
-  return (
-    <div
-      style={{
-        fontFamily: fonts.body,
-        fontSize: 26,
-        fontWeight: 700,
-        letterSpacing: "0.16em",
-        textTransform: "uppercase",
-        color: dark ? colors.yellow : colors.ink,
-        opacity: p * (dark ? 1 : 0.55),
-        translate: `0px ${interpolate(p, [0, 1], [-20, 0])}px`,
-        marginBottom: 24,
-        width: "100%",
-      }}
-    >
-      {children}
-    </div>
-  );
-};
-
-export const FloatingOrbs: React.FC<{ dark?: boolean }> = ({ dark }) => {
-  const frame = useCurrentFrame();
-  const orbs = [
-    { x: 120, y: 280, s: 180, d: 0 },
-    { x: 760, y: 1400, s: 240, d: 10 },
-    { x: 820, y: 420, s: 120, d: 20 },
-  ];
-
-  return (
-    <AbsoluteFill style={{ pointerEvents: "none" }}>
-      {orbs.map((o, i) => {
-        const driftY = Math.sin((frame + o.d) / 28) * 24;
-        const driftX = Math.cos((frame + o.d) / 36) * 16;
-        return (
-          <div
-            key={i}
-            style={{
-              position: "absolute",
-              left: o.x,
-              top: o.y,
-              width: o.s,
-              height: o.s,
-              borderRadius: "50%",
-              backgroundColor: dark ? colors.yellow : colors.accent,
-              opacity: dark ? 0.12 : 0.08,
-              filter: "blur(2px)",
-              translate: `${driftX}px ${driftY}px`,
-            }}
-          />
-        );
-      })}
-    </AbsoluteFill>
   );
 };
