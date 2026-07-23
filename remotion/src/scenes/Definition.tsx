@@ -19,9 +19,14 @@ import {
 import { fonts } from "../fonts";
 import { SCENE_DURATIONS, colors, springPop } from "../theme";
 
-const stocks = ["AAPL", "MSFT", "NVDA", "AMZN", "JPM", "XOM", "V", "META"];
+/** Unique columns — no overlapping ticker ghosts */
+const stocks = [
+  { ticker: "AAPL", col: -1.5, color: colors.yellow },
+  { ticker: "MSFT", col: -0.5, color: colors.teal },
+  { ticker: "NVDA", col: 0.5, color: colors.yellow },
+  { ticker: "AMZN", col: 1.5, color: colors.teal },
+];
 
-/** Basket visual + copy inside safe padding */
 export const DefinitionScene: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -29,23 +34,23 @@ export const DefinitionScene: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: colors.bg, overflow: "hidden" }}>
-      <CameraZoom durationInFrames={dur} from={1} to={1.05}>
+      <CameraZoom durationInFrames={dur} from={1} to={1.04}>
         <FloatingBlocks count={5} seed={4} />
         <SweepLines />
         <div
           style={{
             position: "absolute",
             left: "50%",
-            bottom: SAFE.bottom + 80,
-            width: 600,
-            height: 400,
-            marginLeft: -300,
-            border: `12px solid ${colors.yellow}`,
+            bottom: SAFE.bottom + 100,
+            width: 560,
+            height: 360,
+            marginLeft: -280,
+            border: `10px solid ${colors.yellow}`,
             borderTop: "none",
-            borderRadius: "0 0 56px 56px",
-            backgroundColor: `${colors.yellow}12`,
-            transform: `translateY(${idleY(frame, 4, 18)}px)`,
-            opacity: interpolate(frame, [0, 18], [0, 1], {
+            borderRadius: "0 0 48px 48px",
+            backgroundColor: `${colors.yellow}10`,
+            transform: `translateY(${idleY(frame, 3, 18)}px)`,
+            opacity: interpolate(frame, [0, 16], [0, 1], {
               extrapolateRight: "clamp",
             }),
           }}
@@ -55,76 +60,78 @@ export const DefinitionScene: React.FC = () => {
             position: "absolute",
             left: "50%",
             bottom: SAFE.bottom + 220,
-            marginLeft: -60,
-            opacity: 0.2,
-            transform: "scale(2)",
+            marginLeft: -52,
+            opacity: 0.18,
+            transform: "scale(1.8)",
           }}
         >
           <IconBasket color={colors.yellow} />
         </div>
 
-        {stocks.map((ticker, i) => {
-          const start = 36 + i * 5;
+        {stocks.map((s, i) => {
+          const start = 40 + i * 8;
           const t = spring({ frame: frame - start, fps, config: springPop });
-          const col = (i % 4) - 1.5;
+          const fall = interpolate(t, [0, 1], [0, 1]);
+          // Fade slightly after landing so trails don't stack
+          const fade = interpolate(frame, [start + 40, start + 70], [1, 0.55], {
+            extrapolateLeft: "clamp",
+            extrapolateRight: "clamp",
+          });
           return (
             <div
-              key={ticker}
+              key={s.ticker}
               style={{
                 position: "absolute",
                 left: "50%",
-                top: "42%",
-                width: 110,
-                marginLeft: col * 130 - 55,
-                padding: "12px 0",
+                top: "38%",
+                width: 120,
+                marginLeft: s.col * 140 - 60,
+                padding: "14px 0",
                 textAlign: "center",
-                backgroundColor: i % 2 === 0 ? colors.yellow : colors.teal,
+                backgroundColor: s.color,
                 color: colors.bg,
                 fontFamily: fonts.body,
                 fontWeight: 800,
-                fontSize: 20,
-                borderRadius: 10,
-                opacity: t,
-                transform: `translateY(${interpolate(t, [0, 1], [-24, 160 + (i % 3) * 20])}px) scale(${interpolate(t, [0, 1], [0.75, 1])})`,
+                fontSize: 22,
+                borderRadius: 12,
+                opacity: t * fade,
+                transform: `translateY(${interpolate(fall, [0, 1], [-20, 200])}px)`,
               }}
             >
-              {ticker}
+              {s.ticker}
             </div>
           );
         })}
       </CameraZoom>
 
-      <SafeStage justify="flex-start">
-        <KineticText text="BİR SEPET." fontSize={60} delay={4} />
-        <div style={{ height: 8 }} />
-        <KineticText
-          text="İÇİNDE YÜZLERCE VARLIK."
-          fontSize={32}
-          color={colors.muted}
-          delay={16}
-        />
-        <div style={{ marginTop: 14 }}>
-          <HighlightBox text="Exchange Traded Fund" delay={34} fontSize={24} />
+      <SafeStage justify="space-between">
+        <div>
+          <KineticText text="BİR SEPET." fontSize={58} delay={4} />
+          <div style={{ height: 8 }} />
+          <KineticText
+            text="İÇİNDE YÜZLERCE VARLIK."
+            fontSize={30}
+            color={colors.muted}
+            delay={16}
+          />
+          <div style={{ marginTop: 14 }}>
+            <HighlightBox text="Exchange Traded Fund" delay={30} fontSize={22} />
+          </div>
+        </div>
+
+        <div
+          style={{
+            textAlign: "center",
+            fontFamily: fonts.display,
+            fontWeight: 900,
+            fontSize: 28,
+            color: colors.white,
+            opacity: spring({ frame: frame - 90, fps, config: springPop }),
+          }}
+        >
+          {("Tek işlem → tüm sepet").toLocaleUpperCase("tr-TR")}
         </div>
       </SafeStage>
-
-      <div
-        style={{
-          position: "absolute",
-          bottom: SAFE.bottom + 28,
-          left: SAFE.side,
-          right: SAFE.side,
-          textAlign: "center",
-          fontFamily: fonts.display,
-          fontWeight: 900,
-          fontSize: 28,
-          color: colors.white,
-          opacity: spring({ frame: frame - 95, fps, config: springPop }),
-          zIndex: 3,
-        }}
-      >
-        {("Tek işlem → tüm sepet").toLocaleUpperCase("tr-TR")}
-      </div>
     </AbsoluteFill>
   );
 };

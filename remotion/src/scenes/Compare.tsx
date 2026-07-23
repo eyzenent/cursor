@@ -23,7 +23,7 @@ const rows = [
   { label: "Çeşitlilik", left: "Hayır", right: "Hazır" },
 ];
 
-/** Split-screen fully inside safe zone */
+/** Split cards hug content — no tall empty panels */
 export const CompareScene: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -33,32 +33,30 @@ export const CompareScene: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: colors.bg, overflow: "hidden" }}>
-      <CameraZoom durationInFrames={dur} from={1} to={1.04}>
+      <CameraZoom durationInFrames={dur} from={1} to={1.03}>
         <MovingGrid />
       </CameraZoom>
 
-      <SafeStage justify="flex-start">
-        <KineticText text="ETF vs HİSSE" fontSize={52} delay={2} />
+      <SafeStage justify="center">
+        <KineticText text="ETF vs HİSSE" fontSize={48} delay={2} />
 
         <div
           style={{
-            flex: 1,
             display: "flex",
             gap: 12,
-            marginTop: 20,
-            marginBottom: 16,
-            minHeight: 0,
+            marginTop: 24,
+            marginBottom: 20,
+            alignItems: "stretch",
           }}
         >
           <div
             style={{
               flex: 1,
               backgroundColor: colors.card,
-              borderRadius: 20,
-              padding: "20px 16px",
+              borderRadius: 18,
+              padding: "18px 14px",
               opacity: leftIn,
-              transform: `translateX(${interpolate(leftIn, [0, 1], [-36, 0])}px)`,
-              overflow: "hidden",
+              transform: `translateX(${interpolate(leftIn, [0, 1], [-28, 0])}px)`,
             }}
           >
             <div
@@ -66,13 +64,13 @@ export const CompareScene: React.FC = () => {
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
-                marginBottom: 14,
+                marginBottom: 12,
               }}
             >
               <div
                 style={{
-                  width: 48,
-                  height: 48,
+                  width: 44,
+                  height: 44,
                   borderRadius: 12,
                   backgroundColor: "#2A3348",
                   display: "flex",
@@ -87,7 +85,7 @@ export const CompareScene: React.FC = () => {
                 style={{
                   fontFamily: fonts.display,
                   fontWeight: 900,
-                  fontSize: 28,
+                  fontSize: 26,
                   color: colors.muted,
                 }}
               >
@@ -96,7 +94,7 @@ export const CompareScene: React.FC = () => {
             </div>
             {rows.map((r, i) => {
               const t = spring({
-                frame: frame - (28 + i * 7),
+                frame: frame - (24 + i * 6),
                 fps,
                 config: springPop,
               });
@@ -104,16 +102,16 @@ export const CompareScene: React.FC = () => {
                 <div
                   key={r.label}
                   style={{
-                    marginBottom: 10,
+                    marginBottom: i === rows.length - 1 ? 0 : 8,
                     opacity: t,
-                    transform: `translateY(${interpolate(t, [0, 1], [12, 0])}px)`,
+                    transform: `translateY(${interpolate(t, [0, 1], [10, 0])}px)`,
                   }}
                 >
                   <div
                     style={{
-                      fontSize: 16,
+                      fontSize: 15,
                       color: colors.muted,
-                      marginBottom: 3,
+                      marginBottom: 2,
                       fontWeight: 600,
                       fontFamily: fonts.body,
                     }}
@@ -126,7 +124,7 @@ export const CompareScene: React.FC = () => {
                       borderRadius: 10,
                       padding: "10px 12px",
                       fontWeight: 800,
-                      fontSize: 20,
+                      fontSize: 19,
                       color: colors.white,
                       fontFamily: fonts.body,
                     }}
@@ -142,11 +140,10 @@ export const CompareScene: React.FC = () => {
             style={{
               flex: 1,
               backgroundColor: colors.yellow,
-              borderRadius: 20,
-              padding: "20px 16px",
+              borderRadius: 18,
+              padding: "18px 14px",
               opacity: rightIn,
-              transform: `translateX(${interpolate(rightIn, [0, 1], [36, 0])}px)`,
-              overflow: "hidden",
+              transform: `translateX(${interpolate(rightIn, [0, 1], [28, 0])}px)`,
             }}
           >
             <div
@@ -154,13 +151,13 @@ export const CompareScene: React.FC = () => {
                 display: "flex",
                 alignItems: "center",
                 gap: 10,
-                marginBottom: 14,
+                marginBottom: 12,
               }}
             >
               <div
                 style={{
-                  width: 48,
-                  height: 48,
+                  width: 44,
+                  height: 44,
                   borderRadius: 12,
                   backgroundColor: colors.bg,
                   display: "flex",
@@ -175,7 +172,7 @@ export const CompareScene: React.FC = () => {
                 style={{
                   fontFamily: fonts.display,
                   fontWeight: 900,
-                  fontSize: 28,
+                  fontSize: 26,
                   color: colors.bg,
                 }}
               >
@@ -184,7 +181,7 @@ export const CompareScene: React.FC = () => {
             </div>
             {rows.map((r, i) => {
               const t = spring({
-                frame: frame - (34 + i * 7),
+                frame: frame - (28 + i * 6),
                 fps,
                 config: springPop,
               });
@@ -192,16 +189,16 @@ export const CompareScene: React.FC = () => {
                 <div
                   key={r.label}
                   style={{
-                    marginBottom: 10,
+                    marginBottom: i === rows.length - 1 ? 0 : 8,
                     opacity: t,
-                    transform: `translateY(${interpolate(t, [0, 1], [12, 0])}px)`,
+                    transform: `translateY(${interpolate(t, [0, 1], [10, 0])}px)`,
                   }}
                 >
                   <div
                     style={{
-                      fontSize: 16,
+                      fontSize: 15,
                       color: "#5A4A10",
-                      marginBottom: 3,
+                      marginBottom: 2,
                       fontWeight: 700,
                       fontFamily: fonts.body,
                     }}
@@ -215,7 +212,7 @@ export const CompareScene: React.FC = () => {
                       borderRadius: 10,
                       padding: "10px 12px",
                       fontWeight: 800,
-                      fontSize: 20,
+                      fontSize: 19,
                       fontFamily: fonts.body,
                     }}
                   >
@@ -235,9 +232,9 @@ export const CompareScene: React.FC = () => {
             padding: "14px 16px",
             fontFamily: fonts.display,
             fontWeight: 900,
-            fontSize: 22,
+            fontSize: 20,
             textAlign: "center",
-            opacity: spring({ frame: frame - 95, fps, config: springPop }),
+            opacity: spring({ frame: frame - 85, fps, config: springPop }),
             transform: `translateY(${idleY(frame, 1.5, 12)}px)`,
           }}
         >

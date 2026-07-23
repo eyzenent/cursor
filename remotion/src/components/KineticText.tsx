@@ -79,7 +79,7 @@ export const KineticText: React.FC<KineticTextProps> = ({
         fontWeight: 900,
         fontSize,
         lineHeight: 1.12,
-        letterSpacing: uppercase ? "-0.02em" : 0,
+        letterSpacing: uppercase ? "-0.01em" : 0,
         color,
         // No CSS text-transform — casing handled in JS (tr-TR)
       }}

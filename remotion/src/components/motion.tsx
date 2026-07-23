@@ -3,8 +3,8 @@ import { colors } from "../theme";
 
 /** Instagram Reels safe padding — keep clear of username / CTA chrome */
 export const SAFE = {
-  top: 300,
-  bottom: 240,
+  top: 320,
+  bottom: 260,
   side: 56,
 } as const;
 
