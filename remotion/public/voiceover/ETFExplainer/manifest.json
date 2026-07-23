@@ -1,0 +1,37 @@
+{
+  "voiceId": "Xb7hH8MSUJpSbSDYk0k2",
+  "model": "eleven_multilingual_v2",
+  "generatedAt": "2026-07-23T08:36:29.977Z",
+  "scenes": [
+    {
+      "id": "hook",
+      "file": "voiceover/ETFExplainer/hook.mp3",
+      "duration": 5.694694
+    },
+    {
+      "id": "definition",
+      "file": "voiceover/ETFExplainer/definition.mp3",
+      "duration": 8.724898
+    },
+    {
+      "id": "compare",
+      "file": "voiceover/ETFExplainer/compare.mp3",
+      "duration": 7.288163
+    },
+    {
+      "id": "advantages",
+      "file": "voiceover/ETFExplainer/advantages.mp3",
+      "duration": 13.400816
+    },
+    {
+      "id": "risk",
+      "file": "voiceover/ETFExplainer/risk.mp3",
+      "duration": 6.112653
+    },
+    {
+      "id": "cta",
+      "file": "voiceover/ETFExplainer/cta.mp3",
+      "duration": 4.205714
+    }
+  ]
+}

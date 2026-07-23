@@ -11,12 +11,17 @@ import {
   SCENE_DURATIONS,
   SCENE_STARTS,
   TOTAL_FRAMES,
+  VOICEOVER_FILES,
   colors,
 } from "./theme";
 
+const SceneVoice: React.FC<{ file: string }> = ({ file }) => (
+  <Audio src={staticFile(file)} volume={1} />
+);
+
 /**
  * Vox-style ETF explainer for Instagram Reels.
- * Hard cuts between scenes (no crossfade). Timing via SCENE_DURATIONS.
+ * Hard cuts + Turkish ElevenLabs narrator (Alice / multilingual).
  */
 export const ETFExplainer: React.FC = () => {
   return (
@@ -24,11 +29,13 @@ export const ETFExplainer: React.FC = () => {
       <Audio
         src={staticFile("vox-underscore.mp3")}
         volume={(f) => {
-          if (f < 20) return (f / 20) * 0.42;
-          if (f > TOTAL_FRAMES - 35) {
-            return ((TOTAL_FRAMES - f) / 35) * 0.42;
+          // Duck under voiceover
+          const base = 0.14;
+          if (f < 15) return (f / 15) * base;
+          if (f > TOTAL_FRAMES - 30) {
+            return ((TOTAL_FRAMES - f) / 30) * base;
           }
-          return 0.42;
+          return base;
         }}
       />
 
@@ -37,6 +44,7 @@ export const ETFExplainer: React.FC = () => {
         from={SCENE_STARTS.hook}
         durationInFrames={SCENE_DURATIONS.hook}
       >
+        <SceneVoice file={VOICEOVER_FILES.hook} />
         <HookScene />
       </Sequence>
       <Sequence
@@ -44,6 +52,7 @@ export const ETFExplainer: React.FC = () => {
         from={SCENE_STARTS.definition}
         durationInFrames={SCENE_DURATIONS.definition}
       >
+        <SceneVoice file={VOICEOVER_FILES.definition} />
         <DefinitionScene />
       </Sequence>
       <Sequence
@@ -51,6 +60,7 @@ export const ETFExplainer: React.FC = () => {
         from={SCENE_STARTS.compare}
         durationInFrames={SCENE_DURATIONS.compare}
       >
+        <SceneVoice file={VOICEOVER_FILES.compare} />
         <CompareScene />
       </Sequence>
       <Sequence
@@ -58,6 +68,7 @@ export const ETFExplainer: React.FC = () => {
         from={SCENE_STARTS.advantages}
         durationInFrames={SCENE_DURATIONS.advantages}
       >
+        <SceneVoice file={VOICEOVER_FILES.advantages} />
         <AdvantagesScene />
       </Sequence>
       <Sequence
@@ -65,6 +76,7 @@ export const ETFExplainer: React.FC = () => {
         from={SCENE_STARTS.risk}
         durationInFrames={SCENE_DURATIONS.risk}
       >
+        <SceneVoice file={VOICEOVER_FILES.risk} />
         <RiskScene />
       </Sequence>
       <Sequence
@@ -72,6 +84,7 @@ export const ETFExplainer: React.FC = () => {
         from={SCENE_STARTS.cta}
         durationInFrames={SCENE_DURATIONS.cta}
       >
+        <SceneVoice file={VOICEOVER_FILES.cta} />
         <CTAScene />
       </Sequence>
 

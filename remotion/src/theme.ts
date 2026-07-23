@@ -2,14 +2,26 @@ export const FPS = 30;
 export const WIDTH = 1080;
 export const HEIGHT = 1920;
 
-/** Scene durations in frames — adjust here to retime the whole piece */
+/**
+ * Scene durations synced to ElevenLabs voiceover (+ ~0.8s visual padding).
+ * Regenerate with: ELEVENLABS_API_KEY=... node scripts/generate-voiceover.mjs
+ */
 export const SCENE_DURATIONS = {
-  hook: 90, // 3s
-  definition: 210, // 7s
-  compare: 300, // 10s
-  advantages: 450, // 15s
-  risk: 210, // 7s
-  cta: 240, // 8s
+  hook: 195, // VO 5.69s
+  definition: 286, // VO 8.72s
+  compare: 243, // VO 7.29s
+  advantages: 427, // VO 13.40s
+  risk: 208, // VO 6.11s
+  cta: 163, // VO 4.21s
+} as const;
+
+export const VOICEOVER_FILES = {
+  hook: "voiceover/ETFExplainer/hook.mp3",
+  definition: "voiceover/ETFExplainer/definition.mp3",
+  compare: "voiceover/ETFExplainer/compare.mp3",
+  advantages: "voiceover/ETFExplainer/advantages.mp3",
+  risk: "voiceover/ETFExplainer/risk.mp3",
+  cta: "voiceover/ETFExplainer/cta.mp3",
 } as const;
 
 export const TOTAL_FRAMES = Object.values(SCENE_DURATIONS).reduce(
