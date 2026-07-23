@@ -5,6 +5,7 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { BrandLogo } from "../components/BrandLogo";
 import { KineticText } from "../components/KineticText";
 import { HighlightBox } from "../components/HighlightBox";
 import {
@@ -17,7 +18,7 @@ import {
 import { fonts } from "../fonts";
 import { SCENE_DURATIONS, colors, springPop } from "../theme";
 
-/** Center CTA — safe padded, no overlapping chrome */
+/** End card — brand logo + CTA */
 export const CTAScene: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -58,37 +59,41 @@ export const CTAScene: React.FC = () => {
       </CameraZoom>
 
       <SafeStage justify="center" style={{ alignItems: "center" }}>
-        <KineticText text="ÖĞREN." fontSize={76} delay={2} align="center" />
-        <div style={{ height: 6 }} />
+        <BrandLogo width={520} delay={0} />
+
+        <div style={{ height: 36 }} />
+
+        <KineticText text="ÖĞREN." fontSize={68} delay={12} align="center" />
+        <div style={{ height: 4 }} />
         <KineticText
           text="KARŞILAŞTIR."
-          fontSize={64}
-          delay={14}
+          fontSize={56}
+          delay={22}
           align="center"
           color={colors.yellow}
         />
-        <div style={{ height: 6 }} />
+        <div style={{ height: 4 }} />
         <KineticText
           text="SONRA KARAR VER."
-          fontSize={36}
-          delay={28}
+          fontSize={32}
+          delay={34}
           align="center"
           color={colors.muted}
         />
 
-        <div style={{ height: 24 }} />
-        <HighlightBox text="ETF 101" delay={42} fontSize={28} />
+        <div style={{ height: 20 }} />
+        <HighlightBox text="ETF 101" delay={46} fontSize={26} />
 
         <div
           style={{
-            marginTop: 32,
-            padding: "20px 32px",
+            marginTop: 28,
+            padding: "18px 30px",
             backgroundColor: colors.yellow,
             color: colors.bg,
             borderRadius: 16,
             fontFamily: fonts.display,
             fontWeight: 900,
-            fontSize: 32,
+            fontSize: 30,
             opacity: btn,
             transform: `translateY(${idleY(frame, 2.5, 10)}px) scale(${interpolate(btn, [0, 1], [0.92, 1])})`,
           }}
@@ -98,14 +103,14 @@ export const CTAScene: React.FC = () => {
 
         <div
           style={{
-            marginTop: 24,
+            marginTop: 22,
             fontFamily: fonts.body,
-            fontSize: 17,
+            fontSize: 16,
             fontWeight: 700,
             color: colors.muted,
             letterSpacing: "0.08em",
             textAlign: "center",
-            opacity: interpolate(frame, [85, 110], [0, 1], {
+            opacity: interpolate(frame, [90, 115], [0, 1], {
               extrapolateLeft: "clamp",
               extrapolateRight: "clamp",
             }),

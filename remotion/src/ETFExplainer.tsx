@@ -1,5 +1,6 @@
 import { AbsoluteFill, Sequence, staticFile } from "remotion";
 import { Audio } from "@remotion/media";
+import { BrandWatermark } from "./components/BrandLogo";
 import { ProgressBar } from "./components/ProgressBar";
 import { HookScene } from "./scenes/Hook";
 import { DefinitionScene } from "./scenes/Definition";
@@ -26,9 +27,17 @@ const scenes: Record<SceneId, React.FC> = {
   cta: CTAScene,
 };
 
+/** Mid scenes get a light watermark; hook/cta already feature the full logo */
+const WATERMARK_SCENES: SceneId[] = [
+  "definition",
+  "compare",
+  "advantages",
+  "risk",
+];
+
 /**
- * Vox-style ETF explainer — hard-cut scenes, safe-area typography,
- * Turkish ElevenLabs VO + underscore bed.
+ * Vox-style ETF explainer — EYVAZCO branded,
+ * hard-cut scenes, Turkish ElevenLabs VO + underscore bed.
  */
 export const ETFExplainer: React.FC = () => {
   return (
@@ -56,6 +65,9 @@ export const ETFExplainer: React.FC = () => {
           >
             <Audio src={staticFile(VOICEOVER_FILES[id])} volume={1} />
             <Comp />
+            {WATERMARK_SCENES.includes(id) ? (
+              <BrandWatermark opacity={0.42} />
+            ) : null}
           </Sequence>
         );
       })}

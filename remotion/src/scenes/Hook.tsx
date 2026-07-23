@@ -1,4 +1,5 @@
 import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { BrandLogo } from "../components/BrandLogo";
 import { KineticText } from "../components/KineticText";
 import { HighlightBox } from "../components/HighlightBox";
 import { StatCounter } from "../components/StatCounter";
@@ -12,7 +13,7 @@ import {
 import { fonts } from "../fonts";
 import { SCENE_DURATIONS, colors } from "../theme";
 
-/** Center layout — text only inside SafeStage */
+/** Center layout — brand + hook copy inside SafeStage */
 export const HookScene: React.FC = () => {
   const frame = useCurrentFrame();
   const dur = SCENE_DURATIONS.hook;
@@ -40,10 +41,12 @@ export const HookScene: React.FC = () => {
       </CameraZoom>
 
       <SafeStage justify="center" style={{ alignItems: "center" }}>
+        <BrandLogo width={400} delay={0} />
+        <div style={{ height: 28 }} />
         <KineticText
           text="ETF NEDİR?"
           fontSize={80}
-          delay={2}
+          delay={8}
           align="center"
         />
         <div style={{ height: 16 }} />
