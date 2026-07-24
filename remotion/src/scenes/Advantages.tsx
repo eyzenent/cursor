@@ -123,7 +123,15 @@ export const AdvantagesScene: React.FC = () => {
           scaleTo={1.12}
           panX={-14}
           panY={20}
-          vignette={0.65}
+          vignette={0.78}
+        />
+        {/* Extra left scrim so kinetic copy stays readable over busy charts */}
+        <AbsoluteFill
+          style={{
+            background:
+              "linear-gradient(90deg, rgba(10,14,23,0.82) 0%, rgba(10,14,23,0.45) 55%, rgba(10,14,23,0.15) 100%)",
+            pointerEvents: "none",
+          }}
         />
         <MovingGrid />
         <SweepLines />
