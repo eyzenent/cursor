@@ -2,12 +2,16 @@ export const FPS = 30;
 export const WIDTH = 1080;
 export const HEIGHT = 1920;
 
-/** Overlap between consecutive scenes (entrance starts before previous exits) */
-export const SCENE_OVERLAP = 0;
+/**
+ * Scene transition overlap (frames).
+ * Next scene entrance starts before previous fully exits — Vox-style wipe feel.
+ */
+export const SCENE_OVERLAP = 14;
 
 /**
  * Scene durations synced to ElevenLabs voiceover (+ visual padding).
- * Regenerate VO: ELEVENLABS_API_KEY=... node scripts/generate-voiceover.mjs
+ * Total with overlap ≈ 45–55s. Regenerate VO:
+ * ELEVENLABS_API_KEY=... node scripts/generate-voiceover.mjs
  */
 export const SCENE_DURATIONS = {
   hook: 195,
@@ -36,6 +40,15 @@ export const VOICEOVER_FILES: Record<SceneId, string> = {
   advantages: "voiceover/ETFExplainer/advantages.mp3",
   risk: "voiceover/ETFExplainer/risk.mp3",
   cta: "voiceover/ETFExplainer/cta.mp3",
+};
+
+export const SCENE_IMAGES: Record<SceneId, string> = {
+  hook: "images/hook-market.jpg",
+  definition: "images/definition-coins.jpg",
+  compare: "images/compare-building.jpg",
+  advantages: "images/advantages-phone.jpg",
+  risk: "images/risk-street.jpg",
+  cta: "images/cta-city.jpg",
 };
 
 /** Overlapping starts — next scene begins before previous ends */

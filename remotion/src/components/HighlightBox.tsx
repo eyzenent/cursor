@@ -6,6 +6,7 @@ import {
 } from "remotion";
 import { fonts } from "../fonts";
 import { colors, springPop } from "../theme";
+import { idleY } from "./motion";
 
 type HighlightBoxProps = {
   text: string;
@@ -49,7 +50,7 @@ export const HighlightBox: React.FC<HighlightBoxProps> = ({
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
         }),
-        transform: `translateY(${interpolate(t, [0, 1], [12, 0])}px)`,
+        transform: `translateY(${interpolate(t, [0, 1], [12, 0]) + idleY(frame, 1.2, 14)}px)`,
       }}
     >
       {label}

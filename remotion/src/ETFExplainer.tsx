@@ -1,6 +1,5 @@
 import { AbsoluteFill, Sequence, staticFile } from "remotion";
 import { Audio } from "@remotion/media";
-import { BrandWatermark } from "./components/BrandLogo";
 import { ProgressBar } from "./components/ProgressBar";
 import { HookScene } from "./scenes/Hook";
 import { DefinitionScene } from "./scenes/Definition";
@@ -27,17 +26,10 @@ const scenes: Record<SceneId, React.FC> = {
   cta: CTAScene,
 };
 
-/** Mid scenes get a light watermark; hook/cta already feature the full logo */
-const WATERMARK_SCENES: SceneId[] = [
-  "definition",
-  "compare",
-  "advantages",
-  "risk",
-];
-
 /**
- * Vox-style ETF explainer — EYVAZCO branded,
- * hard-cut scenes, Turkish ElevenLabs VO + underscore bed.
+ * Vox-style ETF explainer (9:16 Reels).
+ * Overlapping Sequences, photo duotone + Ken Burns, continuous motion.
+ * EYVAZCO branded. Turkish VO + underscore bed.
  */
 export const ETFExplainer: React.FC = () => {
   return (
@@ -45,7 +37,7 @@ export const ETFExplainer: React.FC = () => {
       <Audio
         src={staticFile("vox-underscore.mp3")}
         volume={(f) => {
-          const base = 0.12;
+          const base = 0.1;
           if (f < 15) return (f / 15) * base;
           if (f > TOTAL_FRAMES - 30) {
             return ((TOTAL_FRAMES - f) / 30) * base;
@@ -65,9 +57,6 @@ export const ETFExplainer: React.FC = () => {
           >
             <Audio src={staticFile(VOICEOVER_FILES[id])} volume={1} />
             <Comp />
-            {WATERMARK_SCENES.includes(id) ? (
-              <BrandWatermark opacity={0.42} />
-            ) : null}
           </Sequence>
         );
       })}

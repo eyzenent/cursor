@@ -6,6 +6,7 @@ import {
 } from "remotion";
 import { fonts } from "../fonts";
 import { colors, springPop } from "../theme";
+import { idleY } from "./motion";
 
 type StatCounterProps = {
   to: number;
@@ -53,7 +54,7 @@ export const StatCounter: React.FC<StatCounterProps> = ({
           extrapolateLeft: "clamp",
           extrapolateRight: "clamp",
         }),
-        transform: `translateY(${interpolate(enter, [0, 1], [10, 0])}px)`,
+        transform: `translateY(${interpolate(enter, [0, 1], [10, 0]) + idleY(frame, 1.5, 15)}px)`,
       }}
     >
       {prefix}

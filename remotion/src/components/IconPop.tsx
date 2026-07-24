@@ -5,6 +5,7 @@ import {
   useVideoConfig,
 } from "remotion";
 import { springPop } from "../theme";
+import { idleR, idleY } from "./motion";
 
 type IconPopProps = {
   delay?: number;
@@ -40,9 +41,9 @@ export const IconPop: React.FC<IconPopProps> = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        flexShrink: 0,
         opacity: t,
-        scale: interpolate(t, [0, 1], [0.4, 1]),
-        rotate: `${interpolate(t, [0, 1], [-18, 0])}deg`,
+        transform: `translateY(${idleY(frame, 2, 11)}px) scale(${interpolate(t, [0, 1], [0.4, 1])}) rotate(${interpolate(t, [0, 1], [-18, 0]) + idleR(frame, 1.5, 18)}deg)`,
       }}
     >
       {children}

@@ -8,18 +8,17 @@ import {
 import { KineticText } from "../components/KineticText";
 import { HighlightBox } from "../components/HighlightBox";
 import { IconBasket } from "../components/IconPop";
+import { PhotoBackground } from "../components/PhotoBackground";
 import {
-  CameraZoom,
   FloatingBlocks,
   SAFE,
-  SafeStage,
+  SceneExit,
   SweepLines,
   idleY,
 } from "../components/motion";
 import { fonts } from "../fonts";
-import { SCENE_DURATIONS, colors, springPop } from "../theme";
+import { SCENE_DURATIONS, SCENE_IMAGES, colors, springPop } from "../theme";
 
-/** Unique columns — no overlapping ticker ghosts */
 const stocks = [
   { ticker: "AAPL", col: -1.5, color: colors.yellow },
   { ticker: "MSFT", col: -0.5, color: colors.teal },
@@ -27,6 +26,9 @@ const stocks = [
   { ticker: "AMZN", col: 1.5, color: colors.teal },
 ];
 
+/**
+ * Layout B — full-bleed photo + top text band + lower basket visual
+ */
 export const DefinitionScene: React.FC = () => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -34,22 +36,34 @@ export const DefinitionScene: React.FC = () => {
 
   return (
     <AbsoluteFill style={{ backgroundColor: colors.bg, overflow: "hidden" }}>
-      <CameraZoom durationInFrames={dur} from={1} to={1.04}>
+      <SceneExit durationInFrames={dur}>
+        <PhotoBackground
+          src={SCENE_IMAGES.definition}
+          durationInFrames={dur}
+          tint={colors.yellow}
+          tintOpacity={0.34}
+          scaleFrom={1.02}
+          scaleTo={1.12}
+          panX={12}
+          panY={-10}
+        />
         <FloatingBlocks count={5} seed={4} />
         <SweepLines />
+
+        {/* Basket silhouette — mid/lower, idle bob */}
         <div
           style={{
             position: "absolute",
             left: "50%",
-            bottom: SAFE.bottom + 100,
-            width: 560,
-            height: 360,
-            marginLeft: -280,
+            bottom: SAFE.bottom + 90,
+            width: 580,
+            height: 380,
+            marginLeft: -290,
             border: `10px solid ${colors.yellow}`,
             borderTop: "none",
-            borderRadius: "0 0 48px 48px",
-            backgroundColor: `${colors.yellow}10`,
-            transform: `translateY(${idleY(frame, 3, 18)}px)`,
+            borderRadius: "0 0 52px 52px",
+            backgroundColor: `${colors.yellow}18`,
+            transform: `translateY(${idleY(frame, 5, 16)}px)`,
             opacity: interpolate(frame, [0, 16], [0, 1], {
               extrapolateRight: "clamp",
             }),
@@ -61,19 +75,17 @@ export const DefinitionScene: React.FC = () => {
             left: "50%",
             bottom: SAFE.bottom + 220,
             marginLeft: -52,
-            opacity: 0.18,
-            transform: "scale(1.8)",
+            opacity: 0.25,
+            transform: `scale(1.9) translateY(${idleY(frame, 3, 14)}px)`,
           }}
         >
           <IconBasket color={colors.yellow} />
         </div>
 
         {stocks.map((s, i) => {
-          const start = 40 + i * 8;
+          const start = 36 + i * 8;
           const t = spring({ frame: frame - start, fps, config: springPop });
-          const fall = interpolate(t, [0, 1], [0, 1]);
-          // Fade slightly after landing so trails don't stack
-          const fade = interpolate(frame, [start + 40, start + 70], [1, 0.55], {
+          const fade = interpolate(frame, [start + 50, start + 85], [1, 0.5], {
             extrapolateLeft: "clamp",
             extrapolateRight: "clamp",
           });
@@ -83,29 +95,36 @@ export const DefinitionScene: React.FC = () => {
               style={{
                 position: "absolute",
                 left: "50%",
-                top: "38%",
-                width: 120,
-                marginLeft: s.col * 140 - 60,
-                padding: "14px 0",
+                top: "40%",
+                width: 118,
+                marginLeft: s.col * 138 - 59,
+                padding: "13px 0",
                 textAlign: "center",
                 backgroundColor: s.color,
                 color: colors.bg,
                 fontFamily: fonts.body,
                 fontWeight: 800,
-                fontSize: 22,
+                fontSize: 21,
                 borderRadius: 12,
                 opacity: t * fade,
-                transform: `translateY(${interpolate(fall, [0, 1], [-20, 200])}px)`,
+                transform: `translateY(${interpolate(t, [0, 1], [-18, 190])}px)`,
               }}
             >
               {s.ticker}
             </div>
           );
         })}
-      </CameraZoom>
 
-      <SafeStage justify="space-between">
-        <div>
+        {/* Top band copy */}
+        <div
+          style={{
+            position: "absolute",
+            top: SAFE.top,
+            left: SAFE.side,
+            right: SAFE.side,
+            zIndex: 3,
+          }}
+        >
           <KineticText text="BİR SEPET." fontSize={58} delay={4} />
           <div style={{ height: 8 }} />
           <KineticText
@@ -121,17 +140,23 @@ export const DefinitionScene: React.FC = () => {
 
         <div
           style={{
+            position: "absolute",
+            bottom: SAFE.bottom + 28,
+            left: SAFE.side,
+            right: SAFE.side,
             textAlign: "center",
             fontFamily: fonts.display,
             fontWeight: 900,
             fontSize: 28,
             color: colors.white,
             opacity: spring({ frame: frame - 90, fps, config: springPop }),
+            transform: `translateY(${idleY(frame, 2, 12)}px)`,
+            zIndex: 3,
           }}
         >
           {("Tek işlem → tüm sepet").toLocaleUpperCase("tr-TR")}
         </div>
-      </SafeStage>
+      </SceneExit>
     </AbsoluteFill>
   );
 };

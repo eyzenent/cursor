@@ -6,6 +6,7 @@ import {
 } from "remotion";
 import { fonts } from "../fonts";
 import { colors, springPop } from "../theme";
+import { idleY } from "./motion";
 
 type Dir = "left" | "right" | "bottom" | "top";
 
@@ -20,22 +21,23 @@ type KineticTextProps = {
   from?: Dir;
   stagger?: number;
   maxWidth?: number | string;
+  /** Keep drifting after entrance — never fully static */
+  drift?: boolean;
 };
 
-/** Turkish-aware casing — CSS text-transform breaks i/İ */
 const trUpper = (s: string) => s.toLocaleUpperCase("tr-TR");
 
 const enterXY = (from: Dir, t: number): [number, number] => {
   const d = 1 - t;
   switch (from) {
     case "left":
-      return [-36 * d, 0];
+      return [-40 * d, 0];
     case "right":
-      return [36 * d, 0];
+      return [40 * d, 0];
     case "top":
-      return [0, -28 * d];
+      return [0, -32 * d];
     default:
-      return [0, 28 * d];
+      return [0, 32 * d];
   }
 };
 
@@ -50,6 +52,7 @@ export const KineticText: React.FC<KineticTextProps> = ({
   from = "bottom",
   stagger,
   maxWidth = "100%",
+  drift = true,
 }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -81,7 +84,9 @@ export const KineticText: React.FC<KineticTextProps> = ({
         lineHeight: 1.12,
         letterSpacing: uppercase ? "-0.01em" : 0,
         color,
-        // No CSS text-transform — casing handled in JS (tr-TR)
+        transform: drift
+          ? `translateY(${idleY(frame, 1.5, 16)}px)`
+          : undefined,
       }}
     >
       {parts.map((part, i) => {
@@ -101,7 +106,6 @@ export const KineticText: React.FC<KineticTextProps> = ({
                 extrapolateLeft: "clamp",
                 extrapolateRight: "clamp",
               }),
-              // Opacity + translate only — scale causes glyph blur / ghosts
               transform: `translate(${x}px, ${y}px)`,
             }}
           >
